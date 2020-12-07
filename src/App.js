@@ -1,11 +1,10 @@
-import './styles/App.css';
+import ProductsSlider from './components/ProductsSlider/ProductsSlider'
+import './styles/App.css'
 
 function App() {
   return (
-    <div>
-      
-    </div>
-  );
+      <ProductsSlider />
+  )
 }
 
-export default App;
+export default App
