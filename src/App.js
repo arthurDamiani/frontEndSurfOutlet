@@ -1,9 +1,11 @@
-import ProductsSlider from './components/ProductsSlider/ProductsSlider'
-import './styles/App.css'
+import React from 'react'
+import './styles/Global.css'
+
+import Routes from './routes'
 
 function App() {
   return (
-      <ProductsSlider />
+      <Routes />
   )
 }
 
