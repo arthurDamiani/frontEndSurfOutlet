@@ -1,0 +1,40 @@
+.header-top {
+    background-color: #fff;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header-input {
+    width: 26rem;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item-legenda {
+    font-size: 1.125rem;
+    max-width: 5.5rem;
+}
+
+.menu-container {
+    width: 100%;
+    background-color: #0080a8;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1.5rem;
+}
+
+.menu-item {
+    font-size: 1.5rem;
+    color: #fff;
+}

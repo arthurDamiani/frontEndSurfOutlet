@@ -8,5 +8,9 @@ body {
     background: #333;
 }
 
+a {
+    cursor: pointer;
+}
+
 
 
