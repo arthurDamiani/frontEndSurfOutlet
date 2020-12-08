@@ -40,7 +40,7 @@ function Header() {
             <nav className='menu-container'>
                 <a className='menu-item'>Surf</a>
                 <a className='menu-item'>Masculino</a>
-                <a className='menu-item'>Feminno</a>
+                <a className='menu-item'>Feminino</a>
                 <a className='menu-item'>Calçados</a>
                 <a className='menu-item'>Juvenil</a>
                 <a className='menu-item'>Óculos</a>

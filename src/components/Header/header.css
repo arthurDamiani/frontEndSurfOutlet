@@ -18,23 +18,30 @@
 .nav-item {
     display: flex;
     align-items: center;
+    padding: 0 1rem;
 }
 
 .nav-item-legenda {
     font-size: 1.125rem;
     max-width: 5.5rem;
+    margin-left: 0.5rem;
 }
 
 .menu-container {
     width: 100%;
+    height: 4.5rem;
     background-color: #0080a8;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding: 1.5rem;
+    padding: 1.5rem 5rem;
 }
 
 .menu-item {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #fff;
+}
+
+.menu-item:hover {
+    border-bottom: 2px solid #fff;
 }
