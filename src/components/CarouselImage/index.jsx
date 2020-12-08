@@ -1,21 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { imageData } from './imageData'
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 import './carouselImage.css'
+import { Link } from 'react-router-dom'
 
 const ImageSlider = ({ slides }) => {
   const [current, setCurrent] = useState(0)
   const length = slides.length
 
   const nextSlide = () => setCurrent(current === length - 1 ? 0 : current + 1)
+
+  useEffect(() => {
+    let timer = setInterval(() => {
+      nextSlide()
+    }, 4000)
+    return () => clearInterval(timer)
+  })
  
 
   const prevSlide = () => setCurrent(current === 0 ? length - 1 : current - 1)
-  
-  console.log(length)
-  console.log(current)
-
 
   return (
     <section className='slider'>
@@ -36,7 +40,7 @@ const ImageSlider = ({ slides }) => {
             key={index}
           >
             {index === current && (
-              <img src={slide.image} alt='img' className='image' />
+              <Link to={slide.link}><img href={slide.link} src={slide.image} alt='img' className='image' /></Link>
             )}
           </div>
         )
