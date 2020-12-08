@@ -70,8 +70,6 @@ const ProductsSlider = () => {
                         </div>
                     </div>
                 </div>
-
-    
             </Slider>
         </div>
         

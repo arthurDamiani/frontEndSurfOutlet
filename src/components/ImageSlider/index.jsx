@@ -28,7 +28,7 @@ const ImageSlider = () => {
         }, time)
     }  
     
-    window.addEventListener('load', start)
+    // window.addEventListener('load', start)
 
     return (
         <div className="slider-wrapper">
