@@ -2,11 +2,12 @@ import React from 'react'
 import ProductsSlider from '../../components/ProductsSlider'
 import {imageData} from '../../components/CarouselImage/imageData'
 import CarouselImage from '../../components/CarouselImage'
+import DetailsProduct from '../../components/DetailsProduct'
 
 function Landing() {
     return(
         <div>
-            <CarouselImage slides={imageData} />
+            <DetailsProduct />
         </div>
     )
 }

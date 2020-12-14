@@ -1,7 +1,13 @@
+.slider{
+    padding: 0 170px
+}
+
 .card-wrapper {
     position: relative;
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
     box-sizing: border-box;
+
 }
 
 .card-wrapper:active, .card-wrapper:hover, .card-wrapper:focus {
@@ -10,12 +16,12 @@
 }
 
 .card {
-    max-width: 80%;
-    max-height: 300px;
+    position: relative;
+    width: 170px;
+    height: 250px;
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
-    position: relative;
 }
 
 .card .card-image {
@@ -24,7 +30,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    z-index: 9;
     background-color: #000;
     transition: 0.5s;
 }
@@ -55,17 +61,17 @@
     height: 130px;
     z-index: 1;
     padding: 10px;
-    transition: all ease 0.6s;
+    transition: all ease 0.7s;
 }
 
-.details h3 {
-    margin: 30px 0;
+.details h5 {
+    margin: 20px 0;
     padding: 0;
     text-align: center;
     color: #fff;
 }
 
-.details h3 .price {
+.details h5 .price {
     font-size: 15px;
     line-height: 2;
     color: #fff;
@@ -77,8 +83,34 @@
     bottom: 0;
 }
 
+.details button {
+    position: absolute;
+    width: 70px;
+    height: 20px;
+    font-size: 13px;
+    border-radius: 6px;
+    background: #fff;
+    border: none;
+    bottom: 0.75rem;
+    left: 3.2rem;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.details button:hover {
+    transform: translate(0, -35%);
+    transition: all 0.3s ease-in-out;
+    opacity: 0.8;
+}
+
+.details button:focus {
+    outline: none;
+    border: none;
+}
+
 .carousel .slick-dots {
-    bottom: -2.5vw;
+    position: absolute;
+    bottom: 10%;
 }
 
 .carousel .slick-dots li button {
@@ -120,13 +152,13 @@
 
 .carousel .slick-prev:before, .carousel .slick-next:before {
     color: #0080a8;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
 }
 
 .carousel .slick-next {
-    right: -5px;
+    right: 9rem;
 }
 
 .carousel .slick-prev {
-    left: -55px;
+    left: 7.5rem;
 }

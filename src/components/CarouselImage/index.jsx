@@ -28,19 +28,21 @@ const ImageSlider = ({ slides }) => {
         className="left-arrow" 
         style={{fontSize: 50}}
       />
+      
       <NavigateNextIcon 
         onClick={nextSlide}
         className="right-arrow" 
         style={{fontSize: 50}}
       />
+      
       {imageData.map((slide, index) => {
         return (
           <div
-            className={index === current ? 'slide active' : 'slide'}
+            className={index === current ? 'slide-active' : 'slide'}
             key={index}
           >
             {index === current && (
-              <Link to={slide.link}><img href={slide.link} src={slide.image} alt='img' className='image' /></Link>
+              <Link to={slide.link}><img href={slide.link} src={slide.image} alt='img' /></Link>
             )}
           </div>
         )
