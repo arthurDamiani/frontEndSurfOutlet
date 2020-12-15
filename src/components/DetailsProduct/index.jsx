@@ -16,6 +16,9 @@ const DetailsProduct = () => {
             <div className='gallery-img'>
                     <img src={images} alt='img' />
                 <div className='thumb'>
+                    <div onClick={() => setImages(imgThumb[0])}>
+                        <img className='active' src={imgThumb[0]} alt='img'/>
+                    </div>
                     <div onClick={() => setImages(imgThumb[1])}>
                         <img className='active' src={imgThumb[1]} alt='img'/>
                     </div>
@@ -30,7 +33,7 @@ const DetailsProduct = () => {
             <div className='details-content'>
                 <h3 className='title-product'>JAQUETA DUPLA FACE BILLABONG</h3>
                 <span className='price-product'>R$321.00</span>
-                <div className='btn'>
+                <div className='btn-buy'>
                         <button>COMPRAR AGORA</button>
                         <button>ADICIONAR AO CARRINHO</button>
                 </div>
