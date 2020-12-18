@@ -4,6 +4,8 @@ import roupa from '../../assets/roupa.png'
 import roupa2 from '../../assets/roupa2.png'
 import roupa3 from '../../assets/roupa3.png'
 import roupa4 from '../../assets/roupa4.png'
+import ProductsSlider from '../../components/ProductsSlider'
+
 
 const DetailsProduct = () => {
 
@@ -14,19 +16,19 @@ const DetailsProduct = () => {
     return (
         <div className='details-wrapper'>
             <div className='gallery-img'>
-                    <img src={images} alt='img' />
+                    <img className='big-img' src={images} alt='img' />
                 <div className='thumb'>
                     <div onClick={() => setImages(imgThumb[0])}>
-                        <img className='active' src={imgThumb[0]} alt='img'/>
+                        <img className={images === imgThumb[0] ? 'active' : ''} src={imgThumb[0]} alt='img'/>
                     </div>
                     <div onClick={() => setImages(imgThumb[1])}>
-                        <img className='active' src={imgThumb[1]} alt='img'/>
+                        <img className={images === imgThumb[1] ? 'active' : ''} src={imgThumb[1]} alt='img'/>
                     </div>
                     <div onClick={() => setImages(imgThumb[2])}>
-                        <img className='active' src={imgThumb[2]} alt='img'/>
+                        <img className={images === imgThumb[2] ? 'active' : ''} src={imgThumb[2]} alt='img'/>
                     </div>
                     <div onClick={() => setImages(imgThumb[3])}>
-                        <img className='active' src={imgThumb[3]} alt='img'/>
+                        <img className={images === imgThumb[3] ? 'active' : ''} src={imgThumb[3]} alt='img'/>
                     </div>
                 </div>
             </div>
@@ -56,11 +58,15 @@ const DetailsProduct = () => {
                     </span>
                 </div>
                 <div className='info-product'>
-                    <h2>Descrição</h2>
+                    <h3>Descrição</h3>
                     <p>Blusa de moletom, com felpa, bolso frente canguru sobreposto, 
                     forro no capuz em malha colorida, cordão como regulagem,
                     estampa frente e costas e etiquetas personalizadas.</p>
                 </div>
+            </div>
+            <div className="suggestion">
+                <h3>TALVEZ VOCÊ GOSTE TAMBÉM</h3>
+                <ProductsSlider />
             </div>
         </div>
     )

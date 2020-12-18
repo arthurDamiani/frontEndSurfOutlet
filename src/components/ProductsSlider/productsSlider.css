@@ -1,5 +1,10 @@
+.container .mt-5 .carousel .slider{
+    height: 100px;
+    width: 100vw;
+}
+
 .slider{
-    padding: 0 170px
+    padding: 0 170px;
 }
 
 .card-wrapper {
@@ -7,7 +12,6 @@
     max-width: 100%;
     max-height: 100%;
     box-sizing: border-box;
-
 }
 
 .card-wrapper:active, .card-wrapper:hover, .card-wrapper:focus {
@@ -108,7 +112,7 @@
     border: none;
 }
 
-.carousel .slick-dots {
+/* .carousel .slick-dots {
     position: absolute;
     bottom: 10%;
 }
@@ -143,7 +147,7 @@
 .carousel .slick-dots li.slick-active button:before, .carousel .slick-dots li:hover button:before {
     background-color: #0080a8;
     opacity: 1;
-}
+} */
 
 .carousel .slick-prev, .carousel .slick-next {
     width: 40px;
