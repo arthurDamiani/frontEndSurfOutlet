@@ -1,9 +1,26 @@
 import React from 'react';
+import { useState } from 'react';
 import productCard  from './productCard'
 import './productCard.css'
+import Cart from './Cart'
 
 const ProductCardList = () => {
-    return ( 
+    const page_prod = 'products'
+    const page_cart = 'cart'
+
+    const [cart, setCart] = useState([])
+    const [total, setTotal] = useState(0)
+    const [products] = useState(...productCard)
+    const [page, setPage] = useState(page_prod)
+
+    const addToCart = product => setCart([...cart, {...product}])
+
+    const removeFromCart = productToRemove => setCart(cart.filter(product => product !== productToRemove))
+
+    const navigateTo = nextPage => setPage(nextPage)
+
+
+    const renderProducts = [
         <div className='products-wrapper'>
             <div className="products">
                 {productCard.map(product => {
@@ -11,7 +28,7 @@ const ProductCardList = () => {
                     <div className="card" key={product.id}>
                         <div className="img-content">
                             <img src={product.image} alt='imagem do produto'/>
-                            <button>Ver detalhes</button>
+                            <button onClick={() => addToCart(product)}>Ver detalhes</button>
                         </div>
                         <div className="content">
                             <h3>{product.title}</h3>
@@ -23,6 +40,22 @@ const ProductCardList = () => {
                 )
                 })}
             </div>
+        </div>
+    ]
+
+    return ( 
+        <div>
+            <header>
+                <button onClick={() => navigateTo(page_cart)}>Go to Cart ({cart.length})</button>
+                <button onClick={() => navigateTo(page_prod)}>X</button>
+            </header>
+            {page === 'products' && renderProducts}
+            {page === 'cart' && 
+                <Cart 
+                    removeFromCart={removeFromCart}
+                    cart={cart} 
+                />
+            }
         </div>
     )
 }
