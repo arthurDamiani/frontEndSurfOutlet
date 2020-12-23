@@ -10,21 +10,33 @@ import productCard  from '../ProductCardList/productCard'
 
 
 const DetailsProduct = () => {
-    const imgThumb = [roupa, roupa2, roupa3, roupa4]
-    const [images, setImages] = useState(imgThumb[0])
 
     const page_prod = 'products'
     const page_cart = 'cart'
 
     const [cart, setCart] = useState([])
-    const [product] = useState(...productCard)
+    const [amount, setAmount] = useState(0)
+    const [size, setSize] = useState('')
+    const [product] = useState(productCard[0])
     const [page, setPage] = useState(page_prod)
 
-    const addToCart = product => setCart([...cart, {...product}])
+    const imgThumb = [productCard[0].image, productCard[1].image, productCard[2].image, productCard[3].image]
+
+    const [images, setImages] = useState(imgThumb[0])
+
+
+    const addToCart = product => {
+        setCart([...cart, {...product}])
+        setAmount(amount + 1)
+    }
 
     const removeFromCart = productToRemove => setCart(cart.filter(product => product !== productToRemove))
 
     const navigateTo = nextPage => setPage(nextPage)
+
+    const choseSize = () => {
+         setSize(product.size)
+    }
 
     const renderDetailsProduct = [
         <div className='details-wrapper'>
@@ -47,17 +59,17 @@ const DetailsProduct = () => {
             </div>
             <div className='details-content'>
                 <h3 className='title-product'>JAQUETA DUPLA FACE BILLABONG</h3>
-                <span className='price-product'>R$321.00</span>
+                <span className='price-product'>R${product.price}</span>
                 <div className='btn-buy'>
                         <button onClick={() => addToCart(product)}>COMPRAR AGORA</button>
                         <button onClick={() => addToCart(product)}>ADICIONAR AO CARRINHO</button>
                 </div>
                 <div className='size-product'>
                     <h3>TAMANHO</h3>
-                    <button>P</button>
-                    <button>M</button>
-                    <button>G</button>
-                    <button>XG</button>
+                    <button>{product.size[0]}</button>
+                    <button>{product.size[1]}</button>
+                    <button>{product.size[2]}</button>
+                    <button>{product.size[3]}</button>
                 </div>
                 <div className='colors-product'>
                     <h3>COR</h3>

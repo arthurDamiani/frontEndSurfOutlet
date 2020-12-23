@@ -3,6 +3,7 @@ import { useState } from 'react';
 import productCard  from './productCard'
 import './productCard.css'
 import ShoppingCart from '../ShoppingCart'
+import { Link } from 'react-router-dom';
 
 const ProductCardList = () => {
     const page_prod = 'products'
@@ -27,7 +28,9 @@ const ProductCardList = () => {
                     <div className="card-grid" key={product.id}>
                         <div className="img-content">
                             <img src={product.image} alt='imagem do produto'/>
-                            <button onClick={() => addToCart(product)}>Ver detalhes</button>
+                            <Link to='/DetailsProduct'>
+                                <button>Ver detalhes</button>
+                            </Link>
                         </div>
                         <div className="content">
                             <h3>{product.title}</h3>
