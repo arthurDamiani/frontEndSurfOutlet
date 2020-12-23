@@ -27,7 +27,6 @@ const DetailsProduct = () => {
 
     const addToCart = product => {
         setCart([...cart, {...product}])
-        setAmount(amount + 1)
     }
 
     const removeFromCart = productToRemove => setCart(cart.filter(product => product !== productToRemove))

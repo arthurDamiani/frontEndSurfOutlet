@@ -25,7 +25,7 @@ const product_card = [
     {
         id: 3,
         title: 'JAQUETA',
-        price: 179.90,
+        price: 400.90,
         condition_payment: '5x sem juros de R$ 35,98',
         discount: 'à vista com 5% de desconto no boleto',
         image: roupa4,
@@ -213,6 +213,222 @@ const product_card = [
     },
     {
         id: 24,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 25,
+        title: 'JAQUETA',
+        price: 300.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa,
+        size: ['P', 'M', 'G', 'GG'],
+    },
+    {
+        id: 26,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa3,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 27,
+        title: 'JAQUETA',
+        price: 400.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 28,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa2,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 29,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 30,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 31,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 32,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 33,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 34,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 35,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 36,
+        title: 'JAQUETA',
+        price: 300.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa,
+        size: ['P', 'M', 'G', 'GG'],
+    },
+    {
+        id: 37,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa3,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 38,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 39,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa2,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 40,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 41,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 42,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 43,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 44,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 45,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 46,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 47,
+        title: 'JAQUETA',
+        price: 179.90,
+        condition_payment: '5x sem juros de R$ 35,98',
+        discount: 'à vista com 5% de desconto no boleto',
+        image: roupa4,
+        size: ['P', 'M', 'G', 'GG']
+    },
+    {
+        id: 48,
         title: 'JAQUETA',
         price: 179.90,
         condition_payment: '5x sem juros de R$ 35,98',
