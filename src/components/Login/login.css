@@ -52,25 +52,6 @@
     font-weight: bold;
 }
 
-.separation {
-    height: 20rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.separation p {
-    font-size: 3rem;
-    color: #0080a8;
-}
-
-.line {
-    width: 1px;
-    height: 100%;
-    background-color: rgba(0, 128, 168, 0.5);
-}
-
 @media(max-width: 850px) {
     .login-container {
         height: auto;
@@ -78,18 +59,6 @@
 
     .login-box {
         flex-direction: column;
-    }
-
-    .separation {
-        flex-direction: row;
-        height: auto;
-    }
-
-    .line {
-        width: 20vw;
-        height: 1px;
-        align-items: center;
-        margin: 0 1rem;
     }
 
     .sign-up {

@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {TextField, InputAdornment, Button } from '@material-ui/core'
 import {Person, LockOpen, GroupAdd} from '@material-ui/icons'
+import Separation from '../Utils/Separation'
 
 import './login.css'
 
@@ -51,11 +52,7 @@ function Login() {
                         </div>
                     </div>
                 </form>
-                <div className="separation">
-                    <div className='line'></div>
-                    <p>ou</p>
-                    <div className='line'></div>
-                </div>
+                <Separation />
                 <div className='sign-up'>
                     <Button href='#' variant='contained' color='primary' ><GroupAdd />Cadastre-se</Button>
                 </div>
