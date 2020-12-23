@@ -1,0 +1,37 @@
+.form-title {
+    width: 100%;
+    border-bottom: 1px solid #0080A8;
+    font-size: 1.9rem;
+    color: #0080A8;
+    padding-bottom: 1.5rem;
+}
+
+.form {
+    margin-bottom: 3rem;
+}
+
+.input-container, .navigation-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.margin {
+    margin-right: 1rem;
+    width: 100%;
+}
+
+.inline-input {
+    width: 100%;
+}
+
+@media(max-width: 750px) {
+    .input-container {
+        flex-direction: column;
+    }
+
+    .margin {
+        margin-right: 0;
+    }
+}
