@@ -1,17 +1,11 @@
-.container .mt-5 .carousel .slider{
-    height: 100px;
-    width: 100vw;
-}
-
-.slider{
+.slider {
     padding: 0 170px;
 }
 
 .card-wrapper {
     position: relative;
-    max-width: 100%;
-    max-height: 100%;
-    box-sizing: border-box;
+    width: 100vw;
+    height: 100%;
 }
 
 .card-wrapper:active, .card-wrapper:hover, .card-wrapper:focus {
@@ -88,21 +82,22 @@
 }
 
 .details button {
-    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 70px;
     height: 20px;
     font-size: 13px;
     border-radius: 6px;
     background: #fff;
     border: none;
-    bottom: 0.75rem;
-    left: 3.2rem;
+    margin: -15px 40px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
 }
 
 .details button:hover {
-    transform: translate(0, -35%);
+    transform: translate(0, -20%);
     transition: all 0.3s ease-in-out;
     opacity: 0.8;
 }
@@ -111,43 +106,6 @@
     outline: none;
     border: none;
 }
-
-/* .carousel .slick-dots {
-    position: absolute;
-    bottom: 10%;
-}
-
-.carousel .slick-dots li button {
-    widows: 20px;
-    height: 20px;
-    border: 1px solid #fff;
-    border-radius: 20px;
-}
-
-.carousel .slick-dots li button:before {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 10px;
-    height: 10px;
-    border-radius: 10px;
-    content: '';
-    text-align: center;
-    opacity: 0.5;
-    color: #000;
-    background-color: #fff;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s ease-in-out;
-}
-
-.carousel .slick-dots li.slick-active button, .carousel .slick-dots li:hover button {
-    border-color: #0080a8;
-}
-
-.carousel .slick-dots li.slick-active button:before, .carousel .slick-dots li:hover button:before {
-    background-color: #0080a8;
-    opacity: 1;
-} */
 
 .carousel .slick-prev, .carousel .slick-next {
     width: 40px;
@@ -165,4 +123,246 @@
 
 .carousel .slick-prev {
     left: 7.5rem;
+}
+
+@media screen and (max-width: 1210px) {
+    .card {
+        width: 130px;
+        height: 210px;
+    }
+
+    .carousel .slick-prev:before, .carousel .slick-next:before {
+        font-size: 1.5rem;
+    }
+
+    .carousel .slick-prev {
+        left: 7.9rem;
+    }
+
+    .card:hover .card-image {
+        transform: translateY(-90px);
+    }
+
+    .details {
+        height: 110px;
+    }
+
+    .details h5 {
+        font-size: 11px;
+    }
+
+    .details h5 .price {
+        font-size: 12px;
+        line-height: 2.3;
+    }
+
+    .details button {
+        width: 60px;
+        height: 18px;
+        font-size: 11px;
+        margin: -18px 26px;
+    }
+
+}
+
+@media screen and (max-width: 990px) {
+    .slider {
+        padding: 0 100px;
+    }
+
+    .card {
+        width: 110px;
+        height: 170px;
+        border-radius: 6px;
+    }
+
+    .card:hover .card-image {
+        transform: translateY(-75px);
+    }
+
+    .details {
+        border-radius: 6px;
+        height: 98px;
+    }
+
+    .details h5 {
+        font-size: 9px;
+    }
+
+    .details h5 .price {
+        font-size: 10.5px;
+        line-height: 2.2;
+    }
+
+    .details button {
+        width: 55px;
+        height: 13px;
+        font-size: 9px;
+        margin: -18px 18px;
+        border-radius: 3px;
+    }
+
+    .carousel .slick-prev:before, .carousel .slick-next:before {
+        font-size: 1.2rem;
+    }
+
+    .carousel .slick-next {
+        right: 4.7rem;
+    }
+    
+    .carousel .slick-prev {
+        left: 4rem;
+    }
+}
+
+
+@media screen and (max-width: 770px) {
+    .slider {
+        padding: 0 30px;
+    }
+
+    .card {
+        width: 100px;
+        height: 160px;
+    }
+
+    .details h5 .price {
+        font-size: 9px;
+        line-height: 2;
+    }
+
+    .details button {
+        width: 50px;
+        height: 11px;
+        font-size: 8px;
+        margin: -18px 15px;
+        border-radius: 3px;
+    }
+
+    .carousel .slick-next {
+        right: 0.3rem;
+    }
+    
+    .carousel .slick-prev {
+        left: -0.4rem;
+    }
+}
+
+
+@media screen and (max-width: 580px) {
+    .slider {
+        padding: 0 70px;
+    }
+
+    .card {
+        width: 90px;
+        height: 140px;
+    }
+
+    .card:hover .card-image {
+        transform: translateY(-52px);
+    }
+
+    .details {
+        height: 78px;
+    }
+
+    .details h5 {
+        font-size: 6.5px;
+    }
+
+    .details h5 .price {
+        font-size: 7px;
+        line-height: 2;
+    }
+
+    .details button {
+        width: 35px;
+        height: 8px;
+        font-size: 6px;
+        margin: -20px 11px;
+        border-radius: 3px;
+    }
+
+    .carousel .slick-next {
+        right: 4rem;
+    }
+    
+    .carousel .slick-prev {
+        left: 3.4rem;
+    }
+}
+
+
+@media screen and (max-width: 375px) {
+    .slider {
+        position: relative;
+        padding: 0 40px;
+    }
+
+    .card {
+        height: 85px;
+        border-radius: 3px;
+    }
+
+    .details {
+        height: 68.5px;
+    }
+
+    .carousel .slick-next {
+        right: 0.8rem;
+    }
+    
+    .carousel .slick-prev {
+        left: 0.6rem;
+    }
+
+    .carousel .slick-prev:before, .carousel .slick-next:before {
+        font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .slider {
+        padding: 0 32px;
+    }
+
+    .card {
+        width: 50px;
+        height: 75px;
+        border-radius: 3px;
+    }
+
+    .card:hover .card-image {
+        transform: translateY(-33px);
+    }
+
+    .details {
+        height: 60px;
+    }
+
+    .details h5 {
+        font-size: 4px;
+    }
+
+    .details h5 .price {
+        font-size: 5px;
+        line-height: 2;
+    }
+
+    .details button {
+        width: 20px;
+        height: 5px;
+        font-size: 3px;
+        margin: -21.5px 5px;
+        border-radius: 2px;
+    }
+
+    .carousel .slick-next {
+        right: 0.5rem;
+    }
+    
+    .carousel .slick-prev {
+        left: 0.1rem;
+    }
 }

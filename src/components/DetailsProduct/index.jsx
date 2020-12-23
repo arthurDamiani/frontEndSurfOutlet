@@ -5,15 +5,28 @@ import roupa2 from '../../assets/roupa2.png'
 import roupa3 from '../../assets/roupa3.png'
 import roupa4 from '../../assets/roupa4.png'
 import ProductsSlider from '../../components/ProductsSlider'
+import ShoppingCart from '../ShoppingCart'
+import productCard  from '../ProductCardList/productCard'
 
 
 const DetailsProduct = () => {
-
     const imgThumb = [roupa, roupa2, roupa3, roupa4]
-
     const [images, setImages] = useState(imgThumb[0])
 
-    return (
+    const page_prod = 'products'
+    const page_cart = 'cart'
+
+    const [cart, setCart] = useState([])
+    const [product] = useState(...productCard)
+    const [page, setPage] = useState(page_prod)
+
+    const addToCart = product => setCart([...cart, {...product}])
+
+    const removeFromCart = productToRemove => setCart(cart.filter(product => product !== productToRemove))
+
+    const navigateTo = nextPage => setPage(nextPage)
+
+    const renderDetailsProduct = [
         <div className='details-wrapper'>
             <div className='gallery-img'>
                     <img className='big-img' src={images} alt='img' />
@@ -36,8 +49,8 @@ const DetailsProduct = () => {
                 <h3 className='title-product'>JAQUETA DUPLA FACE BILLABONG</h3>
                 <span className='price-product'>R$321.00</span>
                 <div className='btn-buy'>
-                        <button>COMPRAR AGORA</button>
-                        <button>ADICIONAR AO CARRINHO</button>
+                        <button onClick={() => addToCart(product)}>COMPRAR AGORA</button>
+                        <button onClick={() => addToCart(product)}>ADICIONAR AO CARRINHO</button>
                 </div>
                 <div className='size-product'>
                     <h3>TAMANHO</h3>
@@ -68,6 +81,22 @@ const DetailsProduct = () => {
                 <h3>TALVEZ VOCÊ GOSTE TAMBÉM</h3>
                 <ProductsSlider />
             </div>
+        </div>
+    ]
+
+    return (
+        <div>
+            <header>
+                <button onClick={() => navigateTo(page_cart)}>Go to Cart ({cart.length})</button>
+                <button onClick={() => navigateTo(page_prod)}>X</button>
+            </header>
+            {page === 'products' && renderDetailsProduct}
+            {page === 'cart' && 
+                <ShoppingCart 
+                    removeFromCart={removeFromCart}
+                    cart={cart} 
+                />
+            }
         </div>
     )
 }

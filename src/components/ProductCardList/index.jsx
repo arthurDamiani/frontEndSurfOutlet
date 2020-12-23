@@ -2,14 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import productCard  from './productCard'
 import './productCard.css'
-import Cart from './Cart'
+import ShoppingCart from '../ShoppingCart'
 
 const ProductCardList = () => {
     const page_prod = 'products'
     const page_cart = 'cart'
 
     const [cart, setCart] = useState([])
-    const [total, setTotal] = useState(0)
     const [products] = useState(...productCard)
     const [page, setPage] = useState(page_prod)
 
@@ -25,7 +24,7 @@ const ProductCardList = () => {
             <div className="products">
                 {productCard.map(product => {
                 return (
-                    <div className="card" key={product.id}>
+                    <div className="card-grid" key={product.id}>
                         <div className="img-content">
                             <img src={product.image} alt='imagem do produto'/>
                             <button onClick={() => addToCart(product)}>Ver detalhes</button>
@@ -51,7 +50,7 @@ const ProductCardList = () => {
             </header>
             {page === 'products' && renderProducts}
             {page === 'cart' && 
-                <Cart 
+                <ShoppingCart 
                     removeFromCart={removeFromCart}
                     cart={cart} 
                 />

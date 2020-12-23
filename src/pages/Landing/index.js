@@ -8,7 +8,7 @@ import ProductCardList from '../../components/ProductCardList'
 function Landing() {
     return(
         <div>
-            <ProductCardList />
+            <ProductsSlider />
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import './cart.css'
+import './shoppingCart.css'
 
 export default function Cart({cart, removeFromCart}) {
     return (
@@ -26,4 +26,3 @@ export default function Cart({cart, removeFromCart}) {
         </div>
     )
 }
-
