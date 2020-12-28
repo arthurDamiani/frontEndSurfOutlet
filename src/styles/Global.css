@@ -13,5 +13,10 @@ a {
     cursor: pointer;
 }
 
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
 
 
