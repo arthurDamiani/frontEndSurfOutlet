@@ -51,6 +51,9 @@ function UserData({onSubmit, data}) {
                 <TextField
                     value={confirmPassword}
                     onChange={(e) => {setConfirmPassword(e.target.value)}}
+                    onBlur={fieldValidator}
+                    error={!error.confirmPassword.valid}
+                    helperText={error.confirmPassword.text}
                     id='confirmPassword'
                     name='confirmPassword'
                     label='Confirma Senha'

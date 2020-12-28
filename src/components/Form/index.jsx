@@ -3,14 +3,14 @@ import {Stepper, Step, StepLabel, Container} from '@material-ui/core'
 import UserData from './UserData'
 import PersonalData from './PersonalData'
 import AddressData from './AddressData'
-import {passwordValidator, cpfValidator} from '../../models/Form'
+import {passwordValidator, confirmPasswordValidator, cpfValidator} from '../../models/Form'
 import FormValidations from '../../contexts/FormValidations'
 
 import './form.css'
 
 function Form() {
     const [currentStep, setCurrentStep] = useState(0)
-    const [collectedData, setcollectedData] = useState({email: '',password: '', name: '', cpf: '', rg: '', birthDate: '', phone: ''})
+    const [collectedData, setcollectedData] = useState({email: '',password: '', confirmPassword: '', name: '', cpf: '', rg: '', birthDate: '', phone: ''})
 
     useEffect(() => {
         if(currentStep === forms.length-1) {
@@ -46,7 +46,7 @@ function Form() {
                 <Step><StepLabel>Endereço</StepLabel></Step>
                 <Step><StepLabel>Finalizado</StepLabel></Step>
             </Stepper>
-            <FormValidations.Provider value={{password:passwordValidator, cpf:cpfValidator}}>
+            <FormValidations.Provider value={{password:passwordValidator, confirmPassword:confirmPasswordValidator, cpf:cpfValidator}}>
                 {forms[currentStep]}
             </FormValidations.Provider>
         </Container>

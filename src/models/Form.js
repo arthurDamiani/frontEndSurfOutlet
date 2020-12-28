@@ -6,6 +6,14 @@ function passwordValidator(password) {
     }
 }
 
+function confirmPasswordValidator(confirmPassword, password) {
+    if(confirmPassword !== password) {
+        return {valid:false, text:'As senhas devem ser iguais'}
+    } else {
+        return {valid:true, text:''}
+    }
+}
+
 function cpfValidator(cpf) {
     if(cpf.length !== 11) {
         return {valid:false, text:'CPF inválido!'}
@@ -14,4 +22,4 @@ function cpfValidator(cpf) {
     }
 }
 
-export {passwordValidator, cpfValidator}
+export {passwordValidator, confirmPasswordValidator, cpfValidator}
