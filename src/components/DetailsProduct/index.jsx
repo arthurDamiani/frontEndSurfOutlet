@@ -10,34 +10,19 @@ import productCard  from '../ProductCardList/productCard'
 
 
 const DetailsProduct = () => {
-
-    const page_prod = 'products'
-    const page_cart = 'cart'
-
     const [cart, setCart] = useState([])
-    const [amount, setAmount] = useState(0)
-    const [size, setSize] = useState('')
     const [product] = useState(productCard[0])
-    const [page, setPage] = useState(page_prod)
 
     const imgThumb = [productCard[0].image, productCard[1].image, productCard[2].image, productCard[3].image]
-
     const [images, setImages] = useState(imgThumb[0])
 
 
     const addToCart = product => {
         setCart([...cart, {...product}])
     }
+  
 
-    const removeFromCart = productToRemove => setCart(cart.filter(product => product !== productToRemove))
-
-    const navigateTo = nextPage => setPage(nextPage)
-
-    const choseSize = () => {
-         setSize(product.size)
-    }
-
-    const renderDetailsProduct = [
+    return (
         <div className='details-wrapper'>
             <div className='gallery-img'>
                     <img className='big-img' src={images} alt='img' />
@@ -92,22 +77,6 @@ const DetailsProduct = () => {
                 <h3>TALVEZ VOCÊ GOSTE TAMBÉM</h3>
                 <ProductsSlider />
             </div>
-        </div>
-    ]
-
-    return (
-        <div>
-            <header>
-                <button onClick={() => navigateTo(page_cart)}>Go to Cart ({cart.length})</button>
-                <button onClick={() => navigateTo(page_prod)}>X</button>
-            </header>
-            {page === 'products' && renderDetailsProduct}
-            {page === 'cart' && 
-                <ShoppingCart 
-                    removeFromCart={removeFromCart}
-                    cart={cart} 
-                />
-            }
         </div>
     )
 }

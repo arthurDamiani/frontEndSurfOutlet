@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import './shoppingCart.css'
 
-export default function Cart({cart, removeFromCart}) {
+export default function Cart() {
+    const [cart, setCart] = useState([])
+
     const [amount, setAmount] = useState(0)
 
     return (
@@ -15,7 +17,7 @@ export default function Cart({cart, removeFromCart}) {
                         <h3>{product.title}</h3>
                         <p className='price'>R${product.price}</p>
                         <p className='size'>{product.size}</p>
-                        <button onClick={() => removeFromCart(product)}>Remover</button>
+                        <button onClick={() => {}}>Remover</button>
                         
                     </div>
                     <div className="finish-buy">

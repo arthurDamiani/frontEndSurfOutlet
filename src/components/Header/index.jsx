@@ -3,6 +3,7 @@ import {TextField, InputAdornment} from '@material-ui/core'
 import {Search, AccountCircle, AddShoppingCart} from '@material-ui/icons'
 import {FaBars} from 'react-icons/fa'
 import './header.css'
+import { Link } from 'react-router-dom'
 
 function Header() {
     const [search, setSearch] = useState('')
@@ -19,7 +20,7 @@ function Header() {
                         <FaBars />
                     </a>
                 </div>
-                <a href='#' className='header-logo'>Molokai</a>
+                <a href='/' className='header-logo'>Molokai</a>
                 <form onSubmit={(e) => {
                     e.preventDefault()
                     console.log(search)
@@ -36,36 +37,36 @@ function Header() {
                     />
                 </form>
                 <nav className='nav-container'>
-                    <a href='#' className='nav-item'>
+                    <Link to='#' className='nav-item'>
                         <AccountCircle fontSize="large" />
                         <p className='nav-item-legenda'>Entre ou cadastre-se</p>
-                    </a>
-                    <a href='#' className='nav-item'>
+                    </Link>
+                    <Link to='/checkout' className='nav-item'>
                         <AddShoppingCart fontSize="large" />
-                        <p className='nav-item-legenda carrinho-legenda'>Carrinho de compras</p>
-                    </a>
+                        <p className='nav-item-legenda carrinho-legenda'>0</p>
+                    </Link>
                 </nav>
             </nav>
             <nav onClick={showSideBar} className={sidebar ? 'menu-container active' : 'menu-container'}>
                 <div className='sidebar-top'>
-                    <a href='#' className='sidebar-item'>
+                    <Link to='#' className='sidebar-item'>
                         <AccountCircle fontSize="large" />
                         <p className='nav-item-legenda'>Entre ou cadastre-se</p>
-                    </a>
-                    <a href='#' className='sidebar-item'>
+                    </Link>
+                    <Link to='/checkout' className='sidebar-item'>
                         <AddShoppingCart fontSize="large" />
-                        <p className='nav-item-legenda'>Carrinho de compras</p>
-                    </a>
+                        <p className='nav-item-legenda'>0</p>
+                    </Link>
                 </div>
-                <a href='#' className='menu-item'>Surf</a>
-                <a href='#' className='menu-item'>Masculino</a>
-                <a href='#' className='menu-item'>Feminno</a>
-                <a href='#' className='menu-item'>Calçados</a>
-                <a href='#' className='menu-item'>Juvenil</a>
-                <a href='#' className='menu-item'>Óculos</a>
-                <a href='#' className='menu-item'>Relógios</a>
-                <a href='#' className='menu-item'>Acessórios</a>
-                <a href='#' className='menu-item'>Marcas</a>
+                <a href='/products' className='menu-item'>Surf</a>
+                <a href='/products' className='menu-item'>Masculino</a>
+                <a href='/products' className='menu-item'>Feminno</a>
+                <a href='/products' className='menu-item'>Calçados</a>
+                <a href='/products' className='menu-item'>Juvenil</a>
+                <a href='/products' className='menu-item'>Óculos</a>
+                <a href='/products' className='menu-item'>Relógios</a>
+                <a href='/products' className='menu-item'>Acessórios</a>
+                <a href='/products' className='menu-item'>Marcas</a>
             </nav>
         </header>
     )

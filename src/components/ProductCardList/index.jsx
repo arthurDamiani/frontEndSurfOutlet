@@ -5,6 +5,7 @@ import './productCard.css'
 import ShoppingCart from '../ShoppingCart'
 import Pagination from '../Pagination'
 import { FaChevronRight, FaChevronLeft} from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const ProductCardList = () => {
     const page_prod = 'products'
@@ -50,7 +51,9 @@ const ProductCardList = () => {
                     <div className="card-grid" key={product.id}>
                         <div className="img-content">
                             <img src={product.image} alt='imagem do produto'/>
-                            <button onClick={() => addToCart(product)}>Ver detalhes</button>
+                            <Link to='/detailsProducts'>
+                                <button onClick={() => addToCart(product)}>Ver detalhes</button>
+                            </Link>
                         </div>
                         <div className="content">
                             <h3>{product.title}</h3>

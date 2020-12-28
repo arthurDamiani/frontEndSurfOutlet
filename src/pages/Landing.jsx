@@ -7,7 +7,7 @@ function Landing() {
     return(
         <div>
             <CarouselImage slides={imageData}/>
-            {/* <ProductsSlider /> */}
+            <ProductsSlider /> 
         </div>
     )
 }
