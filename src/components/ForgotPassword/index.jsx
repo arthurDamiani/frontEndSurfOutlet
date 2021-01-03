@@ -32,7 +32,7 @@ function ForgotPassword() {
                         fullWidth
                     />
                     <ButtonsContainer>
-                        <Button type='submit' href='#' variant='contained' color='primary' fullWidth >Recuperar senha</Button>
+                        <Button type='submit' variant='contained' color='primary' fullWidth >Recuperar senha</Button>
                     </ButtonsContainer>
                 </InputContainer>
                 <Separation />
@@ -62,7 +62,7 @@ function ForgotPassword() {
                         fullWidth
                     />
                     <ButtonsContainer>
-                        <Button type='submit' href='#' variant='contained' color='primary' fullWidth >Recuperar e-mail</Button>
+                        <Button type='submit' variant='contained' color='primary' fullWidth >Recuperar e-mail</Button>
                     </ButtonsContainer>
                 </InputContainer>
             </Box>
