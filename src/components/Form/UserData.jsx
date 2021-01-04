@@ -9,8 +9,17 @@ function UserData({onSubmit, data}) {
     const [email, setEmail] = useState(data.email)
     const [password, setPassword] = useState(data.password)
     const [confirmPassword, setConfirmPassword] = useState(data.password)
+    const [confirmPasswordError, setConfirmPasswordError] = useState({valid:true, text:''})
     const validations = useContext(FormValidations)
     const [error, fieldValidator, canSend] = useError(validations)
+
+    function confirmPasswordValidator() {
+        if(password !== confirmPassword) {
+            setConfirmPasswordError({valid:false, text:'Senhas incompativeis'})
+        } else {
+            setConfirmPasswordError({valid:true, text:''})
+        }
+    }
 
 
     return (
@@ -18,7 +27,7 @@ function UserData({onSubmit, data}) {
             <h2 className='form-title'>Crie sua conta</h2>
             <form onSubmit={(e) => {
                 e.preventDefault()
-                if(canSend()) {
+                if(canSend() && confirmPasswordError.valid) {
                     onSubmit({email, password})
                 }
             }}>
@@ -51,6 +60,9 @@ function UserData({onSubmit, data}) {
                 <TextField
                     value={confirmPassword}
                     onChange={(e) => {setConfirmPassword(e.target.value)}}
+                    onBlur={confirmPasswordValidator}
+                    error={!confirmPasswordError.valid}
+                    helperText={confirmPasswordError.text}
                     id='confirmPassword'
                     name='confirmPassword'
                     label='Confirma Senha'
