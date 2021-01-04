@@ -1,27 +1,34 @@
 import React, {useState} from 'react'
 import './detailsProduct.css'
-import roupa from '../../assets/roupa.png'
-import roupa2 from '../../assets/roupa2.png'
-import roupa3 from '../../assets/roupa3.png'
-import roupa4 from '../../assets/roupa4.png'
 import ProductsSlider from '../../components/ProductsSlider'
-import ShoppingCart from '../ShoppingCart'
 import productCard  from '../ProductCardList/productCard'
+import { useStateValue } from '../../Context/StateProvider'
 
 
 const DetailsProduct = () => {
-    const [cart, setCart] = useState([])
-    const [product] = useState(productCard[0])
-
+    const [product] = useState(productCard[1])
+     
     const imgThumb = [productCard[0].image, productCard[1].image, productCard[2].image, productCard[3].image]
     const [images, setImages] = useState(imgThumb[0])
 
+    const [{ cart }, dispatch] = useStateValue()
 
-    const addToCart = product => {
-        setCart([...cart, {...product}])
+    console.log(cart)
+
+    const addToCart = () => {
+        // dispatch the item into the data layer
+        dispatch({
+            type: 'ADD_TO_CART',
+            item: {
+                id: product.id,
+                title: product.title,
+                price: product.price,
+                image: product.image,
+                size: product.size[0]
+            },
+        })
     }
   
-
     return (
         <div className='details-wrapper'>
             <div className='gallery-img'>
@@ -42,11 +49,11 @@ const DetailsProduct = () => {
                 </div>
             </div>
             <div className='details-content'>
-                <h3 className='title-product'>JAQUETA DUPLA FACE BILLABONG</h3>
+                <h3 className='title-product'>{product.title}</h3>
                 <span className='price-product'>R${product.price}</span>
                 <div className='btn-buy'>
-                        <button onClick={() => addToCart(product)}>COMPRAR AGORA</button>
-                        <button onClick={() => addToCart(product)}>ADICIONAR AO CARRINHO</button>
+                        <button onClick={addToCart}>COMPRAR AGORA</button>
+                        <button onClick={addToCart}>ADICIONAR AO CARRINHO</button>
                 </div>
                 <div className='size-product'>
                     <h3>TAMANHO</h3>

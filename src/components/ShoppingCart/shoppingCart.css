@@ -1,37 +1,11 @@
 .cart-wrapper {
-    max-width: 900px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    max-width: 80vw;
     width: 100%;
     margin: 0 auto;
+    padding: 10px;
     border: 0.5px solid black
 }
 
-.details-prod {
-    display: inline-flex;
-    padding: 20px;
-}
-
-.details-prod h3 {
-    margin: 0 50px;
-}
-
-.details-prod .price {
-    margin: 0 50px;
-}
-
-.details-prod button {
-    margin: 30px;
-    width: 70px;
-    height: 30px;
-}
-
-.details-prod img {
-    object-fit: cover;
-    max-width: 120px;
-    max-height: 120px;
-}
-
-.cart { 
-    display: grid;
-    flex-direction: column;
-    
-}
