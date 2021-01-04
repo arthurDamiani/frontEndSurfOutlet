@@ -22,7 +22,7 @@ const ImageSlider = ({ slides }) => {
   const prevSlide = () => setCurrent(current === 0 ? length - 1 : current - 1)
 
   return (
-    <section className='slider'>
+    <section>
       <NavigateBeforeIcon 
         onClick={prevSlide}
         className="left-arrow" 
