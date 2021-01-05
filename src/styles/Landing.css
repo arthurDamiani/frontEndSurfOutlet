@@ -33,3 +33,16 @@
 .centered {
     text-align: center;
 }
+
+.new-products {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.new-products-title {
+    font-size: 2.25rem;
+    border-left: 1px solid #0080a8;
+    padding-left: 1rem;
+    margin: 1rem 0;
+}

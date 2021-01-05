@@ -28,7 +28,11 @@ function Landing() {
                     <p className='payment-information-text'>1% <strong>DESCONTO</strong> no <strong>BOLETO</strong></p>
                 </div>
             </div>
-            <ProductsSlider /> 
+            <div className='new-products'>
+                <h3 className='new-products-title'>Novidades</h3>
+                <ProductsSlider /> 
+            </div>
+            
         </div>
     )
 }

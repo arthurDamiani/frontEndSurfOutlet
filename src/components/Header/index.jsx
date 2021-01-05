@@ -39,13 +39,13 @@ function Header() {
                     />
                 </form>
                 <nav className='nav-container'>
-                    <Link to='#' className='nav-item'>
+                    <Link to='#' className='nav-item account'>
                         <AccountCircle fontSize="large" />
                         <p className='nav-item-legenda'>Entre ou cadastre-se</p>
                     </Link>
-                    <Link to='/checkout' className='nav-item'>
+                    <Link to='/checkout' className='nav-item cart'>
                         <AddShoppingCart fontSize="large" />
-                        <p className='nav-item-legenda carrinho-legenda'>{cart?.length}</p>
+                        <p className='nav-item-legend'>{cart?.length}</p>
                     </Link>
                 </nav>
             </nav>
@@ -53,11 +53,7 @@ function Header() {
                 <div className='sidebar-top'>
                     <Link to='#' className='sidebar-item'>
                         <AccountCircle fontSize="large" />
-                        <p className='nav-item-legenda'>Entre ou cadastre-se</p>
-                    </Link>
-                    <Link to='/checkout' className='sidebar-item'>
-                        <AddShoppingCart fontSize="large" />
-                        <p className='nav-item-legenda'>{cart?.length}</p>
+                        <p className='nav-item-legend'>Entre ou cadastre-se</p>
                     </Link>
                 </div>
                 <a href='/products' className='menu-item'>Surf</a>
