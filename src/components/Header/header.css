@@ -89,6 +89,7 @@
     .menu-container.active {
         left: 0;
         transition: 350ms;
+        z-index: 99;
     }
 
     .sidebar-item:first-child {
