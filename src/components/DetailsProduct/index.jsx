@@ -2,18 +2,18 @@ import React, {useState} from 'react'
 import './detailsProduct.css'
 import ProductsSlider from '../../components/ProductsSlider'
 import productCard  from '../ProductCardList/productCard'
-import { useStateValue } from '../../Context/StateProvider'
+import { useStateValue } from '../../contexts/StateProvider'
+import Product from '../Product'
 
 
 const DetailsProduct = () => {
-    const [product] = useState(productCard[1])
+    const [product] = useState(productCard[0])
      
     const imgThumb = [productCard[0].image, productCard[1].image, productCard[2].image, productCard[3].image]
     const [images, setImages] = useState(imgThumb[0])
+    const [size, setSize] = useState(product.size[0])
 
     const [{ cart }, dispatch] = useStateValue()
-
-    console.log(cart)
 
     const addToCart = () => {
         // dispatch the item into the data layer
@@ -24,7 +24,7 @@ const DetailsProduct = () => {
                 title: product.title,
                 price: product.price,
                 image: product.image,
-                size: product.size[0]
+                size: size
             },
         })
     }
@@ -57,10 +57,10 @@ const DetailsProduct = () => {
                 </div>
                 <div className='size-product'>
                     <h3>TAMANHO</h3>
-                    <button>{product.size[0]}</button>
-                    <button>{product.size[1]}</button>
-                    <button>{product.size[2]}</button>
-                    <button>{product.size[3]}</button>
+                    <button onClick={() => setSize(product.size[0])}>{product.size[0]}</button>
+                    <button onClick={() => setSize(product.size[1])}>{product.size[1]}</button>
+                    <button onClick={() => setSize(product.size[2])}>{product.size[2]}</button>
+                    <button onClick={() => setSize(product.size[3])}>{product.size[3]}</button>
                 </div>
                 <div className='colors-product'>
                     <h3>COR</h3>

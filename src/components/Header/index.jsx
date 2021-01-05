@@ -4,7 +4,7 @@ import {Search, AccountCircle, AddShoppingCart} from '@material-ui/icons'
 import {FaBars} from 'react-icons/fa'
 import './header.css'
 import { Link } from 'react-router-dom'
-import { useStateValue } from '../../Context/StateProvider'
+import { useStateValue } from '../../contexts/StateProvider'
 
 function Header() {
     const [search, setSearch] = useState('')
@@ -62,7 +62,7 @@ function Header() {
                 </div>
                 <a href='/products' className='menu-item'>Surf</a>
                 <a href='/products' className='menu-item'>Masculino</a>
-                <a href='/products' className='menu-item'>Feminno</a>
+                <a href='/products' className='menu-item'>Feminino</a>
                 <a href='/products' className='menu-item'>Calçados</a>
                 <a href='/products' className='menu-item'>Juvenil</a>
                 <a href='/products' className='menu-item'>Óculos</a>

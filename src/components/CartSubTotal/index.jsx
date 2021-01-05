@@ -1,8 +1,8 @@
 import React from 'react'
 import './cartSubTotal.css'
 import CurrencyFormat from 'react-currency-format'
-import { useStateValue } from '../../Context/StateProvider'
-import { getCartTotal } from '../../Context/reducer'
+import { useStateValue } from '../../contexts/StateProvider'
+import { getCartTotal } from '../../contexts/reducer'
 
 function CartSubTotal() {
     const [{ cart }, dispatch] = useStateValue()
@@ -10,10 +10,10 @@ function CartSubTotal() {
     return (
         <div className='subtotal'>
             <CurrencyFormat
-                renderText={(value) => (
+                renderText={value => (
                     <>
                         <p>
-                            Subtotal ({cart.length} items): <strong>{value}</strong>
+                            Subtotal ({cart.length} itens): <strong>{value}</strong>
                         </p>
                     </>
                 )}

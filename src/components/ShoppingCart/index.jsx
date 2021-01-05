@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './shoppingCart.css'
 import CartSubTotal from '../CartSubTotal'
-import { useStateValue } from '../../Context/StateProvider'
+import { useStateValue } from '../../contexts/StateProvider'
 import CartProduct from '../CartProduct'
 
 export default function Cart() {
@@ -11,10 +11,16 @@ export default function Cart() {
     return (
         <div className="cart-wrapper">
             <div className="cart-left">
-                <h2 className='cart-title'>Cart title</h2>   
+                <h3 className='cart-title'>Carrinho</h3>   
 
                 {cart.map(item => (
-                    <CartProduct />         
+                    <CartProduct
+                        id={item.id}
+                        title={item.title}
+                        price={item.price}
+                        size={item.size}
+                        image={item.image}
+                    />         
                 ))}
                 
             </div> 
