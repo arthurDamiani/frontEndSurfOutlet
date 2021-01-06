@@ -1,9 +1,9 @@
 import React from 'react'
 import './product.css'
 import { Link } from 'react-router-dom'
-import { useStateValue } from '../../Context/StateProvider'
+import { useStateValue } from '../../contexts/StateProvider'
 
-function Product({id, title, image, price, size, condition_payment, discount}) {
+function Product({id, title, image, price, condition_payment, discount}) {
     const [{ cart }, dispatch] = useStateValue()
 
     console.log(cart)
@@ -21,11 +21,12 @@ function Product({id, title, image, price, size, condition_payment, discount}) {
         })
     }
 
+
     return (
         <div className="card-grid" key={id}>
             <div className="img-content">
                 <img src={image} alt='imagem do produto'/>
-                <Link >
+                <Link to='detailsProducts'>
                     <button onClick={addToCart}>Ver detalhes</button>
                 </Link>
             </div>

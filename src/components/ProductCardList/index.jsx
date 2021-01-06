@@ -6,7 +6,7 @@ import Pagination from '../Pagination'
 import { FaChevronRight, FaChevronLeft} from "react-icons/fa";
 import Product from '../Product';
 
-const ProductCardList = (id, title, price, image, size) => {
+const ProductCardList = () => {
     const [products] = useState(productCard)
     const [currentPage, setCurrentPage] = useState(1)
     const [productsPerPage] = useState(9)
