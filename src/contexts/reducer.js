@@ -9,10 +9,17 @@ export const getCartTotal = cart => cart?.reduce((amount, item) => item.price + 
 const reducer = (state, action) => {
     switch (action.type) {
         case 'ADD_TO_CART':
+
+        var cartArray = JSON.stringify(state.cart)
+        console.log(cartArray)
+
+
             return {
                 ...state,
                 cart: [...state.cart, action.item],
             }
+
+            
 
         case 'REMOVE_FROM_CART':
             return {

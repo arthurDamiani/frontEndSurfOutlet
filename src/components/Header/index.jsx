@@ -4,13 +4,10 @@ import {Search, AccountCircle, AddShoppingCart} from '@material-ui/icons'
 import {FaBars} from 'react-icons/fa'
 import './header.css'
 import { Link } from 'react-router-dom'
-import { useStateValue } from '../../contexts/StateProvider'
 
 function Header() {
     const [search, setSearch] = useState('')
     const [sidebar, setSidebar] = useState(false)
-
-    const [{ cart }, dispatch] = useStateValue()
 
     const showSideBar = () => setSidebar(!sidebar)
 
@@ -45,7 +42,7 @@ function Header() {
                     </Link>
                     <Link to='/checkout' className='nav-item'>
                         <AddShoppingCart fontSize="large" />
-                        <p className='nav-item-legenda carrinho-legenda'>{cart?.length}</p>
+                        <p className='nav-item-legenda carrinho-legenda'>{}</p>
                     </Link>
                 </nav>
             </nav>
@@ -57,7 +54,7 @@ function Header() {
                     </Link>
                     <Link to='/checkout' className='sidebar-item'>
                         <AddShoppingCart fontSize="large" />
-                        <p className='nav-item-legenda'>{cart?.length}</p>
+                        <p className='nav-item-legenda'>{}</p>
                     </Link>
                 </div>
                 <a href='/products' className='menu-item'>Surf</a>

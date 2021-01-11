@@ -1,43 +1,59 @@
 import React from 'react'
 import './product.css'
 import { Link } from 'react-router-dom'
-import { useStateValue } from '../../contexts/StateProvider'
 
-function Product({id, title, image, price, condition_payment, discount}) {
-    const [{ cart }, dispatch] = useStateValue()
+import { connect } from 'react-redux'
 
-    console.log(cart)
+// import Thumb from '../../Thumb'
+import { formatPrice } from '../../services/util'
+import { addProduct } from '../../services/cart/actions'
 
-    const addToCart = () => {
-        // dispatch the item into the data layer
-        dispatch({
-            type: 'ADD_TO_CART',
-            item: {
-                id: id,
-                title: title,
-                price: price,
-                image: image,
-            },
-        })
+function Product({product, addProduct}) {
+  
+    product.quantity = 1
+
+    let formattedPrice = formatPrice(product.price, product.currencyId)
+
+    let productInstallment
+
+    if (!!product.installments) {
+        const installmentPrice = product.price / product.installments
+
+        productInstallment = (
+        <div className="installment">
+            <span>ou {product.installments} x</span>
+            <b>
+            {product.currencyFormat}
+            {formatPrice(installmentPrice, product.currencyId)}
+            </b>
+        </div>
+        )
     }
 
 
     return (
-        <div className="card-grid" key={id}>
+        <div className="card-grid" key={product.id}>
             <div className="img-content">
-                <img src={image} alt='imagem do produto'/>
-                <Link to='detailsProducts'>
-                    <button onClick={addToCart}>Ver detalhes</button>
+                <img src={product.image} alt={product.title}/>
+                <Link>
+                    <button onClick={() => addProduct(product)}>Ver detalhes</button>
                 </Link>
             </div>
             <div className="content">
-                <h3>{title}</h3>
-                <p className='price'>R${price}</p>
-                <p className='payment'>{condition_payment}</p>
-                <p className='discount'>{discount}</p>
+                <h3>{product.title}</h3>
+                <p className='price'>
+                    <small>{product.currencyFormat}</small>        
+                    <b>{formattedPrice.substr(0, formattedPrice.length - 3)}</b>
+                    <span>{formattedPrice.substr(formattedPrice.length - 3, 3)}</span>
+                    {productInstallment}
+                </p>
+                <p className='discount'>{product.discount}</p>
             </div>
         </div>
     )
 }
 
-export default Product
+export default connect(
+    null,
+    { addProduct }
+  )(Product)

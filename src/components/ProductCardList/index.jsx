@@ -1,13 +1,12 @@
-import React from 'react';
-import { useState } from 'react';
-import productCard  from './productCard'
+import React, { useState } from 'react'
+import productData  from '../../data/products'
 import './productCard.css'
 import Pagination from '../Pagination'
-import { FaChevronRight, FaChevronLeft} from "react-icons/fa";
-import Product from '../Product';
+import { FaChevronRight, FaChevronLeft} from "react-icons/fa"
+import Product from '../Product'
 
 const ProductCardList = () => {
-    const [products] = useState(productCard)
+    const [products] = useState(productData)
     const [currentPage, setCurrentPage] = useState(1)
     const [productsPerPage] = useState(9)
 
@@ -32,14 +31,7 @@ const ProductCardList = () => {
             <div className="products">
                 {currentProduct.map(product => {
                 return (
-                    <Product 
-                        id={product.id}
-                        title={product.title}
-                        price={product.price}
-                        image={product.image}
-                        condition_payment={product.condition_payment}
-                        discount={product.discount}
-                    />
+                    <Product product={product} key={product.id} />
                 )
                 })}
                 <nav>
