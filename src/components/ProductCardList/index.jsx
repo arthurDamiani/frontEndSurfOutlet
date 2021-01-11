@@ -4,6 +4,8 @@ import './productCard.css'
 import Pagination from '../Pagination'
 import { FaChevronRight, FaChevronLeft} from "react-icons/fa"
 import Product from '../Product'
+import Filter from '../Filter'
+import ShelfHeaderProd from '../ShelfHeaderProd'
 
 const ProductCardList = () => {
     const [products] = useState(productData)
@@ -25,16 +27,20 @@ const ProductCardList = () => {
 
     const currentProduct = products.slice(indexOfFirstProducts, indexOfLastProducts)
 
-
     return ( 
         <div className='products-wrapper'>
+            <ShelfHeaderProd />
             <div className="products">
                 {currentProduct.map(product => {
                 return (
                     <Product product={product} key={product.id} />
                 )
                 })}
-                <nav>
+            </div>
+            <div className="filter">
+                    <Filter />
+                </div>
+                <nav className='pagination'>
                     <FaChevronLeft 
                         className='arrow-left'
                         onClick={prevIndexProducts}
@@ -50,8 +56,6 @@ const ProductCardList = () => {
                         onClick={nextIndexProducts}
                     />
                 </nav>
-                
-            </div>
         </div>
     )
 }

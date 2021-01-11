@@ -11,7 +11,6 @@ function Routes() {
 	return (
 		<BrowserRouter>
             <Header />
-			<FloatCart />
 			<Route path="/" exact component={Landing} />
 			<Route path="/products" exact component={ProductsCard} />
 			<Route path="/detailsProducts/:id" exact component={DetailsProduct} />

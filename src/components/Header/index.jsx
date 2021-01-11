@@ -4,6 +4,7 @@ import {Search, AccountCircle, AddShoppingCart} from '@material-ui/icons'
 import {FaBars} from 'react-icons/fa'
 import './header.css'
 import { Link } from 'react-router-dom'
+import FloatCart from '../FloatCart'
 
 function Header() {
     const [search, setSearch] = useState('')
@@ -40,10 +41,9 @@ function Header() {
                         <AccountCircle fontSize="large" />
                         <p className='nav-item-legenda'>Entre ou cadastre-se</p>
                     </Link>
-                    <Link to='/checkout' className='nav-item'>
-                        <AddShoppingCart fontSize="large" />
-                        <p className='nav-item-legenda carrinho-legenda'>{}</p>
-                    </Link>
+                    <div className="nav-item">
+                        <FloatCart />
+                    </div>
                 </nav>
             </nav>
             <nav onClick={showSideBar} className={sidebar ? 'menu-container active' : 'menu-container'}>
@@ -51,10 +51,6 @@ function Header() {
                     <Link to='#' className='sidebar-item'>
                         <AccountCircle fontSize="large" />
                         <p className='nav-item-legenda'>Entre ou cadastre-se</p>
-                    </Link>
-                    <Link to='/checkout' className='sidebar-item'>
-                        <AddShoppingCart fontSize="large" />
-                        <p className='nav-item-legenda'>{}</p>
                     </Link>
                 </div>
                 <a href='/products' className='menu-item'>Surf</a>
