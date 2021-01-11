@@ -1,15 +1,21 @@
 import React, {useState} from 'react'
 import './detailsProduct.css'
 import ProductsSlider from '../../components/ProductsSlider'
-import productCard  from '../../data/products'
- import Product from '../Product'
+import products  from '../../data/products'
+import { useParams } from 'react-router-dom'
+ 
 
 const DetailsProduct = () => {
-    const [product] = useState(productCard[0])
+    const {id} = useParams()
+
+    console.log(id)
+
+    const [productFilter] = useState(products[id])
      
-    const imgThumb = [productCard[0].image, productCard[1].image, productCard[2].image, productCard[3].image]
+    const [size, setSize] = useState(productFilter.size[0])
+
+    const imgThumb = [products[0].image, products[1].image, products[2].image, products[3].image]
     const [images, setImages] = useState(imgThumb[0])
-    const [size, setSize] = useState(product.size[0])
   
     return (
         <div className='details-wrapper'>
@@ -31,18 +37,18 @@ const DetailsProduct = () => {
                 </div>
             </div>
             <div className='details-content'>
-                <h3 className='title-product'>{product.title}</h3>
-                <span className='price-product'>R${product.price}</span>
+                <h3 className='title-product'>{productFilter.title}</h3>
+                <span className='price-product'>R${productFilter.price}</span>
                 <div className='btn-buy'>
                         <button>COMPRAR AGORA</button>
                         <button>ADICIONAR AO CARRINHO</button>
                 </div>
                 <div className='size-product'>
                     <h3>TAMANHO</h3>
-                    <button onClick={() => setSize(product.size[0])}>{product.size[0]}</button>
-                    <button onClick={() => setSize(product.size[1])}>{product.size[1]}</button>
-                    <button onClick={() => setSize(product.size[2])}>{product.size[2]}</button>
-                    <button onClick={() => setSize(product.size[3])}>{product.size[3]}</button>
+                    <button onClick={() => setSize(productFilter.size[0])}>{productFilter.size[0]}</button>
+                    <button onClick={() => setSize(productFilter.size[1])}>{productFilter.size[1]}</button>
+                    <button onClick={() => setSize(productFilter.size[2])}>{productFilter.size[2]}</button>
+                    <button onClick={() => setSize(productFilter.size[3])}>{productFilter.size[3]}</button>
                 </div>
                 <div className='colors-product'>
                     <h3>COR</h3>

@@ -34,18 +34,18 @@ function Product({product, addProduct}) {
         <div className="card-grid" key={product.id}>
             <div className="img-content">
                 <img src={product.image} alt={product.title}/>
-                <Link to='/detailsProducts'>
+                <Link to={`detailsProduct/${product.id}`}>
                     <button onClick={() => addProduct(product)}>Ver detalhes</button>
                 </Link>
             </div>
             <div className="content">
                 <h3>{product.title}</h3>
-                <p className='price'>
+                <div className='price'>
                     <small>{product.currencyFormat}</small>        
                     <b>{formattedPrice.substr(0, formattedPrice.length - 3)}</b>
                     <span>{formattedPrice.substr(formattedPrice.length - 3, 3)}</span>
                     {productInstallment}
-                </p>
+                </div>
                 <p className='discount'>{product.discount}</p>
             </div>
         </div>
