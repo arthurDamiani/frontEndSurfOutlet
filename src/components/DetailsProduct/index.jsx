@@ -2,9 +2,7 @@ import React, {useState} from 'react'
 import './detailsProduct.css'
 import ProductsSlider from '../../components/ProductsSlider'
 import productCard  from '../../data/products'
-import { useStateValue } from '../../contexts/StateProvider'
-import Product from '../Product'
-
+ import Product from '../Product'
 
 const DetailsProduct = () => {
     const [product] = useState(productCard[0])
@@ -12,11 +10,6 @@ const DetailsProduct = () => {
     const imgThumb = [productCard[0].image, productCard[1].image, productCard[2].image, productCard[3].image]
     const [images, setImages] = useState(imgThumb[0])
     const [size, setSize] = useState(product.size[0])
-
- 
-    const addToCart = () => {
- 
-    }
   
     return (
         <div className='details-wrapper'>
@@ -41,8 +34,8 @@ const DetailsProduct = () => {
                 <h3 className='title-product'>{product.title}</h3>
                 <span className='price-product'>R${product.price}</span>
                 <div className='btn-buy'>
-                        <button onClick={addToCart}>COMPRAR AGORA</button>
-                        <button onClick={addToCart}>ADICIONAR AO CARRINHO</button>
+                        <button>COMPRAR AGORA</button>
+                        <button>ADICIONAR AO CARRINHO</button>
                 </div>
                 <div className='size-product'>
                     <h3>TAMANHO</h3>

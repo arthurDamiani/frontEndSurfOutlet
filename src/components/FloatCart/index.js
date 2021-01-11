@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-
+ 
 import { connect } from 'react-redux';
 import { loadCart, removeProduct, changeProductQuantity } from '../../services/cart/actions';
 import { updateCart } from '../../services/total/actions';
@@ -10,16 +9,7 @@ import { formatPrice } from '../../services/util';
 import './style.css';
 
 class FloatCart extends Component {
-  static propTypes = {
-    loadCart: PropTypes.func.isRequired,
-    updateCart: PropTypes.func.isRequired,
-    cartProducts: PropTypes.array.isRequired,
-    newProduct: PropTypes.object,
-    removeProduct: PropTypes.func,
-    productToRemove: PropTypes.object,
-    changeProductQuantity: PropTypes.func,
-    productToChange: PropTypes.object,
-  };
+ 
 
   state = {
     isOpen: false
