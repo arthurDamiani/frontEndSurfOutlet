@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './detailsProduct.css'
 import ProductsSlider from '../../components/ProductsSlider'
-import productCard  from '../ProductCardList/productCard'
+import productCard  from '../../data/products'
 import { useStateValue } from '../../contexts/StateProvider'
 import Product from '../Product'
 
@@ -13,20 +13,9 @@ const DetailsProduct = () => {
     const [images, setImages] = useState(imgThumb[0])
     const [size, setSize] = useState(product.size[0])
 
-    const [{ cart }, dispatch] = useStateValue()
-
+ 
     const addToCart = () => {
-        // dispatch the item into the data layer
-        dispatch({
-            type: 'ADD_TO_CART',
-            item: {
-                id: product.id,
-                title: product.title,
-                price: product.price,
-                image: product.image,
-                size: size
-            },
-        })
+ 
     }
   
     return (
