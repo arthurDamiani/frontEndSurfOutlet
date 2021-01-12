@@ -7,15 +7,16 @@ import { useParams } from 'react-router-dom'
 
 const DetailsProduct = () => {
     const {id} = useParams()
+    const index = id - 1
 
     console.log(id)
 
-    const [productFilter] = useState(products[id])
+    const [productFilter] = useState(products[index])
      
     const [size, setSize] = useState(productFilter.size[0])
 
     const imgThumb = [products[0].image, products[1].image, products[2].image, products[3].image]
-    const [images, setImages] = useState(imgThumb[0])
+    const [images, setImages] = useState(imgThumb[index])
   
     return (
         <div className='details-wrapper'>
