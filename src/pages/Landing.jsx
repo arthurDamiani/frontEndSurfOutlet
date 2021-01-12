@@ -35,9 +35,9 @@ function Landing() {
                 <ProductsSlider /> 
             </div>
             <div className='images-container'>
-                <img className='left-image' src={modeloPe} alt='roupa billabong' />
+                <img className='left-image' src='https://images.boardriders.com/global/billabong-products/all/default/hi-res/j3sb29bimu_billabong,l_1220_frt1.jpg' alt='roupa billabong' />
                 <div className='right-images-container'>
-                    <img className='right-image' src={modeloLado} alt='Surfistas' />
+                    <img className='right-image' src='https://i1.wp.com/buzztv.pt/wp-content/uploads/2017/12/Iggy-Pop.jpeg?resize=640%2C250&ssl=1' alt='Surfistas' />
                     <img className='right-image' src={modeloLado} alt='Surfistas' /> 
                 </div>
             </div>
@@ -47,7 +47,7 @@ function Landing() {
             </div>
             <div className="images-container">
                 <img className='equal-images' src={modeloPe} alt='roupa billabong' />
-                <img className='equal-images' src={modeloPe} alt='roupa billabong' />
+                <img className='equal-images' src='https://images.stylight.net/image/upload/t_web_product_330x440bg/q_auto:eco,f_auto/ggcztakij08y6pb4oebo.jpg' alt='roupa billabong' />
             </div>
         </div>
     )
