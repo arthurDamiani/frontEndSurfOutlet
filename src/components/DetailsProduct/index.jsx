@@ -7,10 +7,11 @@ import { useParams } from 'react-router-dom'
 
 const DetailsProduct = () => {
     const {id} = useParams()
+    const index = id - 1
 
     console.log(id)
 
-    const [productFilter] = useState(products[id])
+    const [productFilter] = useState(products[index])
      
     const [size, setSize] = useState(productFilter.size[0])
 
@@ -20,7 +21,7 @@ const DetailsProduct = () => {
     return (
         <div className='details-wrapper'>
             <div className='gallery-img'>
-                    <img className='big-img' src={images} alt='img' />
+                    <img className='big-img' src={productFilter.image} alt='img' />
                 <div className='thumb'>
                     <div onClick={() => setImages(imgThumb[0])}>
                         <img className={images === imgThumb[0] ? 'active' : ''} src={imgThumb[0]} alt='img'/>

@@ -34,7 +34,7 @@ function Product({product, addProduct}) {
         <div className="card-grid" key={product.id}>
             <div className="img-content">
                 <img src={product.image} alt={product.title}/>
-                <Link to={`detailsProduct/${product.id}`}>
+                <Link to={`detailsProducts/${product.id}`}>
                     <button onClick={() => addProduct(product)}>Ver detalhes</button>
                 </Link>
             </div>

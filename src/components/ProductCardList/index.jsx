@@ -29,8 +29,7 @@ const ProductCardList = () => {
 
     return ( 
         <div className='products-wrapper'>
-            <ShelfHeaderProd />
-            <div className="products">
+             <div className="products">
                 {currentProduct.map(product => {
                 return (
                     <Product product={product} key={product.id} />
