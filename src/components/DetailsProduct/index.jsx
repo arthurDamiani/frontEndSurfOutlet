@@ -16,7 +16,7 @@ const DetailsProduct = () => {
     const [size, setSize] = useState(productFilter.size[0])
 
     const imgThumb = [products[0].image, products[1].image, products[2].image, products[3].image]
-    const [images, setImages] = useState(imgThumb[0])
+    const [images, setImages] = useState(imgThumb[index])
   
     return (
         <div className='details-wrapper'>
