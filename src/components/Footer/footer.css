@@ -65,10 +65,15 @@
     .footer-services {
         flex-direction: column;
         align-items: center;
+        font-size: 1.5rem;
     }
 
     .no-decoration {
         list-style: disc;
+    }
+
+    .copyright {
+        font-size: 1.2rem;
     }
 }
 
