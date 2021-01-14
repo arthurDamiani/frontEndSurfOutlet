@@ -17,7 +17,35 @@ const ProductsSlider = () => {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
-        cssEase: 'linear'
+        autoplay: true,
+        autoplaySpeed: 3000,
+        pauseOnHover: true,
+        cssEase: 'linear',
+        responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: true    
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                initialSlide: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+              }
+            }
+          ]
     }
 
     return (
@@ -30,7 +58,7 @@ const ProductsSlider = () => {
                         </div>
                         <div className='details'>
                             <h5>JAQUETA DUPLA FACE BILLABONG<span className='price'>R$327,00</span></h5>
-                            <button>Comprar</button>
+                            <button>Ver detalhes</button>
                         </div>
                     </div>
                 </div>
@@ -41,7 +69,7 @@ const ProductsSlider = () => {
                         </div>
                         <div className='details'>
                             <h5>JAQUETA DUPLA FACE BILLABONG<span className='price'>R$327,00</span></h5>
-                            <button>Comprar</button>
+                            <button>Ver detalhes</button>
                         </div>
                     </div>
                 </div>
@@ -52,7 +80,7 @@ const ProductsSlider = () => {
                         </div>
                         <div className='details'>
                             <h5>JAQUETA DUPLA FACE BILLABONG<span className='price'>R$327,00</span></h5>
-                            <button>Comprar</button>
+                            <button>Ver detalhes</button>
                         </div>
                     </div>
                 </div>
@@ -63,7 +91,7 @@ const ProductsSlider = () => {
                         </div>
                         <div className='details'>
                             <h5>JAQUETA DUPLA FACE BILLABONG<span className='price'>R$327,00</span></h5>
-                            <button>Comprar</button>
+                            <button>Ver detalhes</button>
                         </div>
                     </div>
                 </div>
@@ -74,7 +102,7 @@ const ProductsSlider = () => {
                         </div>
                         <div className='details'>
                             <h5>JAQUETA DUPLA FACE BILLABONG<span className='price'>R$327,00</span></h5>
-                            <button>Comprar</button>
+                            <button>Ver detalhes</button>
                         </div>
                     </div>
                 </div>
