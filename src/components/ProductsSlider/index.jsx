@@ -31,7 +31,7 @@ const ProductsSlider = () => {
               }
             },
             {
-              breakpoint: 600,
+              breakpoint: 770,
               settings: {
                 slidesToShow: 2,
                 slidesToScroll: 1,
@@ -39,9 +39,9 @@ const ProductsSlider = () => {
               }
             },
             {
-              breakpoint: 480,
+              breakpoint: 570,
               settings: {
-                slidesToShow: 2,
+                slidesToShow: 1,
                 slidesToScroll: 1
               }
             }
