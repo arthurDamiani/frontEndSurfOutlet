@@ -7,5 +7,5 @@ export const formatPrice = (x, currency) => {
   }
 };
 
-export const productsAPI = '../../data/products.js'
+export const productsAPI = '../../data/products'
  

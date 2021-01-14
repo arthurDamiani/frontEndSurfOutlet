@@ -69,7 +69,6 @@ class FloatCart extends Component {
     const {
       totalPrice,
       productQuantity,
-      currencyFormat,
       currencyId
     } = this.props.cartTotal;
 
@@ -77,7 +76,7 @@ class FloatCart extends Component {
       alert('Adicione algum produto no carrinho!');
     } else {
       alert(
-        `Checkout - Subtotal: ${currencyFormat} ${formatPrice(
+        `Checkout - Subtotal: R$ ${formatPrice(
           totalPrice,
           currencyId
         )}`
@@ -155,7 +154,7 @@ class FloatCart extends Component {
             <div className="sub">TOTAL</div>
             <div className="sub-price">
               <p className="sub-price__val">
-                {`${cartTotal.currencyFormat} ${formatPrice(
+                {`R$ ${formatPrice(
                   cartTotal.totalPrice,
                   cartTotal.currencyId
                 )}`}
@@ -163,9 +162,7 @@ class FloatCart extends Component {
               <small className="sub-price__installment">
                 {!!cartTotal.installments && (
                   <span>
-                    {`OU EM ${cartTotal.installments} x ${
-                      cartTotal.currencyFormat
-                    } ${formatPrice(
+                    {`OU EM ${cartTotal.installments} x R$ ${formatPrice(
                       cartTotal.totalPrice / cartTotal.installments,
                       cartTotal.currencyId
                     )}`}

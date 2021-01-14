@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
+ 
 const Selectbox = ({ options, classes, handleOnChange }) => {
   const createOptions = options =>
     options.map(o => (
@@ -15,11 +14,6 @@ const Selectbox = ({ options, classes, handleOnChange }) => {
     </select>
   );
 };
-
-Selectbox.propTypes = {
-  options: PropTypes.array.isRequired,
-  classes: PropTypes.string,
-  handleOnChange: PropTypes.func.isRequired
-};
+ 
 
 export default Selectbox;
