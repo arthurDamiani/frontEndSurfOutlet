@@ -1,6 +1,5 @@
 import { FETCH_PRODUCTS } from './actionTypes'
-import axios from 'axios'
-
+ 
 import { productsAPI } from '../util'
 
 const compare = {
@@ -17,13 +16,10 @@ const compare = {
 };
 
 export const fetchProducts = (filters, sortBy, callback) => dispatch => {
-  return axios
-    .get(productsAPI)
-    .then(res => {
-      let { products } = res.data
+      let { products } = productsAPI
 
       if (!!filters && filters.length > 0) {
-        products = products.filter(p => filters.find(f => p.availableSizes.find(size => size === f)))
+        products = products.filter(p => filters.find(f => p.size.find(size => size === f)))
       }
 
       if (!!sortBy) {
@@ -38,8 +34,4 @@ export const fetchProducts = (filters, sortBy, callback) => dispatch => {
         type: FETCH_PRODUCTS,
         payload: products
       })
-    })
-    .catch(err => {
-      console.log('Could not fetch products. Try again later.')
-    })
 }

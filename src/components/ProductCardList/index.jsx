@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import productData  from '../../data/products'
-import './productCard.css'
+import './product.css'
 import Pagination from '../Pagination'
 import { FaChevronRight, FaChevronLeft} from "react-icons/fa"
-import Product from '../Product'
+import Product from '../Products/ProductCard'
 import Filter from '../Filter'
-import ShelfHeaderProd from '../ShelfHeaderProd'
 
 const ProductCardList = () => {
     const [products] = useState(productData)
@@ -29,32 +28,32 @@ const ProductCardList = () => {
 
     return ( 
         <div className='products-wrapper'>
-             <div className="products">
+            <div className="products">
                 {currentProduct.map(product => {
                 return (
-                    <Product product={product} key={product.id} />
-                )
+                     <Product product={product} key={product.id} />
+                 )
                 })}
             </div>
             <div className="filter">
                     <Filter />
-                </div>
-                <nav className='pagination'>
-                    <FaChevronLeft 
-                        className='arrow-left'
-                        onClick={prevIndexProducts}
-                    />
-                    <Pagination 
-                        productsPerPage={productsPerPage} 
-                        totalProducts={products.length} 
-                        paginate={paginate}
-                        className='page-item' 
-                    />
-                    <FaChevronRight 
-                        className='arrow-right'
-                        onClick={nextIndexProducts}
-                    />
-                </nav>
+            </div>
+            <nav className='pagination'>
+                <FaChevronLeft 
+                    className='arrow-left'
+                    onClick={prevIndexProducts}
+                />
+                <Pagination 
+                    productsPerPage={productsPerPage} 
+                    totalProducts={products.length} 
+                    paginate={paginate}
+                    className='page-item' 
+                />
+                <FaChevronRight 
+                    className='arrow-right'
+                    onClick={nextIndexProducts}
+                />
+            </nav>
         </div>
     )
 }
