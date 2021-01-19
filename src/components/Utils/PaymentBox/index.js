@@ -5,7 +5,7 @@ import './paymentBox.css'
 
 function PaymentBox(props) {
     return (
-        <div className='payment-box-container'>
+        <div className={props.type === 1 ? 'payment-box-container' : 'payment-box-container space'}>
             {props.children}
             {props.type === 1 ?
             <div className='payment-box-button-container'>

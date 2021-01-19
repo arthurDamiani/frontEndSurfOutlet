@@ -13,9 +13,22 @@
 
 .payment-box-data {
     height: 90%;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
+}
+
+.payment-bottom-container {
+    align-self: center;
+    margin-top: 1rem;
+}
+
+.payment-data{
+    display: flex;
+    align-items: flex-start;
+}
+
+.white-background {
+    background-color: #fff;
 }
