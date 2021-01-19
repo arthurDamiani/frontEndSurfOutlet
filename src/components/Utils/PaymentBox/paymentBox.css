@@ -7,7 +7,6 @@
 }
 
 .payment-box-button-container {
-    position: relative;
-    top: 90%;
-    left: 60%;
+    display: flex;
+    justify-content: flex-end;
 }

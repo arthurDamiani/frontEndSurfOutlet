@@ -1,0 +1,21 @@
+.payment-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.payment-top-container {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.3rem;
+}
+
+.payment-box-data {
+    height: 90%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}

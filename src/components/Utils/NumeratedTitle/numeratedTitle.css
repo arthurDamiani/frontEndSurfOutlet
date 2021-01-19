@@ -1,6 +1,7 @@
 .numerated-title-container {
     display: flex;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 .numerated-title-number {
