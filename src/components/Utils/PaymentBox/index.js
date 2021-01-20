@@ -9,7 +9,7 @@ function PaymentBox(props) {
             {props.children}
             {props.type === 1 ?
             <div className='payment-box-button-container'>
-                <Button color='primary'>Alterar Dados</Button>
+                <Button onClick={props.onClick} color='primary'>Alterar Dados</Button>
             </div> : ''}
         </div>
     )

@@ -2,12 +2,18 @@ import React, {useState} from 'react'
 import NumeratedTitled from '../components/Utils/NumeratedTitle'
 import PaymentBox from '../components/Utils/PaymentBox'
 import {Button, TextField, Select} from '@material-ui/core'
-import AddressData from '../components/Form/AddressData'
 
 import '../styles/payment.css'
 
 function Payment() {
+    const [edit, setEdit] = useState(false)
     const [address, setAddress] = useState('Rodovia Jornalista Manoel de Menezes')
+    const [number, setNumber] = useState('2051')
+    const [complement, setComplement] = useState('Casa 10')
+    const [cep, setCep] = useState('88061-700')
+    const [state, setState] = useState('SC')
+    const [city, setCity] = useState('Florianópolis')
+    const [neighborhood, setNeighborhood] = useState('Barra da Lagoa')
 
     const [paymentType, setPaymentType] = useState(0)
     const [cardType, setCardType] = useState('')
@@ -15,6 +21,15 @@ function Payment() {
     const [cardNumber, setCardNumber] = useState('')
     const [valid, setValid] = useState('')
     const [cvv, setCvv] = useState('')
+
+    function handleEditAddress() {
+        if(edit) {
+            setEdit(false)
+            console.log('editando')
+        } else {
+            setEdit(true)
+        }
+    }
 
     return (
         <div className='payment-container'>
@@ -32,7 +47,7 @@ function Payment() {
                 </div>
                 <div>
                     <NumeratedTitled number='2' title='Entrega' />
-                    <PaymentBox type={1}>
+                    <PaymentBox type={1} onClick={handleEditAddress}>
                         <form className='payment-box-data'>
                             <TextField 
                                 value={address}
@@ -44,14 +59,15 @@ function Payment() {
                                 className='white-background'
                                 size="small"
                                 InputProps={{
-                                    readOnly: true,
+                                    readOnly: !edit,
                                 }}
                                 fullWidth
                             />
                             <div className='line-input'>
                                 <div className='first-line-input'>
                                     <TextField 
-                                        defaultValue='2051'
+                                        value={number}
+                                        onChange={(e) => setNumber(e.target.value)}
                                         id='number'
                                         label='Número'
                                         variant='outlined'
@@ -59,12 +75,13 @@ function Payment() {
                                         className='white-background'
                                         size="small"
                                         InputProps={{
-                                            readOnly: true,
+                                            readOnly: !edit,
                                         }}
                                     />
                                 </div>
                                 <TextField 
-                                    defaultValue="Casa 10"
+                                    value={complement}
+                                    onChange={(e) => setComplement(e.target.value)}
                                     id='complement'
                                     label='Complemento'
                                     variant='outlined'
@@ -72,13 +89,14 @@ function Payment() {
                                     className='white-background'
                                     size="small"
                                     InputProps={{
-                                        readOnly: true,
+                                        readOnly: !edit,
                                     }}
                                     fullWidth
                                 />
                             </div>
                             <TextField 
-                                defaultValue="88061-700"
+                                value={cep}
+                                onChange={(e) => setCep(e.target.value)}
                                 id='cep'
                                 label='CEP'
                                 variant='outlined'
@@ -86,14 +104,15 @@ function Payment() {
                                 className='white-background'
                                 size="small"
                                 InputProps={{
-                                    readOnly: true,
+                                    readOnly: !edit,
                                 }}
                                 fullWidth
                             />
                             <div className='line-input'>
                                 <div className='first-line-input'>
                                     <TextField 
-                                        defaultValue='SC'
+                                        value={state}
+                                        onChange={(e) => setState(e.target.value)}
                                         id='state'
                                         label='Estado'
                                         variant='outlined'
@@ -101,12 +120,13 @@ function Payment() {
                                         className='white-background'
                                         size="small"
                                         InputProps={{
-                                            readOnly: true,
+                                            readOnly: !edit,
                                         }}
                                     />
                                 </div>
                                 <TextField 
-                                    defaultValue="Florianópolis"
+                                    value={city}
+                                    onChange={(e) => setCity(e.target.value)}
                                     id='city'
                                     label='Cidade'
                                     variant='outlined'
@@ -114,13 +134,14 @@ function Payment() {
                                     className='white-background'
                                     size="small"
                                     InputProps={{
-                                        readOnly: true,
+                                        readOnly: !edit,
                                     }}
                                     fullWidth
                                 />
                             </div>
                             <TextField 
-                                defaultValue="Barra da Lagoa"
+                                value={neighborhood}
+                                onChange={(e) => setNeighborhood(e.target.value)}
                                 id='neighborhood'
                                 label='Bairro'
                                 variant='outlined'
@@ -128,7 +149,7 @@ function Payment() {
                                 className='white-background'
                                 size="small"
                                 InputProps={{
-                                    readOnly: true,
+                                    readOnly: !edit,
                                 }}
                                 fullWidth
                             />
