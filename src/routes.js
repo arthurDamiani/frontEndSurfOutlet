@@ -14,7 +14,7 @@ function Routes() {
 			<Route path="/" exact component={Landing} />
 			<Route path="/products" exact component={ProductsCard} />
 			<Route path="/detailsProducts/:id" exact component={DetailsProduct} />
-			<Foter />
+			<Footer />
 		</BrowserRouter>
 	)
 }
