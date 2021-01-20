@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {TextField, InputAdornment, Button } from '@material-ui/core'
 import {Person, LockOpen, GroupAdd} from '@material-ui/icons'
+import api from '../../services/api'
 
 import './login.css'
 
@@ -8,9 +9,17 @@ function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
-        console.log(`email: ${email} senha: ${password}`)
+        await api.post('/auth', {
+            email: email,
+            senha: password
+        })
+        .then((res) => {
+            sessionStorage.setItem('key', res.data.token)
+            alert(`login efetuado com sucesso`)
+        })
+        .catch(() => alert('Usuário ou senha incorretos!'))
     }
 
     return (
