@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import {TextField, InputAdornment, Button } from '@material-ui/core'
 import {Person, LockOpen, GroupAdd} from '@material-ui/icons'
 import Separation from '../Utils/Separation'
@@ -14,6 +15,7 @@ import './login.css'
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const history = useHistory()
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -23,7 +25,7 @@ function Login() {
         })
         .then((res) => {
             sessionStorage.setItem('key', res.data.token)
-            alert(`login efetuado com sucesso`)
+            history.push('/payment')
         })
         .catch(() => alert('Usuário ou senha incorretos!'))
     }

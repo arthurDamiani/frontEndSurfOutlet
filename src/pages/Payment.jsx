@@ -1,11 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import NumeratedTitled from '../components/Utils/NumeratedTitle'
 import PaymentBox from '../components/Utils/PaymentBox'
 import {Button, TextField, Select} from '@material-ui/core'
+import api from '../services/api'
 
 import '../styles/payment.css'
 
 function Payment() {
+    const [personalData, setPersonalData] = useState([])
+
     const [edit, setEdit] = useState(false)
     const [address, setAddress] = useState('Rodovia Jornalista Manoel de Menezes')
     const [number, setNumber] = useState('2051')
@@ -21,6 +24,19 @@ function Payment() {
     const [cardNumber, setCardNumber] = useState('')
     const [valid, setValid] = useState('')
     const [cvv, setCvv] = useState('')
+
+    const token = sessionStorage.getItem('key')
+
+    useEffect(() => getUserData(), [edit])
+
+    async function getUserData() {
+        api.defaults.headers.common['Authorization'] = 'Bearer ' + token
+        await api.get('/usuario')
+        .then((res) => {
+            setPersonalData(res.data)
+        })
+        .catch(() => alert('Não foi possível pegar os dados!'))
+    }
 
     function handleEditAddress() {
         if(edit) {
@@ -38,10 +54,10 @@ function Payment() {
                     <NumeratedTitled number='1' title='Dados Pessoais' />
                     <PaymentBox type={3}>
                         <div className='payment-box-data'>
-                            <p>Matheus B. Vieira</p>
-                            <p>matheus.bvieira@gmail.com</p>
-                            <p>(48)99629-4749</p>
-                            <p>083.522.566-11</p>
+                            <p>{personalData.nomeCompleto}</p>
+                            <p>{personalData.email}</p>
+                            <p>{personalData.telefone}</p>
+                            <p>{personalData.cpf}</p>
                         </div>
                     </PaymentBox>
                 </div>
