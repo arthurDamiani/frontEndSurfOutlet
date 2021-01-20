@@ -2,10 +2,13 @@ import React, {useState} from 'react'
 import NumeratedTitled from '../components/Utils/NumeratedTitle'
 import PaymentBox from '../components/Utils/PaymentBox'
 import {Button, TextField, Select} from '@material-ui/core'
+import AddressData from '../components/Form/AddressData'
 
 import '../styles/payment.css'
 
 function Payment() {
+    const [address, setAddress] = useState('Rodovia Jornalista Manoel de Menezes')
+
     const [paymentType, setPaymentType] = useState(0)
     const [cardType, setCardType] = useState('')
     const [installments, setInstallments] = useState('')
@@ -18,7 +21,7 @@ function Payment() {
             <div className='payment-top-container'>
                 <div>
                     <NumeratedTitled number='1' title='Dados Pessoais' />
-                    <PaymentBox type={1}>
+                    <PaymentBox type={3}>
                         <div className='payment-box-data'>
                             <p>Matheus B. Vieira</p>
                             <p>matheus.bvieira@gmail.com</p>
@@ -30,13 +33,107 @@ function Payment() {
                 <div>
                     <NumeratedTitled number='2' title='Entrega' />
                     <PaymentBox type={1}>
-                        <div className='payment-box-data'>
-                            <p>Rodovia Jornalista Manoel de Menezes, 2051, 10</p>
-                            <p>Barra da Lagoa - Florianópolis - SC</p>
-                            <p>88061-700</p>
-                            <p>Brasil</p>
+                        <form className='payment-box-data'>
+                            <TextField 
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
+                                id='address'
+                                label='Endereço'
+                                variant='outlined'
+                                margin='normal'
+                                className='white-background'
+                                size="small"
+                                InputProps={{
+                                    readOnly: true,
+                                }}
+                                fullWidth
+                            />
+                            <div className='line-input'>
+                                <div className='first-line-input'>
+                                    <TextField 
+                                        defaultValue='2051'
+                                        id='number'
+                                        label='Número'
+                                        variant='outlined'
+                                        margin='normal'
+                                        className='white-background'
+                                        size="small"
+                                        InputProps={{
+                                            readOnly: true,
+                                        }}
+                                    />
+                                </div>
+                                <TextField 
+                                    defaultValue="Casa 10"
+                                    id='complement'
+                                    label='Complemento'
+                                    variant='outlined'
+                                    margin='normal'
+                                    className='white-background'
+                                    size="small"
+                                    InputProps={{
+                                        readOnly: true,
+                                    }}
+                                    fullWidth
+                                />
+                            </div>
+                            <TextField 
+                                defaultValue="88061-700"
+                                id='cep'
+                                label='CEP'
+                                variant='outlined'
+                                margin='normal'
+                                className='white-background'
+                                size="small"
+                                InputProps={{
+                                    readOnly: true,
+                                }}
+                                fullWidth
+                            />
+                            <div className='line-input'>
+                                <div className='first-line-input'>
+                                    <TextField 
+                                        defaultValue='SC'
+                                        id='state'
+                                        label='Estado'
+                                        variant='outlined'
+                                        margin='normal'
+                                        className='white-background'
+                                        size="small"
+                                        InputProps={{
+                                            readOnly: true,
+                                        }}
+                                    />
+                                </div>
+                                <TextField 
+                                    defaultValue="Florianópolis"
+                                    id='city'
+                                    label='Cidade'
+                                    variant='outlined'
+                                    margin='normal'
+                                    className='white-background'
+                                    size="small"
+                                    InputProps={{
+                                        readOnly: true,
+                                    }}
+                                    fullWidth
+                                />
+                            </div>
+                            <TextField 
+                                defaultValue="Barra da Lagoa"
+                                id='neighborhood'
+                                label='Bairro'
+                                variant='outlined'
+                                margin='normal'
+                                className='white-background'
+                                size="small"
+                                InputProps={{
+                                    readOnly: true,
+                                }}
+                                fullWidth
+                            />
                             <p>R$ 20,00</p>
-                        </div>
+                        </form>
                     </PaymentBox>
                 </div>
             </div>
@@ -101,19 +198,24 @@ function Payment() {
                             className='white-background'
                             required
                         />
-                        <TextField 
-                            value={cvv}
-                            onChange={(e) => setCvv(e.target.value)}
-                            id='cvv'
-                            label='CVV'
-                            variant='outlined'
-                            margin='normal'
-                            type='number'
-                            className='white-background'
-                            required
-                        />
+                        <div className='first-line-input'>
+                            <TextField 
+                                value={cvv}
+                                onChange={(e) => setCvv(e.target.value)}
+                                id='cvv'
+                                label='CVV'
+                                variant='outlined'
+                                margin='normal'
+                                type='number'
+                                className='white-background'
+                                required
+                            />
+                        </div>
                     </PaymentBox> : ''}
                 </div>
+            </div>
+            <div className='payment-button-container'>
+                <Button variant='contained' color='primary'>Finalizar compra</Button>
             </div>
         </div>
     )
