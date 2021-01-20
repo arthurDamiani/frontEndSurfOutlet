@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import {TextField, InputAdornment, Button } from '@material-ui/core'
 import {Person, LockOpen, GroupAdd} from '@material-ui/icons'
-import Separation from '../utils/Separation'
-import Box from '../utils/Box'
-import Title from '../utils/Title'
-import Container from '../utils/Container'
-import InputContainer from '../utils/InputContainer'
-import ButtonsContainer from '../utils/ButtonsContainer'
+import Separation from '../Utils/Separation'
+import Box from '../Utils/Box'
+import Title from '../Utils/Title'
+import Container from '../Utils/Container'
+import InputContainer from '../Utils/InputContainer'
+import ButtonsContainer from '../Utils/ButtonsContainer'
+import api from '../../services/api'
 
 import './login.css'
 
@@ -14,9 +15,17 @@ function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
-        console.log(`email: ${email} senha: ${password}`)
+        await api.post('/auth', {
+            email: email,
+            senha: password
+        })
+        .then((res) => {
+            sessionStorage.setItem('key', res.data.token)
+            alert(`login efetuado com sucesso`)
+        })
+        .catch(() => alert('Usuário ou senha incorretos!'))
     }
 
     return (
