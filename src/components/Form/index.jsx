@@ -33,8 +33,6 @@ function Form() {
         })
         .then(() => next())
         .catch(() => alert('Falha ao cadastrar usuário'))
-
-        console.log(name)
     }
 
     const forms = [
