@@ -1,11 +1,11 @@
 import React from 'react'
 import ProductCardList from '../components/ProductCardList'
-import Login from '../components/Login'
+import Form from '../components/Form'
 
 function Products() {
     return(
         <div>
-            <Login />
+            <Form />
         </div>
     )
 }
