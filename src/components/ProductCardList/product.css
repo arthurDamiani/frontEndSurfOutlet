@@ -1,7 +1,7 @@
 .products-wrapper {
     max-width: 1000px;
     width: 100%;
-    margin: 0 auto;
+    right: 0;
 }
 
 .products {
@@ -9,11 +9,12 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-left: 7rem;
 }
 
-.card {
+.card-grid {
     min-width: 300px;
-    min-height: 400px;
+    min-height: 250px;
     border: 1px solid #eee;
     overflow: hidden;
     padding: 10px;
@@ -56,7 +57,7 @@
     transition: all 0.35s ease-in-out;
 }
 
-.card:hover .img-content button {
+.card-grid:hover .img-content button {
     opacity: 1;
 }
 

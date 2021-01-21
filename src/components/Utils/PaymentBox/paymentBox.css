@@ -1,0 +1,17 @@
+.payment-box-container {
+    background-color: #e5e5e5;
+    width: 21.8rem;
+    height: 24.5rem;
+    border: 1px solid #0080a8;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+.payment-box-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.space {
+    margin-left: 1rem;
+}

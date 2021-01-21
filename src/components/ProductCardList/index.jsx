@@ -1,61 +1,59 @@
-import React from 'react';
-import { useState } from 'react';
-import productCard  from './productCard'
-import './productCard.css'
-import Cart from './Cart'
+import React, { useState } from 'react'
+import productData  from '../../data/products'
+import './product.css'
+import Pagination from '../Pagination'
+import { FaChevronRight, FaChevronLeft} from "react-icons/fa"
+import Product from '../Products/ProductCard'
+import Filter from '../Filter'
 
 const ProductCardList = () => {
-    const page_prod = 'products'
-    const page_cart = 'cart'
+    const [products] = useState(productData)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [productsPerPage] = useState(9)
 
-    const [cart, setCart] = useState([])
-    const [total, setTotal] = useState(0)
-    const [products] = useState(...productCard)
-    const [page, setPage] = useState(page_prod)
+    //Pagination
+    const indexOfLastProducts = currentPage * productsPerPage
+ 
+    const indexOfFirstProducts = indexOfLastProducts - productsPerPage
+ 
+    const lastPage = Math.ceil(products.length / productsPerPage)
+ 
+    const nextIndexProducts = () => currentPage !== lastPage ? setCurrentPage(currentPage + 1) : lastPage
+    const prevIndexProducts = () => currentPage > 1 ? setCurrentPage(currentPage - 1) : currentPage
 
-    const addToCart = product => setCart([...cart, {...product}])
+    //Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
-    const removeFromCart = productToRemove => setCart(cart.filter(product => product !== productToRemove))
-
-    const navigateTo = nextPage => setPage(nextPage)
-
-
-    const renderProducts = [
-        <div className='products-wrapper'>
-            <div className="products">
-                {productCard.map(product => {
-                return (
-                    <div className="card" key={product.id}>
-                        <div className="img-content">
-                            <img src={product.image} alt='imagem do produto'/>
-                            <button onClick={() => addToCart(product)}>Ver detalhes</button>
-                        </div>
-                        <div className="content">
-                            <h3>{product.title}</h3>
-                            <p className='price'>R${product.price}</p>
-                            <p className='payment'>{product.condition_payment}</p>
-                            <p className='discount'>{product.discount}</p>
-                        </div>
-                    </div>
-                )
-                })}
-            </div>
-        </div>
-    ]
+    const currentProduct = products.slice(indexOfFirstProducts, indexOfLastProducts)
 
     return ( 
-        <div>
-            <header>
-                <button onClick={() => navigateTo(page_cart)}>Go to Cart ({cart.length})</button>
-                <button onClick={() => navigateTo(page_prod)}>X</button>
-            </header>
-            {page === 'products' && renderProducts}
-            {page === 'cart' && 
-                <Cart 
-                    removeFromCart={removeFromCart}
-                    cart={cart} 
+        <div className='products-wrapper'>
+            <div className="products">
+                {currentProduct.map(product => {
+                return (
+                     <Product product={product} key={product.id} />
+                 )
+                })}
+            </div>
+            <div className="filter">
+                    <Filter />
+            </div>
+            <nav className='pagination'>
+                <FaChevronLeft 
+                    className='arrow-left'
+                    onClick={prevIndexProducts}
                 />
-            }
+                <Pagination 
+                    productsPerPage={productsPerPage} 
+                    totalProducts={products.length} 
+                    paginate={paginate}
+                    className='page-item' 
+                />
+                <FaChevronRight 
+                    className='arrow-right'
+                    onClick={nextIndexProducts}
+                />
+            </nav>
         </div>
     )
 }

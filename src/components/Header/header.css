@@ -1,0 +1,148 @@
+#header a:hover {
+    color: #ffa500;
+}
+
+.header-top {
+    background-color: #fff;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header-top a {
+    color: #000;
+}
+
+.navbar {
+    display: none;
+}
+
+.header-logo {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.header-input {
+    width: 26rem;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item-legenda {
+    font-size: 1.125rem;
+    max-width: 6rem;
+    margin: 1rem 0.5rem;
+
+}
+
+.menu-container {
+    width: 100%;
+    background-color: #0080a8;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1.5rem 0;
+}
+
+.menu-item {
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+.sidebar-item {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        display: flex;
+    }
+
+    .nav-item:first-child {
+        display: none;
+    }
+
+    .header-input {
+        width: 15rem;
+    }
+
+    .menu-container {
+        width: 300px;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        transition: 850ms;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .menu-container.active {
+        left: 0;
+        transition: 350ms;
+    }
+
+    .sidebar-item:first-child {
+        display: flex;
+        align-items: center;
+        color: #fff;
+    }
+
+    .menu-item {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .carrinho-legenda {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .header-top {
+        flex-direction: column;
+    }
+
+    .header-logo {
+        margin-bottom: 0.5rem;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 2rem;
+        left: 1.5rem;
+    }
+
+    .nav-item {
+        display: none;
+    }
+
+    .sidebar-top {
+        display: flex;
+        align-items: center;
+        margin: 1.5rem;
+    }
+
+    .sidebar-item:first-child {
+        border-right: 1px solid #fff;
+    }
+
+    .sidebar-item {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        flex-direction: column;
+        text-align: center;
+    }
+}
