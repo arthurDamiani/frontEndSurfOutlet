@@ -4,6 +4,20 @@
     right: 0;
 }
 
+.filter-sort {
+    margin: 15px 0;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.filter-sort p {
+    margin-left: 130px;
+}
+
+.filter-sort select {
+    margin-left: 5px;
+}
+
 .products {
     width: 100%;
     display: flex;
