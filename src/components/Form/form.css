@@ -10,14 +10,14 @@
     margin-bottom: 3rem;
 }
 
-.input-container, .navigation-container {
+.input-container-form, .navigation-container {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.margin {
+.margin-form {
     margin-right: 1rem;
     width: 100%;
 }

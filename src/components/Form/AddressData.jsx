@@ -44,8 +44,8 @@ function AddressData({onSubmit, goBack}) {
                     required 
                     fullWidth
                 />
-                <div className='input-container'>
-                    <div className="margin">
+                <div className='input-container-form'>
+                    <div className="margin-form">
                         <TextField
                             value={number}
                             onChange={(e) => {setNumber(e.target.value)}}
@@ -81,8 +81,8 @@ function AddressData({onSubmit, goBack}) {
                     fullWidth
                     required 
                 />
-                <div className="input-container">
-                    <div className="margin">
+                <div className="input-container-form">
+                    <div className="margin-form">
                         <TextField
                             value={city}
                             onChange={(e) => {setCity(e.target.value)}}

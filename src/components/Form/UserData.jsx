@@ -6,13 +6,13 @@ import useError from '../../hooks/useError'
 import './form.css'
 
 function UserData({onSubmit, data}) {
-    const [name, setName] = useState(data.name)
+    const [name, setName] = useState(data.nomeCompleto)
     const [email, setEmail] = useState(data.email)
-    const [password, setPassword] = useState(data.password)
-    const [confirmPassword, setConfirmPassword] = useState(data.password)
+    const [password, setPassword] = useState(data.senha)
+    const [confirmPassword, setConfirmPassword] = useState(data.senha)
     const [confirmPasswordError, setConfirmPasswordError] = useState({valid:true, text:''})
     const [cpf, setCpf] = useState(data.cpf)
-    const [phone, setPhone] = useState(data.phone)
+    const [phone, setPhone] = useState(data.telefone)
     const validations = useContext(FormValidations)
     const [error, fieldValidator, canSend] = useError(validations)
 
@@ -56,8 +56,8 @@ function UserData({onSubmit, data}) {
                     fullWidth
                     required 
                 />
-                <div className='input-container'>
-                    <div className='margin'>
+                <div className='input-container-form'>
+                    <div className='margin-form'>
                         <TextField
                             value={password}
                             onChange={(e) => {setPassword(e.target.value)}}
@@ -90,8 +90,8 @@ function UserData({onSubmit, data}) {
                         className='inline-input'
                     />
                 </div>
-                <div className='input-container'>
-                    <div className='margin'>
+                <div className='input-container-form'>
+                    <div className='margin-form'>
                         <TextField
                             value={cpf}
                             onChange={(e) => {setCpf(e.target.value)}}
