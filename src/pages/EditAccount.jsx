@@ -11,6 +11,7 @@ function EditAccount() {
     const [formOption, setFormOption] = useState(1)
 
     const [personalData, setPersonalData] = useState([])
+    const [json, setJson] = useState({})
     const token = sessionStorage.getItem('key')
     api.defaults.headers.common['Authorization'] = 'Bearer ' + token
 
@@ -25,12 +26,12 @@ function EditAccount() {
     }
 
     async function updateUser({name, password, email, phone}) {
-        await api.put('/usuario', {
-            email: email,
-            nomeCompleto: name,
-            senha: password,
-            telefone: phone
-        })
+        if(password) {
+            setJson({email: email, nomeCompleto: name, senha: password, telefone: phone}) 
+        } else {
+            setJson({email: email, nomeCompleto: name, telefone: phone})
+        }
+        await api.patch('/usuario', json)
         .then(() => alert('usuário editado com sucesso!'))
         .catch(() => alert('falha ao editar usuário!'))
     }

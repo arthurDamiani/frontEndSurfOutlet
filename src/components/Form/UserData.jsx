@@ -71,7 +71,7 @@ function UserData({onSubmit, data, signup}) {
                             type='password'
                             variant='filled'
                             margin='normal'
-                            required
+                            required={signup}
                             className='inline-input'
                         />
                     </div>
@@ -87,7 +87,7 @@ function UserData({onSubmit, data, signup}) {
                         type='password'
                         variant='filled'
                         margin='normal'
-                        required
+                        required={signup}
                         className='inline-input'
                     />
                 </div>
