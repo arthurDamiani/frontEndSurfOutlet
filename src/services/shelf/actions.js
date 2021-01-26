@@ -1,6 +1,6 @@
 import { FETCH_PRODUCTS } from './actionTypes'
  
-import { productsAPI } from '../util'
+import productsData from '../../data/products'
 
 const compare = {
   lowestprice: (a, b) => {
@@ -16,7 +16,7 @@ const compare = {
 };
 
 export const fetchProducts = (filters, sortBy, callback) => dispatch => {
-      let { products } = productsAPI
+      let products  = productsData
 
       if (!!filters && filters.length > 0) {
         products = products.filter(p => filters.find(f => p.size.find(size => size === f)))
