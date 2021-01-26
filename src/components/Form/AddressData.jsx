@@ -5,7 +5,7 @@ import useError from '../../hooks/useError'
 
 import './form.css'
 
-function AddressData({onSubmit, goBack}) {
+function AddressData({onSubmit, goBack, signup}) {
     const [cep, setCep] = useState('')
     const [address, setAddress] = useState('')
     const [number, setNumber] = useState('')
@@ -17,7 +17,9 @@ function AddressData({onSubmit, goBack}) {
 
     return (
         <>
+            {signup ? 
             <h2 className='form-title'>Endereço</h2>
+            : ''}
             <form className='form' onSubmit={(e) => {
                 e.preventDefault()
                 onSubmit({cep, address, number, complement, neighborhood, city, state})
@@ -107,9 +109,12 @@ function AddressData({onSubmit, goBack}) {
                         className='inline-input'
                     />
                 </div>
-                <div className="navigation-container">
-                    <Button onClick={goBack} color='primary'>Voltar</Button>
-                    <Button variant='contained' type='submit' color='primary'>Cadastrar</Button>
+                <div className={signup ? 'navigation-container' : 'navigation-container edit-button'}>
+                    {signup ? 
+                    <>
+                        <Button onClick={goBack} color='primary'>Voltar</Button>
+                        <Button variant='contained' type='submit' color='primary'>Cadastrar</Button>
+                    </> : <Button color='primary' type='submit'>Salvar alterações</Button>}
                 </div>
             </form>
         </>

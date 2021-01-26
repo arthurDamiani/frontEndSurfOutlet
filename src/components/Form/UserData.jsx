@@ -5,7 +5,7 @@ import useError from '../../hooks/useError'
 
 import './form.css'
 
-function UserData({onSubmit, data}) {
+function UserData({onSubmit, data, signup}) {
     const [name, setName] = useState(data.nomeCompleto)
     const [email, setEmail] = useState(data.email)
     const [password, setPassword] = useState(data.senha)
@@ -24,10 +24,11 @@ function UserData({onSubmit, data}) {
         }
     }
 
-
     return (
         <>
+            {signup ?
             <h2 className='form-title'>Crie sua conta</h2>
+            : ''}
             <form onSubmit={(e) => {
                 e.preventDefault()
                 if(canSend() && confirmPasswordError.valid) {
@@ -120,9 +121,13 @@ function UserData({onSubmit, data}) {
                         className='inline-input'
                     />
                 </div>
-                <div className="navigation-container">
-                    <Button disabled>Voltar</Button>
-                    <Button type='submit' color='primary'>Próximo</Button>
+                <div className={signup ? 'navigation-container' : 'navigation-container edit-button'}>
+                    {signup ?
+                    <>
+                        <Button disabled>Voltar</Button>
+                        <Button type='submit' color='primary'>Próximo</Button>
+                    </>
+                    : <Button type='submit' color='primary'>Salvar alterações</Button>}
                 </div>
             </form>
         </>

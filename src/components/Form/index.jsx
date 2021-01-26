@@ -36,8 +36,8 @@ function Form() {
     }
 
     const forms = [
-        <UserData data={collectedData} onSubmit={signUp} />,
-        <AddressData onSubmit={collectData} goBack={goBack} />,
+        <UserData data={collectedData} onSubmit={signUp} signup={true} />,
+        <AddressData onSubmit={collectData} goBack={goBack} signup={true} />,
         <h5>Obrigado pelo cadastro!</h5>
     ]
 

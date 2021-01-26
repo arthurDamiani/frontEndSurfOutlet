@@ -12,16 +12,27 @@ function EditAccount() {
 
     const [personalData, setPersonalData] = useState([])
     const token = sessionStorage.getItem('key')
+    api.defaults.headers.common['Authorization'] = 'Bearer ' + token
 
     useEffect(() => getData(), [formOption])
 
-    async function getData() {
-        api.defaults.headers.common['Authorization'] = 'Bearer ' + token
+    async function getData() {    
         await api.get('/usuario')
         .then((res) => {
             setPersonalData(res.data)
         })
         .catch(() => alert('Não foi possível pegar os dados!'))
+    }
+
+    async function updateUser({name, password, email, phone}) {
+        await api.put('/usuario', {
+            email: email,
+            nomeCompleto: name,
+            senha: password,
+            telefone: phone
+        })
+        .then(() => alert('usuário editado com sucesso!'))
+        .catch(() => alert('falha ao editar usuário!'))
     }
 
     function pageTitle() {
@@ -38,11 +49,11 @@ function EditAccount() {
     function switchFormOption() {
         switch(formOption) {
             case 1:
-                return <UserData onSubmit={console.log('yei')} data={personalData} page={2} />
+                return <UserData onSubmit={updateUser} data={personalData} signup={false} />
             case 2:
-                return <AddressData onSubmit={console.log('yei')} page={2} />
+                return <AddressData onSubmit={console.log('yei')} signup={false} />
             default:
-                return <UserData onSubmit={console.log('yei')} data={personalData} page={2} />
+                return <UserData onSubmit={console.log('yei')} data={personalData} signup={false} />
         }
     }
 
