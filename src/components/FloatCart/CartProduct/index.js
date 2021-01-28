@@ -1,81 +1,62 @@
-import React, { Component } from 'react'
- 
+import React, { Fragment, useState } from 'react'
+
+import { useDispatch } from 'react-redux'
+
 import Thumb from './../../Thumb'
 import { formatPrice } from '../../../services/util'
 
-class CartProduct extends Component {
- 
+import { addToCart, removeFromCart, decrementFromCart } from '../../../actions/products'
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      product: this.props.product,
-      isMouseOver: false
-    };
+function CartProduct({products}) {
+
+  const [isMouseOver, setIsMouseOver] = useState(false)
+  const [product, setProduct] = useState(products)
+
+  const handleMouseOver = () => setIsMouseOver(true)
+  
+  const handleMouseOut = () => setIsMouseOver(false)
+
+  const dispatch = useDispatch()
+
+
+  const classes = ['shelf-item']
+
+  if (!!isMouseOver) {
+    classes.push('shelf-item--mouseover')
   }
-
-  handleMouseOver = () => {
-    this.setState({ isMouseOver: true });
-  }
-
-  handleMouseOut = () => {
-    this.setState({ isMouseOver: false });
-  }
-
-  handleOnIncrease = () => {
-    const { changeProductQuantity } = this.props
-    const { product } = this.state;
-    product.quantity = product.quantity + 1
-    changeProductQuantity(product)
-  }
-
-  handleOnDecrease = () => {
-    const { changeProductQuantity } = this.props
-    const { product } = this.state;
-    product.quantity = product.quantity - 1
-    changeProductQuantity(product)
-  }
-
-  render() {
-    const { removeProduct } = this.props
-    const { product } = this.state;
-
-    const classes = ['shelf-item'];
-
-    if (!!this.state.isMouseOver) {
-      classes.push('shelf-item--mouseover');
-    }
 
     return (
-      <div className={classes.join(' ')}>
-        <div
-          className="shelf-item__del"
-          onMouseOver={() => this.handleMouseOver()}
-          onMouseOut={() => this.handleMouseOut()}
-          onClick={() => removeProduct(product)}
-        />
-        <Thumb
-          src={product.image}
-          alt={product.title}
-        />
-        <div className="shelf-item__details">
-          <p className="title">{product.title}</p>
-          <p className="desc">
-            {product.style}<br /> 
-            Tamanho: {product.size}<br />
-            Quantidade: {product.quantity}
-          </p>
+      <Fragment>
+        <div className={classes.join(' ')}>
+            <div
+              className="shelf-item__del"
+              onMouseOver={() => handleMouseOver()}
+              onMouseOut={() => handleMouseOut()}
+              onClick={() => dispatch(removeFromCart(product.id))}
+            />
+            <Thumb
+              src={product.image}
+              alt={product.title}
+            />
+            <div className="shelf-item__details">
+              <p className="title">{product.title}</p>
+              <p className="desc">
+                {product.style}<br /> 
+                Tamanho: {product.size}<br />
+                Quantidade: {product.quantity}
+              </p>
+            </div>
+            <div className="shelf-item__price">
+              <p>{`${product.currencyFormat}  ${formatPrice(product.price)}`}</p>
+                <div>
+                  <button onClick={() => dispatch(decrementFromCart(product.id))} disabled={product.quantity === 1 ? true : false} className="change-product-button">-</button>
+                  <button onClick={() => dispatch(addToCart(product.id))} className="change-product-button">+</button>
+                </div>
+            </div>
         </div>
-        <div className="shelf-item__price">
-          <p>{`${product.currencyFormat}  ${formatPrice(product.price)}`}</p>
-          <div>
-            <button onClick={this.handleOnDecrease} disabled={product.quantity === 1 ? true : false} className="change-product-button">-</button>
-            <button onClick={this.handleOnIncrease} className="change-product-button">+</button>
-          </div>
-        </div>
-      </div>
-    );
+      </Fragment>
+      
+    )
   }
-}
 
-export default CartProduct;
+export default CartProduct

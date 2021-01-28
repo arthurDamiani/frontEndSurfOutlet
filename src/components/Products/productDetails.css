@@ -117,8 +117,8 @@
     margin-bottom: 10px;
 }
 
-.details-content .size-product h3 {
-    margin-top: 10px;
+.details-content .size-product .select-size {
+    width: 200px;
 }
 
 .details-content .size-product button {
@@ -154,7 +154,7 @@
 
 .details-content .info-product {
     max-width: 390px;
-    border-top: 4px solid rgba(0, 128, 168, 0.6);
+    border-top: 2px solid rgba(0, 128, 168, 0.6);
     padding: 30px 0;
 }
 

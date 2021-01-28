@@ -47,7 +47,7 @@
 
 .menu-container {
     width: 100%;
-    background-color: #0080a8;
+    background-image: linear-gradient(130deg , #65beda, #006a8a);
     display: flex;
     align-items: center;
     justify-content: space-around;
