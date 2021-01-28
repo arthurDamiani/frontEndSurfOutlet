@@ -5,14 +5,14 @@ import useError from '../../hooks/useError'
 
 import './form.css'
 
-function UserData({onSubmit, data}) {
-    const [name, setName] = useState(data.name)
+function UserData({onSubmit, data, signup}) {
+    const [name, setName] = useState(data.nomeCompleto)
     const [email, setEmail] = useState(data.email)
-    const [password, setPassword] = useState(data.password)
-    const [confirmPassword, setConfirmPassword] = useState(data.password)
+    const [password, setPassword] = useState(data.senha)
+    const [confirmPassword, setConfirmPassword] = useState(data.senha)
     const [confirmPasswordError, setConfirmPasswordError] = useState({valid:true, text:''})
     const [cpf, setCpf] = useState(data.cpf)
-    const [phone, setPhone] = useState(data.phone)
+    const [phone, setPhone] = useState(data.telefone)
     const validations = useContext(FormValidations)
     const [error, fieldValidator, canSend] = useError(validations)
 
@@ -24,10 +24,11 @@ function UserData({onSubmit, data}) {
         }
     }
 
-
     return (
         <>
+            {signup ?
             <h2 className='form-title'>Crie sua conta</h2>
+            : ''}
             <form onSubmit={(e) => {
                 e.preventDefault()
                 if(canSend() && confirmPasswordError.valid) {
@@ -56,8 +57,8 @@ function UserData({onSubmit, data}) {
                     fullWidth
                     required 
                 />
-                <div className='input-container'>
-                    <div className='margin'>
+                <div className='input-container-form'>
+                    <div className='margin-form'>
                         <TextField
                             value={password}
                             onChange={(e) => {setPassword(e.target.value)}}
@@ -70,7 +71,7 @@ function UserData({onSubmit, data}) {
                             type='password'
                             variant='filled'
                             margin='normal'
-                            required
+                            required={signup}
                             className='inline-input'
                         />
                     </div>
@@ -86,12 +87,12 @@ function UserData({onSubmit, data}) {
                         type='password'
                         variant='filled'
                         margin='normal'
-                        required
+                        required={signup}
                         className='inline-input'
                     />
                 </div>
-                <div className='input-container'>
-                    <div className='margin'>
+                <div className='input-container-form'>
+                    <div className='margin-form'>
                         <TextField
                             value={cpf}
                             onChange={(e) => {setCpf(e.target.value)}}
@@ -120,9 +121,13 @@ function UserData({onSubmit, data}) {
                         className='inline-input'
                     />
                 </div>
-                <div className="navigation-container">
-                    <Button disabled>Voltar</Button>
-                    <Button type='submit' color='primary'>Próximo</Button>
+                <div className={signup ? 'navigation-container' : 'navigation-container edit-button'}>
+                    {signup ?
+                    <>
+                        <Button disabled>Voltar</Button>
+                        <Button type='submit' color='primary'>Próximo</Button>
+                    </>
+                    : <Button type='submit' color='primary'>Salvar alterações</Button>}
                 </div>
             </form>
         </>

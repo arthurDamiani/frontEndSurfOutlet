@@ -25,7 +25,7 @@ function Login() {
         })
         .then((res) => {
             sessionStorage.setItem('key', res.data.token)
-            history.push('/payment')
+            history.push('/edit')
         })
         .catch(() => alert('Usuário ou senha incorretos!'))
     }
