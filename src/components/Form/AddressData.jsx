@@ -1,18 +1,30 @@
 import React, {useState, useContext} from 'react'
 import { Button, TextField } from '@material-ui/core'
-import FormValidations from '../../contexts/FormValidations'
-import useError from '../../hooks/useError'
+import cepApi from '../../services/cepApi'
 
 import './form.css'
 
 function AddressData({onSubmit, goBack, signup}) {
     const [cep, setCep] = useState('')
+    const [cepError, setCepError] = useState({error: false, text: ''})
     const [address, setAddress] = useState('')
     const [number, setNumber] = useState('')
     const [complement, setComplement] = useState('')
     const [neighborhood, setNeighborhood] = useState('') 
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
+
+    async function cepValidator() {
+        await cepApi.get(`/${cep}/json`)
+        .then((res) => {
+            setAddress(res.data.logradouro)
+            setNeighborhood(res.data.bairro)
+            setCity(res.data.localidade)
+            setState(res.data.uf)
+            setCepError({error: false, text: ''})
+        })
+        .catch(() => setCepError({error: true, text: 'CEP inválido'}))
+    }
 
 
     return (
@@ -27,7 +39,11 @@ function AddressData({onSubmit, goBack, signup}) {
                 <TextField
                     value={cep}
                     onChange={(e) => {setCep(e.target.value)}}
+                    onBlur={cepValidator}
+                    error={cepError.error}
+                    helperText={cepError.text}
                     id='cep' 
+                    name='cep'
                     label='CEP' 
                     type='number' 
                     variant='filled'
