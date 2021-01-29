@@ -7,7 +7,7 @@ import './form.css'
 function AddressData({onSubmit, goBack, signup}) {
     const [cep, setCep] = useState('')
     const [cepError, setCepError] = useState({error: false, text: ''})
-    const [address, setAddress] = useState('')
+    const [street, setStreet] = useState('')
     const [number, setNumber] = useState('')
     const [complement, setComplement] = useState('')
     const [neighborhood, setNeighborhood] = useState('') 
@@ -17,7 +17,7 @@ function AddressData({onSubmit, goBack, signup}) {
     async function cepValidator() {
         await cepApi.get(`/${cep}/json`)
         .then((res) => {
-            setAddress(res.data.logradouro)
+            setStreet(res.data.logradouro)
             setNeighborhood(res.data.bairro)
             setCity(res.data.localidade)
             setState(res.data.uf)
@@ -34,7 +34,7 @@ function AddressData({onSubmit, goBack, signup}) {
             : ''}
             <form className='form' onSubmit={(e) => {
                 e.preventDefault()
-                onSubmit({cep, address, number, complement, neighborhood, city, state})
+                onSubmit({cep, street, number, complement, neighborhood, city, state})
             }}>
                 <TextField
                     value={cep}
@@ -52,10 +52,10 @@ function AddressData({onSubmit, goBack, signup}) {
                     fullWidth
                 />
                 <TextField
-                    value={address}
-                    onChange={(e) => {setAddress(e.target.value)}}
-                    id='address' 
-                    label='Endereço' 
+                    value={street}
+                    onChange={(e) => {setStreet(e.target.value)}}
+                    id='street' 
+                    label='Rua' 
                     type='text' 
                     variant='filled'
                     margin='normal'

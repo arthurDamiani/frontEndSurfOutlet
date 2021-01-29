@@ -1,10 +1,10 @@
 import React from 'react'
 
 const FormValidations = React.createContext(
-    {password:noValidation, confirmPassword:noValidation, cpf:noValidation, rg:noValidation, cep:noValidation}
+    {password:noValidation, confirmPassword:noValidation, cpf:noValidation, phone:noValidation}
 )
 
-function noValidation(data) {
+function noValidation() {
     return {valid:true, text:''}
 }
 
