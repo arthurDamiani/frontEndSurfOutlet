@@ -17,10 +17,12 @@ export const getFilteredProducts = state => {
     const { productsReducer: { products }, filters } = state
     return products.filter((product) => {
 
-        if (filters.brand.length > 0 && filters.name.length === 0) {
+        if (filters.brand.length > 0 && filters.category.length === 0) {
             return filters.brand.includes(product.brand)
-        } else if (filters.category.length > 0 && filters.name.length === 0) {
+        } else if (filters.brand.length === 0 && filters.category.length > 0) {
             return filters.category.includes(product.category)
+        } else if (filters.brand.length > 0 && filters.category.length > 0) {
+            return filters.brand.includes(product.brand) && filters.category.includes(product.category)
         } else {
             return product
         }
@@ -28,6 +30,6 @@ export const getFilteredProducts = state => {
     }).sort((a, b) => {
         const textA = a.brand.toUpperCase();
         const textB = b.brand.toUpperCase();
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
     })
 }

@@ -10,19 +10,27 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         name: action.name
-      };
-    case 'SET_CHECKBOX_FILTER':
+      }
+    case 'SET_BRAND_FILTER':
       return {
         ...state,
-        brand: [...state.brand, action.brand],
+        brand: [...state.brand, action.brand]
+      }
+    case 'SET_CATEGORY_FILTER':
+      return {
+        ...state,
         category: [...state.category, action.category]
       }
-    case 'REMOVE_CHECKBOX_FILTER':
+    case 'REMOVE_BRAND_FILTER':
       return {
         ...state,
-        brand: state.brand.filter((brand) => brand !== action.brand),
-        category: state.category.filter((category) => category !== action.category), 
+        brand: state.brand.filter((brand) => brand !== action.brand)
       }
+    case 'REMOVE_CATEGORY_FILTER':
+      return {
+        ...state,
+        category: state.category.filter((category) => category !== action.category)
+      }     
     case 'CLEAR_FILTERS':
       return {
         ...state,

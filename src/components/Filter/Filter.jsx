@@ -1,7 +1,8 @@
 import React, {Fragment} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import './filterCheck.css'
 
-import { setCheckboxFilterBrand, removeCheckboxFilterBrand, setCheckboxFilterCategory, removeCheckboxFilterCategory } from '../../actions/filters'
+import { setFilterBrand, removeFilterBrand, setFilterCategory, removeFilterCategory } from '../../actions/filters'
 import { getAllProducts, getAllProductBrands, getAllProductCategory } from '../../selectors/products'
 
 function Filter() {
@@ -18,9 +19,9 @@ function Filter() {
         const value = e.target.value
 
         if (e.target.checked) {
-        dispatch(setCheckboxFilterBrand(value))
+        dispatch(setFilterBrand(value))
         } else {
-        dispatch(removeCheckboxFilterBrand(value))
+        dispatch(removeFilterBrand(value))
         }
     }
 
@@ -28,9 +29,9 @@ function Filter() {
         const value = e.target.value
 
         if (e.target.checked) {
-        dispatch(setCheckboxFilterCategory(value))
+        dispatch(setFilterCategory(value))
         } else {
-        dispatch(removeCheckboxFilterCategory(value))
+        dispatch(removeFilterCategory(value))
         }
     }
 
@@ -45,41 +46,48 @@ function Filter() {
 
     return (
         <Fragment>
-            {
-                productBrands.map((brand, i) => {
-                return (
-                    <div key={i}>
-                    <input 
-                        type="checkbox" 
-                        name={brand} 
-                        id={brand} 
-                        value={brand} 
-                        onChange={(e) => handleFilterBrand(e)} 
-                    />
-                    
-                    <label htmlFor={brand}> {brand} ({brandsItemsCount[brand]}) </label>
-                    </div>
-                )
-                })
-            }   
+            <div className="filter-checkbox">
+                <div className="filter-brand">
+                    {
+                        productBrands.map((brand, i) => {
+                        return (
+                            <div key={i}>
+                                <input 
+                                    type="checkbox" 
+                                    name={brand} 
+                                    id={brand} 
+                                    value={brand} 
+                                    onChange={(e) => handleFilterBrand(e)} 
+                                />
+                            
+                            <label htmlFor={brand}> {brand} ({brandsItemsCount[brand]}) </label>
+                            </div>
+                        )
+                        })
+                    } 
+                </div>  
 
-            {
-                productCategory.map((category, i) => {
-                return (
-                    <div key={i}>
-                    <input 
-                        type="checkbox" 
-                        name={category} 
-                        id={category} 
-                        value={category} 
-                        onChange={(e) => handleFilterCategory(e)} 
-                    />
-                    
-                    <label htmlFor={category}> {category} ({categoryItemsCount[category]}) </label>
-                    </div>
-                )
-                })
-            } 
+                <div className="filter-category">
+                    {
+                        productCategory.map((category, i) => {
+                        return (
+                            <div key={i}>
+                                <input 
+                                    type="checkbox" 
+                                    name={category} 
+                                    id={category} 
+                                    value={category} 
+                                    onChange={(e) => handleFilterCategory(e)} 
+                                />
+                            
+                            <label htmlFor={category}> {category} ({categoryItemsCount[category]}) </label>
+                            </div>
+                        )
+                        })
+                    }     
+                </div>
+                
+            </div>
         </Fragment>
     )
 }
