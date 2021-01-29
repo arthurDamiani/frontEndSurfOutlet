@@ -4,15 +4,15 @@ import cepApi from '../../services/cepApi'
 
 import './form.css'
 
-function AddressData({onSubmit, goBack, signup}) {
-    const [cep, setCep] = useState('')
+function AddressData({data, onSubmit, goBack, signup}) {
+    const [cep, setCep] = useState(data.cep)
     const [cepError, setCepError] = useState({error: false, text: ''})
-    const [street, setStreet] = useState('')
-    const [number, setNumber] = useState('')
-    const [complement, setComplement] = useState('')
-    const [neighborhood, setNeighborhood] = useState('') 
-    const [city, setCity] = useState('')
-    const [state, setState] = useState('')
+    const [street, setStreet] = useState(data.rua)
+    const [number, setNumber] = useState(data.numero)
+    const [complement, setComplement] = useState(data.complemento)
+    const [neighborhood, setNeighborhood] = useState(data.bairro) 
+    const [city, setCity] = useState(data.cidade)
+    const [state, setState] = useState(data.estado)
 
     async function cepValidator() {
         await cepApi.get(`/${cep}/json`)

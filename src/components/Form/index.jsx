@@ -56,7 +56,7 @@ function Form() {
 
     const forms = [
         <UserData data={collectedData} onSubmit={signUpUser} signup={true} />,
-        <AddressData onSubmit={signUpAddress} goBack={goBack} signup={true} />,
+        <AddressData data='' onSubmit={signUpAddress} goBack={goBack} signup={true} />,
         <h5>Obrigado pelo cadastro!</h5>
     ]
 

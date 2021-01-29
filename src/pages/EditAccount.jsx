@@ -29,7 +29,7 @@ function EditAccount() {
 
     async function getAdressData() {
         await api.get('endereco')
-        .then(() => setAddressData(res.data))
+        .then((res) => setAddressData(res.data))
         .catch(() => alert('Não foi possível pegar o endereço do usuário!'))
     }
 
