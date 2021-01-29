@@ -1,10 +1,15 @@
 import React from 'react'
 import './productCard.css'
+import { useDispatch } from 'react-redux'
+import { clearFilters } from '../../actions/filters'
+
 import {Link}  from 'react-router-dom'
  import { formatPrice } from '../../services/util'
  
 function Product({product}) {
   
+  const dispatch = useDispatch()
+
     product.quantity = 1
 
     let productInstallment
@@ -27,7 +32,7 @@ function Product({product}) {
         <div className="card-grid" key={product.id}>
             <div className="img-content">
                 <img src={product.image} alt={product.title}/>
-                <Link to={`detailsProducts/${product.id}`}>
+                <Link to={`/detailsProducts/${product.id}`} onClick={() => dispatch(clearFilters())}>
                     <button>Ver detalhes</button>
                 </Link>
             </div>

@@ -3,18 +3,20 @@ import roupa2 from '../assets/roupa2.png'
 import roupa3 from '../assets/roupa3.png'
 import roupa4 from '../assets/roupa4.png'
 
-const product_card = [
-    {
+const productsDefaultState = {
+    products: [
+      {
         id: 1,
         title: 'JAQUETA',
         price: 300.90,
         discount: 'à vista com 5% de desconto no boleto',
         image: roupa,
-        size: ['P', 'GG'],
+        size: ['P', 'M', 'GG'],
         installments: 10,
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'acessorios', 
         brand: 'Nike'
     },
     {
@@ -28,6 +30,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'acessorios', 
         brand: 'Nike'
     },
     {
@@ -41,6 +44,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'acessorios', 
         brand: 'Nike'
     },
     {
@@ -54,6 +58,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'acessorios', 
         brand: 'Nike'
     },
     {
@@ -67,6 +72,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'acessorios', 
         brand: 'Nike'
     },
     {
@@ -80,6 +86,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'acessorios', 
         brand: 'Nike'
     },
     {
@@ -93,6 +100,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'acessorios', 
         brand: 'Vans'
     },
     {
@@ -106,6 +114,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'tenis', 
         brand: 'Vans'
     },
     {
@@ -119,6 +128,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'tenis', 
         brand: 'Vans'
     },
     {
@@ -132,6 +142,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'tenis', 
         brand: 'Vans'
     },
     {
@@ -145,6 +156,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'tenis', 
         brand: 'Vans'
     },
     {
@@ -158,6 +170,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'tenis', 
         brand: 'adidas'
     },
     {
@@ -171,6 +184,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'tenis', 
         brand: 'adidas'
     },
     {
@@ -184,6 +198,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'tenis', 
         brand: 'adidas'
     },
     {
@@ -197,6 +212,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'camisetas', 
         brand: 'adidas'
     },
     {
@@ -210,6 +226,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'camisetas', 
         brand: 'adidas'
     },
     {
@@ -223,6 +240,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'camisetas', 
         brand: 'adidas'
     },
     {
@@ -236,6 +254,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'camisetas', 
         brand: 'adidas'
     },
     {
@@ -249,6 +268,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'camisetas', 
         brand: 'adidas'
     },
     {
@@ -262,6 +282,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'camisetas', 
         brand: 'adidas'
     },
     {
@@ -275,6 +296,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'camisetas', 
         brand: 'adidas'
     },
     {
@@ -288,6 +310,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'camisetas', 
         brand: 'billabong'
     },
     {
@@ -301,6 +324,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'camisetas', 
         brand: 'billabong'
     },
     {
@@ -314,6 +338,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'camisetas', 
         brand: 'billabong'
     },
     {
@@ -327,6 +352,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'camisetas', 
         brand: 'billabong'
     },
     {
@@ -340,6 +366,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'surf', 
         brand: 'billabong'
     },
     {
@@ -353,6 +380,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'surf', 
         brand: 'billabong'
     },
     {
@@ -366,6 +394,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'surf', 
         brand: 'billabong'
     },
     {
@@ -379,6 +408,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'surf', 
         brand: 'billabong'
     },
     {
@@ -392,6 +422,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'surf', 
         brand: 'billabong'
     },
     {
@@ -405,6 +436,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'surf', 
         brand: 'billabong'
     },
     {
@@ -418,6 +450,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'surf', 
         brand: 'billabong'
     },
     {
@@ -431,6 +464,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'surf', 
         brand: 'billabong'
     },
     {
@@ -444,6 +478,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'surf', 
         brand: 'billabong'
     },
     {
@@ -457,6 +492,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'surf', 
         brand: 'billabong'
     },
     {
@@ -470,6 +506,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'billabong'
     },
     {
@@ -483,6 +520,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'billabong'
     },
     {
@@ -496,6 +534,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'billabong'
     },
     {
@@ -509,6 +548,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'billabong'
     },
     {
@@ -522,6 +562,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'lacoste'
     },
     {
@@ -535,6 +576,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'lacoste'
     },
     {
@@ -548,6 +590,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'lacoste'
     },
     {
@@ -561,6 +604,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'lacoste'
     },
     {
@@ -574,6 +618,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'lacoste'
     },
     {
@@ -587,6 +632,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'lacoste'
     },
     {
@@ -600,6 +646,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'lacoste'
     },
     {
@@ -613,6 +660,7 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'lacoste'
     },
     {
@@ -626,9 +674,68 @@ const product_card = [
         currencyId: "BRL",
         currencyFormat: "R$",
         style: "Black with custom print",
+        category: 'bermudas', 
         brand: 'lacoste'
-    },
-    
-]
+    }
+  ],
+  cart: [],
+  total: 0
+}
 
-export default product_card
+const productsReducer = (state = productsDefaultState, action) => {
+  switch (action.type) {
+    case 'ADD_TO_CART':
+      const addedProduct = state.products.find((product) => action.id === product.id)
+      const existingProduct = state.cart.find((existingProd) => action.id === existingProd.id)
+
+      
+      if (existingProduct) {
+        addedProduct.quantity += 1
+        return {
+          ...state,
+          total: state.total + addedProduct.price
+        }
+      } else {
+        addedProduct.quantity = 1;
+        const newTotal = state.total + addedProduct.price
+        return {
+          ...state,
+          cart: [...state.cart, addedProduct],
+          total: newTotal
+        }
+      };
+    case 'REMOVE_FROM_CART':
+      const productToRemove = state.cart.find((product) => action.id === product.id)
+      const removeProduct = state.cart.filter((product) => action.id !== product.id)
+
+      const newTotal = state.total - (productToRemove.price * productToRemove.quantity)
+      return {
+        ...state,
+        cart: removeProduct,
+        total: newTotal
+      }
+    case 'DECREMENT':
+      const products = state.cart.find((product) => action.id === product.id)
+
+      if (products.quantity > 1) {
+        products.quantity -= 1;
+        const newTotal = state.total - products.price
+        return {
+          ...state,
+          total: newTotal
+        }
+      } else {
+        return state
+      }
+    case 'CLEAR_CART':
+      return {
+        ...state,
+        cart: [],
+        total: 0
+      }
+    default:
+      return state
+  }
+}
+
+export default productsReducer
