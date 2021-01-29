@@ -11,18 +11,26 @@ function EditAccount() {
     const [formOption, setFormOption] = useState(1)
 
     const [personalData, setPersonalData] = useState([])
+    const [addressData, setAddressData] = useState([])
     const [json, setJson] = useState({})
     const token = sessionStorage.getItem('key')
     api.defaults.headers.common['Authorization'] = 'Bearer ' + token
 
-    useEffect(() => getData(), [formOption])
+    useEffect(() => {
+        getUserData()
+        getAdressData()
+    }, [formOption])
 
-    async function getData() {    
+    async function getUserData() {    
         await api.get('/usuario')
-        .then((res) => {
-            setPersonalData(res.data)
-        })
+        .then((res) => setPersonalData(res.data))
         .catch(() => alert('Não foi possível pegar os dados!'))
+    }
+
+    async function getAdressData() {
+        await api.get('endereco')
+        .then(() => setAddressData(res.data))
+        .catch(() => alert('Não foi possível pegar o endereço do usuário!'))
     }
 
     async function updateUser({name, password, email, phone}) {
@@ -52,9 +60,9 @@ function EditAccount() {
             case 1:
                 return <UserData onSubmit={updateUser} data={personalData} signup={false} />
             case 2:
-                return <AddressData onSubmit={console.log('yei')} signup={false} />
+                return <AddressData onSubmit={console.log('yei')} data={addressData} signup={false} />
             default:
-                return <UserData onSubmit={console.log('yei')} data={personalData} signup={false} />
+                return <UserData onSubmit={updateUser} data={personalData} signup={false} />
         }
     }
 
