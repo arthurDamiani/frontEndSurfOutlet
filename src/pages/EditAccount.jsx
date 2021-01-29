@@ -44,6 +44,20 @@ function EditAccount() {
         .catch(() => alert('falha ao editar usuário!'))
     }
 
+    async function updateAddress({cep, street, number, complement, neighborhood, city, state}) {
+        await api.put('endereco', {
+            bairro: neighborhood,
+            cep: cep,
+            cidade: city,
+            complemento: complement,
+            estado: state,
+            numero: number,
+            rua: street
+        })
+        .then(() => alert('Endereço editado com sucesso!'))
+        .catch(() => alert('Falha ao editar endereço!'))
+    }
+
     function pageTitle() {
         switch(formOption) {
             case 1:
@@ -60,7 +74,7 @@ function EditAccount() {
             case 1:
                 return <UserData onSubmit={updateUser} data={personalData} signup={false} />
             case 2:
-                return <AddressData onSubmit={console.log('yei')} data={addressData} signup={false} />
+                return <AddressData onSubmit={updateAddress} data={addressData} signup={false} />
             default:
                 return <UserData onSubmit={updateUser} data={personalData} signup={false} />
         }
