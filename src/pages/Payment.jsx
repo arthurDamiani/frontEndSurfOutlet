@@ -10,13 +10,13 @@ function Payment() {
     const [personalData, setPersonalData] = useState([])
 
     const [edit, setEdit] = useState(false)
-    const [address, setAddress] = useState('Rodovia Jornalista Manoel de Menezes')
-    const [number, setNumber] = useState('2051')
-    const [complement, setComplement] = useState('Casa 10')
-    const [cep, setCep] = useState('88061-700')
-    const [state, setState] = useState('SC')
-    const [city, setCity] = useState('Florianópolis')
-    const [neighborhood, setNeighborhood] = useState('Barra da Lagoa')
+    const [street, setStreet] = useState('')
+    const [number, setNumber] = useState('')
+    const [complement, setComplement] = useState('')
+    const [cep, setCep] = useState('')
+    const [state, setState] = useState('')
+    const [city, setCity] = useState('')
+    const [neighborhood, setNeighborhood] = useState('')
 
     const [paymentType, setPaymentType] = useState(0)
     const [cardType, setCardType] = useState('')
@@ -26,11 +26,14 @@ function Payment() {
     const [cvv, setCvv] = useState('')
 
     const token = sessionStorage.getItem('key')
+    api.defaults.headers.common['Authorization'] = 'Bearer ' + token
 
-    useEffect(() => getUserData(), [edit])
+    useEffect(() => {
+        getUserData()
+        getAddressData()
+    }, [edit])
 
     async function getUserData() {
-        api.defaults.headers.common['Authorization'] = 'Bearer ' + token
         await api.get('/usuario')
         .then((res) => {
             setPersonalData(res.data)
@@ -38,10 +41,33 @@ function Payment() {
         .catch(() => alert('Não foi possível pegar os dados!'))
     }
 
-    function handleEditAddress() {
+    async function getAddressData() {
+        api.get('/endereco')
+        .then((res) => {
+            setStreet(res.data.rua)
+            setNumber(res.data.numero)
+            setComplement(res.data.complemento)
+            setCep(res.data.cep)
+            setState(res.data.estado)
+            setCity(res.data.cidade)
+            setNeighborhood(res.data.bairro)
+        })
+        .catch(() => alert('Falha ao obter dados de endereço!'))
+    }
+
+    async function handleEditAddress() {
         if(edit) {
-            setEdit(false)
-            console.log('editando')
+            await api.put('endereco', {
+                bairro: neighborhood,
+                cep: cep,
+                cidade: city,
+                complemento: complement,
+                estado: state,
+                numero: number,
+                rua: street
+            })
+            .then(() => alert('Endereço editado com sucesso!'))
+            .catch(() => alert('Falha ao editar endereço!'))
         } else {
             setEdit(true)
         }
@@ -66,10 +92,10 @@ function Payment() {
                     <PaymentBox type={1} onClick={handleEditAddress}>
                         <form className='payment-box-data'>
                             <TextField 
-                                value={address}
-                                onChange={(e) => setAddress(e.target.value)}
-                                id='address'
-                                label='Endereço'
+                                value={street}
+                                onChange={(e) => setStreet(e.target.value)}
+                                id='street'
+                                label='Rua'
                                 variant='outlined'
                                 margin='normal'
                                 className='white-background'

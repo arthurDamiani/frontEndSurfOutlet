@@ -1,0 +1,9 @@
+.filter-checkbox {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+}
+
+.filter-checkbox .filter-category {
+    margin-top: 2rem;
+}
