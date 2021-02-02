@@ -5,11 +5,14 @@ import useError from '../../hooks/useError'
 
 import './form.css'
 
-function UserData({onSubmit, data}) {
+function UserData({onSubmit, data, signup}) {
+    const [name, setName] = useState(data.nomeCompleto)
     const [email, setEmail] = useState(data.email)
-    const [password, setPassword] = useState(data.password)
-    const [confirmPassword, setConfirmPassword] = useState(data.password)
+    const [password, setPassword] = useState(data.senha)
+    const [confirmPassword, setConfirmPassword] = useState(data.senha)
     const [confirmPasswordError, setConfirmPasswordError] = useState({valid:true, text:''})
+    const [cpf, setCpf] = useState(data.cpf)
+    const [phone, setPhone] = useState(data.telefone)
     const validations = useContext(FormValidations)
     const [error, fieldValidator, canSend] = useError(validations)
 
@@ -21,16 +24,28 @@ function UserData({onSubmit, data}) {
         }
     }
 
-
     return (
         <>
+            {signup ?
             <h2 className='form-title'>Crie sua conta</h2>
+            : ''}
             <form onSubmit={(e) => {
                 e.preventDefault()
                 if(canSend() && confirmPasswordError.valid) {
-                    onSubmit({email, password})
+                    onSubmit({name, email, password, cpf, phone})
                 }
             }}>
+                <TextField
+                    value={name}
+                    onChange={(e) => {setName(e.target.value)}}
+                    id='name' 
+                    label='Nome' 
+                    type='text' 
+                    variant='filled'
+                    margin='normal'
+                    fullWidth
+                    required 
+                />
                 <TextField
                     value={email}
                     onChange={(e) => {setEmail(e.target.value)}}
@@ -42,39 +57,81 @@ function UserData({onSubmit, data}) {
                     fullWidth
                     required 
                 />
-                <TextField
-                    value={password}
-                    onChange={(e) => {setPassword(e.target.value)}}
-                    onBlur={fieldValidator}
-                    error={!error.password.valid}
-                    helperText={error.password.text}
-                    id='password'
-                    name='password'
-                    label='Senha'
-                    type='password'
-                    variant='filled'
-                    margin='normal'
-                    fullWidth
-                    required
-                />
-                <TextField
-                    value={confirmPassword}
-                    onChange={(e) => {setConfirmPassword(e.target.value)}}
-                    onBlur={confirmPasswordValidator}
-                    error={!confirmPasswordError.valid}
-                    helperText={confirmPasswordError.text}
-                    id='confirmPassword'
-                    name='confirmPassword'
-                    label='Confirma Senha'
-                    type='password'
-                    variant='filled'
-                    margin='normal'
-                    fullWidth
-                    required
-                />
-                <div className="navigation-container">
-                    <Button disabled>Voltar</Button>
-                    <Button type='submit' color='primary'>Próximo</Button>
+                <div className='input-container-form'>
+                    <div className='margin-form'>
+                        <TextField
+                            value={password}
+                            onChange={(e) => {setPassword(e.target.value)}}
+                            onBlur={fieldValidator}
+                            error={!error.password.valid}
+                            helperText={error.password.text}
+                            id='password'
+                            name='password'
+                            label='Senha'
+                            type='password'
+                            variant='filled'
+                            margin='normal'
+                            required={signup}
+                            className='inline-input'
+                        />
+                    </div>
+                    <TextField
+                        value={confirmPassword}
+                        onChange={(e) => {setConfirmPassword(e.target.value)}}
+                        onBlur={confirmPasswordValidator}
+                        error={!confirmPasswordError.valid}
+                        helperText={confirmPasswordError.text}
+                        id='confirmPassword'
+                        name='confirmPassword'
+                        label='Confirma Senha'
+                        type='password'
+                        variant='filled'
+                        margin='normal'
+                        required={signup}
+                        className='inline-input'
+                    />
+                </div>
+                <div className='input-container-form'>
+                    <div className='margin-form'>
+                        <TextField
+                            value={cpf}
+                            onChange={(e) => {setCpf(e.target.value)}}
+                            onBlur={fieldValidator}
+                            error={!error.cpf.valid}
+                            helperText={error.cpf.text}
+                            id='cpf' 
+                            name='cpf'
+                            label='CPF' 
+                            type='number' 
+                            variant='filled'
+                            margin='normal'
+                            required 
+                            className='inline-input'
+                        />
+                    </div>
+                    <TextField
+                        value={phone}
+                        onChange={(e) => {setPhone(e.target.value)}}
+                        onBlur={fieldValidator}
+                        error={!error.phone.valid}
+                        helperText={error.phone.text}
+                        id='phone' 
+                        name='phone'
+                        label='Telefone' 
+                        type='tel' 
+                        variant='filled'
+                        margin='normal'
+                        required 
+                        className='inline-input'
+                    />
+                </div>
+                <div className={signup ? 'navigation-container' : 'navigation-container edit-button'}>
+                    {signup ?
+                    <>
+                        <Button disabled>Voltar</Button>
+                        <Button type='submit' color='primary'>Próximo</Button>
+                    </>
+                    : <Button type='submit' color='primary'>Salvar alterações</Button>}
                 </div>
             </form>
         </>

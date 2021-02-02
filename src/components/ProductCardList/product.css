@@ -1,7 +1,26 @@
 .products-wrapper {
     max-width: 1000px;
     width: 100%;
-    margin: 0 auto;
+    right: 0;
+}
+
+.filter-sort {
+    margin: 15px 0;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.filter-sort p {
+    margin-left: 130px;
+}
+
+.filter-sort select {
+    position: absolute;
+    margin-left: 955px;
+    padding: 5px;
+    outline: none;
+    border: 1px solid #0080A8;
+    border-radius: 4px;
 }
 
 .products {
@@ -9,11 +28,12 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-left: 7rem;
 }
 
 .card-grid {
     min-width: 300px;
-    min-height: 400px;
+    min-height: 250px;
     border: 1px solid #eee;
     overflow: hidden;
     padding: 10px;

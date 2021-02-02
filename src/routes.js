@@ -1,11 +1,13 @@
-import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import Landing from './pages/Landing';
-import ProductsCard from './pages/ProductsCard';
-import DetailsProduct from './components/DetailsProduct';
+import React from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
+import Landing from './pages/Landing'
+import ProductsCard from './pages/ProductsCard'
+import Payment from './pages/Payment'
+import DetailsProduct from './components/DetailsProduct'
+import EditAccount from './pages/EditAccount'
 import Header from './components/Header'
-import ShoppingCart from './components/ShoppingCart'
-
+import Footer from './components/Footer'
+  
 
 function Routes() {
 	return (
@@ -13,8 +15,10 @@ function Routes() {
             <Header />
 			<Route path="/" exact component={Landing} />
 			<Route path="/products" exact component={ProductsCard} />
-			<Route path="/detailsProducts" exact component={DetailsProduct} />
-			<Route path="/checkout" exact component={ShoppingCart} />
+			<Route path="/detailsProducts/:id" exact component={DetailsProduct} />
+			<Route path="/payment" exact component={Payment} />
+			<Route path="/edit" exact component={EditAccount} />
+			<Footer />
 		</BrowserRouter>
 	)
 }

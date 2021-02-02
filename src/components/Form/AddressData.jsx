@@ -1,31 +1,49 @@
 import React, {useState, useContext} from 'react'
 import { Button, TextField } from '@material-ui/core'
-import FormValidations from '../../contexts/FormValidations'
-import useError from '../../hooks/useError'
+import cepApi from '../../services/cepApi'
 
 import './form.css'
 
-function AddressData({onSubmit, goBack}) {
-    const [cep, setCep] = useState('')
-    const [address, setAddress] = useState('')
-    const [number, setNumber] = useState('')
-    const [complement, setComplement] = useState('')
-    const [neighborhood, setNeighborhood] = useState('') 
-    const [city, setCity] = useState('')
-    const [state, setState] = useState('')
+function AddressData({data, onSubmit, goBack, signup}) {
+    const [cep, setCep] = useState(data.cep)
+    const [cepError, setCepError] = useState({error: false, text: ''})
+    const [street, setStreet] = useState(data.rua)
+    const [number, setNumber] = useState(data.numero)
+    const [complement, setComplement] = useState(data.complemento)
+    const [neighborhood, setNeighborhood] = useState(data.bairro) 
+    const [city, setCity] = useState(data.cidade)
+    const [state, setState] = useState(data.estado)
+
+    async function cepValidator() {
+        await cepApi.get(`/${cep}/json`)
+        .then((res) => {
+            setStreet(res.data.logradouro)
+            setNeighborhood(res.data.bairro)
+            setCity(res.data.localidade)
+            setState(res.data.uf)
+            setCepError({error: false, text: ''})
+        })
+        .catch(() => setCepError({error: true, text: 'CEP inválido'}))
+    }
 
 
     return (
         <>
+            {signup ? 
             <h2 className='form-title'>Endereço</h2>
+            : ''}
             <form className='form' onSubmit={(e) => {
                 e.preventDefault()
-                onSubmit({cep, address, number, complement, neighborhood, city, state})
+                onSubmit({cep, street, number, complement, neighborhood, city, state})
             }}>
                 <TextField
                     value={cep}
                     onChange={(e) => {setCep(e.target.value)}}
+                    onBlur={cepValidator}
+                    error={cepError.error}
+                    helperText={cepError.text}
                     id='cep' 
+                    name='cep'
                     label='CEP' 
                     type='number' 
                     variant='filled'
@@ -34,18 +52,18 @@ function AddressData({onSubmit, goBack}) {
                     fullWidth
                 />
                 <TextField
-                    value={address}
-                    onChange={(e) => {setAddress(e.target.value)}}
-                    id='address' 
-                    label='Endereço' 
+                    value={street}
+                    onChange={(e) => {setStreet(e.target.value)}}
+                    id='street' 
+                    label='Rua' 
                     type='text' 
                     variant='filled'
                     margin='normal'
                     required 
                     fullWidth
                 />
-                <div className='input-container'>
-                    <div className="margin">
+                <div className='input-container-form'>
+                    <div className="margin-form">
                         <TextField
                             value={number}
                             onChange={(e) => {setNumber(e.target.value)}}
@@ -81,8 +99,8 @@ function AddressData({onSubmit, goBack}) {
                     fullWidth
                     required 
                 />
-                <div className="input-container">
-                    <div className="margin">
+                <div className="input-container-form">
+                    <div className="margin-form">
                         <TextField
                             value={city}
                             onChange={(e) => {setCity(e.target.value)}}
@@ -107,9 +125,12 @@ function AddressData({onSubmit, goBack}) {
                         className='inline-input'
                     />
                 </div>
-                <div className="navigation-container">
-                    <Button onClick={goBack} color='primary'>Voltar</Button>
-                    <Button variant='contained' type='submit' color='primary'>Cadastrar</Button>
+                <div className={signup ? 'navigation-container' : 'navigation-container edit-button'}>
+                    {signup ? 
+                    <>
+                        <Button onClick={goBack} color='primary'>Voltar</Button>
+                        <Button variant='contained' type='submit' color='primary'>Cadastrar</Button>
+                    </> : <Button color='primary' type='submit'>Salvar alterações</Button>}
                 </div>
             </form>
         </>

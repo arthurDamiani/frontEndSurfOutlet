@@ -10,14 +10,14 @@
     margin-bottom: 3rem;
 }
 
-.input-container, .navigation-container {
+.input-container-form, .navigation-container {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.margin {
+.margin-form {
     margin-right: 1rem;
     width: 100%;
 }
@@ -26,12 +26,16 @@
     width: 100%;
 }
 
-@media(max-width: 750px) {
-    .input-container {
+.edit-button {
+    justify-content: flex-end;
+}
+
+@media(max-width: 500px) {
+    .input-container-form {
         flex-direction: column;
     }
 
-    .margin {
+    .margin-form {
         margin-right: 0;
     }
 }

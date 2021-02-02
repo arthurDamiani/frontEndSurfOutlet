@@ -30,6 +30,7 @@
 .nav-container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .nav-item {
@@ -37,7 +38,7 @@
     align-items: center;
 }
 
-.nav-item-legend {
+.nav-item-legenda {
     font-size: 1.125rem;
     max-width: 6rem;
     margin: 1rem 0.5rem;
@@ -46,7 +47,7 @@
 
 .menu-container {
     width: 100%;
-    background-color: #0080a8;
+    background-image: linear-gradient(130deg , #65beda, #006a8a);
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -58,16 +59,38 @@
     color: #fff;
 }
 
+.menu-item-active {
+    border-bottom: 4px solid #000;
+}
+
 .sidebar-item {
     display: none;
 }
 
-@media (max-width: 900px) {
+.menu-filter-container {
+    background-color: rgba(0, 128, 168, 0.5);
+    width: 80vw;
+    height: 19rem;
+    position: absolute;
+    left: 10vw;
+    transition: all ease 1s;
+    padding: 2.25rem;
+    font-size: 1.5rem;
+    display: grid;
+    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.filter-hide {
+    display: none;
+}
+
+@media (max-width: 800px) {
     .navbar {
         display: flex;
     }
 
-    .account {
+    .nav-item:first-child {
         display: none;
     }
 
@@ -76,6 +99,7 @@
     }
 
     .menu-container {
+        background-color: #0080a8;
         width: 300px;
         height: 100%;
         position: fixed;
@@ -84,13 +108,11 @@
         transition: 850ms;
         flex-direction: column;
         padding: 0;
-        justify-content: flex-start;
     }
 
     .menu-container.active {
         left: 0;
         transition: 350ms;
-        z-index: 99;
     }
 
     .sidebar-item:first-child {
@@ -101,6 +123,16 @@
 
     .menu-item {
         margin-bottom: 1rem;
+    }
+
+    .menu-filter-container {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .carrinho-legenda {
+        display: none;
     }
 }
 
@@ -119,21 +151,16 @@
         left: 1.5rem;
     }
 
-    .cart {
-        position: fixed;
-        top: 1rem;
-        right: 1.5rem;
-        z-index: auto;
+    .nav-item {
+        display: none;
     }
 
     .sidebar-top {
-        width: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
         margin: 1.5rem;
     }
-
+    
     .sidebar-item {
         display: flex;
         align-items: center;
