@@ -3,9 +3,10 @@ import React, { useState, Fragment } from 'react'
 import { useSelector } from 'react-redux'
 
 import CartProduct from './CartProduct'
-import { formatPrice } from '../../services/util'
 
 import { getCartTotal, getCartState } from '../../selectors/products'
+import { ReactComponent as Cart } from '../../assets/shopping-cart-solid.svg'
+
 
 import './style.css'
 
@@ -28,11 +29,7 @@ function FloatCart() {
 
   const closeFloatCart = () => setIsOpen(false)
 
-    let cartProducts = products.map(p => {
-        return (
-          <CartProduct products={p} key={p.id} />
-        )
-    })
+    let cartProducts = products.map(p => <CartProduct products={p} key={p.id} /> )
 
     let classes = ['float-cart']
 
@@ -59,6 +56,7 @@ function FloatCart() {
               onClick={() => openFloatCart()}
               className="bag bag--float-cart-closed"
             >
+              <Cart height='45' width='45' color='#00556e' />
               <span className="bag__quantity">{itemQuantity}</span>
             </span>
           )}
@@ -86,16 +84,13 @@ function FloatCart() {
               <div className="sub-price">
 
                 <p className="sub-price__val">
-                  {`R$ ${formatPrice(total, products.currencyId )}`}
+                  {`R$ ${total.toFixed(2)}`}
                 </p>
 
                 <small className="sub-price__installment">
                   {!products.installments && (
                     <span>
-                      {`OU EM 10 x R$ ${formatPrice(
-                        total / 10,
-                        products.currencyId
-                      )}`}
+                      {`OU EM 10 x R$ ${(total / 10).toFixed(2)}`}
                     </span>
                   )}
                 </small>

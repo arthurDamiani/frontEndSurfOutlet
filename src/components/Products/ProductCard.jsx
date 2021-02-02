@@ -4,11 +4,10 @@ import { useDispatch } from 'react-redux'
 import { clearFilters } from '../../actions/filters'
 
 import {Link}  from 'react-router-dom'
- import { formatPrice } from '../../services/util'
  
 function Product({product}) {
   
-  const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     product.quantity = 1
 
@@ -22,7 +21,7 @@ function Product({product}) {
             <span>ou até {product.installments}x </span>
             <b>
             {product.currencyFormat}
-            {formatPrice(installmentPrice, product.currencyId)}
+            {installmentPrice.toFixed(2)}
             </b>
         </div>
         )

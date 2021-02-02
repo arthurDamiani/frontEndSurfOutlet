@@ -1,5 +1,7 @@
 export const getCartState = state => state.productsReducer.cart;
 
+console.log(getCartState)
+
 export const getCartTotal = state => state.productsReducer.total;
 
 export const getAllProducts = state => state.productsReducer.products;
