@@ -30,12 +30,12 @@
     justify-content: flex-end;
 }
 
-@media(max-width: 750px) {
-    .input-container {
+@media(max-width: 500px) {
+    .input-container-form {
         flex-direction: column;
     }
 
-    .margin {
+    .margin-form {
         margin-right: 0;
     }
 }

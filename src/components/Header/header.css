@@ -85,7 +85,7 @@
     display: none;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     .navbar {
         display: flex;
     }
@@ -99,6 +99,7 @@
     }
 
     .menu-container {
+        background-color: #0080a8;
         width: 300px;
         height: 100%;
         position: fixed;
@@ -122,6 +123,10 @@
 
     .menu-item {
         margin-bottom: 1rem;
+    }
+
+    .menu-filter-container {
+        display: none;
     }
 }
 
@@ -155,11 +160,7 @@
         align-items: center;
         margin: 1.5rem;
     }
-
-    .sidebar-item:first-child {
-        border-right: 1px solid #fff;
-    }
-
+    
     .sidebar-item {
         display: flex;
         align-items: center;
