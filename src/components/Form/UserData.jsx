@@ -112,7 +112,11 @@ function UserData({onSubmit, data, signup}) {
                     <TextField
                         value={phone}
                         onChange={(e) => {setPhone(e.target.value)}}
+                        onBlur={fieldValidator}
+                        error={!error.phone.valid}
+                        helperText={error.phone.text}
                         id='phone' 
+                        name='phone'
                         label='Telefone' 
                         type='tel' 
                         variant='filled'

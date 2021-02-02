@@ -5,7 +5,7 @@ import Login from '../components/Login'
 function Products() {
     return(
         <div>
-            <ProductCardList />
+            <Login />
         </div>
     )
 }
