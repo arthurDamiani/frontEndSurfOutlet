@@ -214,7 +214,7 @@ function Payment() {
                         <option value={1}>Cartão</option>
                         <option value={2}>Boleto</option>
                     </Select>
-                    {paymentType == 1 ?
+                    {paymentType === 1 ?
                     <PaymentBox type={2}>
                         <Select
                             native

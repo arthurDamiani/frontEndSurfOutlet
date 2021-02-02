@@ -59,7 +59,29 @@
     color: #fff;
 }
 
+.menu-item-active {
+    border-bottom: 4px solid #000;
+}
+
 .sidebar-item {
+    display: none;
+}
+
+.menu-filter-container {
+    background-color: rgba(0, 128, 168, 0.5);
+    width: 80vw;
+    height: 19rem;
+    position: absolute;
+    left: 10vw;
+    transition: all ease 1s;
+    padding: 2.25rem;
+    font-size: 1.5rem;
+    display: grid;
+    grid-template-rows: 25% 25% 25% 25%;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.filter-hide {
     display: none;
 }
 
