@@ -685,8 +685,8 @@ const productsDefaultState = {
 const productsReducer = (state = productsDefaultState, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
-      const addedProduct = state.products.find((product) => action.id === product.id)
-      const existingProduct = state.cart.find((existingProd) => action.id === existingProd.id)
+      const addedProduct = state.products.find((product) => action.payload.id === product.id)
+      const existingProduct = state.cart.find((existingProd) => action.payload.id === existingProd.id)
 
       
       if (existingProduct) {

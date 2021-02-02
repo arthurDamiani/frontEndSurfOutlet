@@ -6,12 +6,14 @@
   height: 100%;
   background-color: #1b1a20;
   box-sizing: border-box;
-  transition: right 0.2s;
+  transition: right 0.3s;
   z-index: 99;
 }
+
 .float-cart--open {
   right: 0;
 }
+
 .float-cart__close-btn {
   width: 50px;
   height: 50px;
@@ -24,9 +26,11 @@
   left: -50px;
   cursor: pointer;
 }
+
 .float-cart__close-btn:hover {
-  background-color: #212027;
+  background-color: #00556e;
 }
+
 .float-cart .bag {
   width: 40px;
   height: 40px;
@@ -34,35 +38,31 @@
   display: inline-block;
   vertical-align: middle;
   margin-right: 15px;
-  background-image: url('../../assets/bag-icon.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
 }
 .float-cart .bag--float-cart-closed {
   position: absolute;
-  background-color: #000;
-  background-size: 50%;
-  left: -60px;
-  width: 60px;
-  height: 60px;
+  left: -90px;
+  top: 28px; 
   cursor: pointer;
 }
 .float-cart .bag--float-cart-closed .bag__quantity {
   bottom: 5px;
-  right: 10px;
+  right: -25px;
 }
 .float-cart .bag__quantity {
   display: inline-block;
   width: 18px;
   height: 18px;
-  color: #0c0b10;
+  color: #ececec;
   font-weight: bold;
   font-size: 0.7em;
   text-align: center;
   line-height: 18px;
   border-radius: 50%;
-  background-color: #eabf00;
+  background-color: #0c0b10;
   position: absolute;
   bottom: -5px;
   right: 0px;
@@ -106,7 +106,7 @@
 .float-cart__shelf-container .shelf-item--mouseover {
   background: #0c0b10;
 }
-.float-cart__shelf-container .shelf-item--mouseover .shelf-item__details .title, .float-cart__shelf-container .shelf-item--mouseover .shelf-item__details .desc {
+.float-cart__shelf-container .shelf-item--mouseover .shelf-item__details .title-cart, .float-cart__shelf-container .shelf-item--mouseover .shelf-item__details .desc {
   text-decoration: line-through;
   opacity: 0.6;
 }
@@ -146,7 +146,7 @@
 .float-cart__shelf-container .shelf-item__details {
   width: 57%;
 }
-.float-cart__shelf-container .shelf-item__details .title {
+.float-cart__shelf-container .shelf-item__details .title-cart {
   color: #ececec;
   margin: 0;
 }

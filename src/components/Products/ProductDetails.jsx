@@ -10,15 +10,18 @@ import Select from 'react-select'
 const ProductDetails = ({ product }) => {
     const dispatch = useDispatch()
 
-    const [selectedSize, setSelectedSize] = useState('');
+    const [selectedSize, setSelectedSize] = useState('')
 
-    // SIZES DROPDOWN ITEM
+    // SIZES DROPDOWN 
     let sizes = []
         sizes.push({label: product.size[0]})    
         sizes.push({label: product.size[1]})    
-    
+        sizes.push({label: product.size[2]})    
+        sizes.push({label: product.size[3]})    
 
-    const onSelectedSizeChange = (newValue) => setSelectedSize(newValue.value)
+    console.log(selectedSize)
+
+    const onSelectedSizeChange = (newValue) => setSelectedSize(newValue.label)
     
     product.quantity = 1
 
@@ -49,17 +52,16 @@ const ProductDetails = ({ product }) => {
                     <h3 className='title-product'>{product.title}</h3>
                     <span className='price-product'>R$ {product.price}</span>
                     <div className='btn-buy'>
-                            <button onClick={() => dispatch(addToCart(product.id))}>COMPRAR AGORA</button>
-                            <button onClick={() => dispatch(addToCart(product.id))}>ADICIONAR AO CARRINHO</button>
+                            <button onClick={() => dispatch(addToCart({...product, selectedSize}))}>COMPRAR AGORA</button>
+                            <button onClick={() => dispatch(addToCart({...product, selectedSize}))}>ADICIONAR AO CARRINHO</button>
                     </div>
                     <div className='size-product'>
                         <Select
                             className='select-size'
                             placeholder="Selecione o tamanho"
                             onChange={onSelectedSizeChange}
+                            styles={{ menu: provided => ({ ...provided, zIndex: 10 }) }}
                             options={sizes}
-                           
-                            
                         />
                     </div>
                     <div className='colors-product'>

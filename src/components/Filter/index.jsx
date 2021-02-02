@@ -3,8 +3,26 @@ import {Button, Checkbox, FormGroup, FormControlLabel, TextField, InputAdornment
 import {ExpandMore, ExpandLess, AttachMoney} from '@material-ui/icons'
 
 import './filter.css'
+import { useSelector, useDispatch } from 'react-redux'
+import { getAllProducts, getAllProductBrands, getAllProductCategory } from '../../selectors/products'
+import { setFilterBrand, removeFilterBrand, setFilterCategory, removeFilterCategory } from '../../actions/filters'
 
 function Filter() {
+
+    const dispatch = useDispatch()
+
+    const products = useSelector(getAllProducts)
+
+    const productBrands = useSelector(getAllProductBrands)
+    const productCategory = useSelector(getAllProductCategory)
+
+
+    const brandsItemsCount = {}
+    products.forEach(product => brandsItemsCount[product.brand] = brandsItemsCount[product.brand] + 1 || 1)
+
+    const categoryItemsCount = {}
+    products.forEach(product => categoryItemsCount[product.category] = categoryItemsCount[product.category] + 1 || 1)
+
     const [size, setSize] = useState(false)
     const [color, setColor] = useState(false)
     const [brands, setBrands] = useState(false)
@@ -14,35 +32,24 @@ function Filter() {
     const [minPrice, setMinPrice] = useState('')
     const [maxPrice, setMaxPrice] = useState('')
 
-    const [checked, setChecked] = useState({
-        white: false,
-        black: false,
-        blue: false,
-        orange: false,
-        red: false,
-        green: false,
-        purple: false,
-        pink: false,
-        brown: false,
-        grey: false,
-        billabong: false,
-        quiksilver: false,
-        mormaii: false,
-        nike: false,
-        vibe: false,
-        freestyle: false,
-        hb: false,
-        pants: false,
-        tankTop: false,
-        tshirt: false,
-        shorts: false,
-        hat: false,
-        trunks: false,
-        bikini: false
-    })
+    const handleChangeBrand = e => {
+        const value = e.target.value
 
-    const handleChange = (event) => {
-        setChecked({...checked, [event.target.name] : event.target.checked})
+        if (e.target.checked) {
+        dispatch(setFilterBrand(value))
+        } else {
+        dispatch(removeFilterBrand(value))
+        }
+    }
+
+    const handleChangeCategory = e => {
+        const value = e.target.value
+
+        if (e.target.checked) {
+        dispatch(setFilterCategory(value))
+        } else {
+        dispatch(removeFilterCategory(value))
+        }
     }
 
     return (
@@ -82,43 +89,43 @@ function Filter() {
                 {color ?
                 <FormGroup>
                     <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.white} name='white' />}
+                        // control={<Checkbox color='primary' onChange={handleChange} checked={checked.white} name='white' />}
                         label='Branco'
                     />
                     <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.black} name='black' />}
+                        // control={<Checkbox color='primary' onChange={handleChange} checked={checked.black} name='black' />}
                         label='Preto'
                     />
                     <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.blue} name='blue' />}
+                        // control={<Checkbox color='primary' onChange={handleChange} checked={checked.blue} name='blue' />}
                         label='Azul'
                     />
                     <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.orange} name='orange' />}
+                        // control={<Checkbox color='primary' onChange={handleChange} checked={checked.orange} name='orange' />}
                         label='Laranja'
                     />
                     <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.red} name='red' />}
+                        // control={<Checkbox color='primary' onChange={handleChange} checked={checked.red} name='red' />}
                         label='Vermelho'
                     />
                     <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.brown} name='brown' />}
+                        // control={<Checkbox color='primary' onChange={handleChange} checked={checked.brown} name='brown' />}
                         label='Marrom'
                     />
                     <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.pink} name='pink' />}
+                        // control={<Checkbox color='primary' onChange={handleChange} checked={checked.pink} name='pink' />}
                         label='Rosa'
                     />
                     <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.purple} name='purple' />}
+                        // control={<Checkbox color='primary' onChange={handleChange} checked={checked.purple} name='purple' />}
                         label='Roxo'
                     />
                     <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.grey} name='grey' />}
+                        // control={<Checkbox color='primary' onChange={handleChange} checked={checked.grey} name='grey' />}
                         label='Cinza'
                     />
                     <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.green} name='green' />}
+                        // control={<Checkbox color='primary' onChange={handleChange} checked={checked.green} name='green' />}
                         label='Verde'
                     />
                 </FormGroup> : ''}
@@ -130,34 +137,23 @@ function Filter() {
                 </div>
                 {brands ?
                 <FormGroup>
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.billabong} name='billabong' />}
-                        label='Billabong'
-                    />
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.quiksilver} name='quiksilver' />}
-                        label='Quiksilver'
-                    />
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.mormaii} name='mormaii' />}
-                        label='Mormaii'
-                    />
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.nike} name='nike' />}
-                        label='Nike'
-                    />
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.vibe} name='vibe' />}
-                        label='Vibe'
-                    />
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.freestyle} name='freestyle' />}
-                        label='Freestyle'
-                    />
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.hb} name='hb' />}
-                        label='HB'
-                    />
+                    {
+                        productBrands.map((brand, i) => {
+                            return (
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox 
+                                            color='primary' 
+                                            onChange={handleChangeBrand} 
+                                            name={brand} 
+                                            value={brand} 
+                                        />
+                                    }
+                                    label={brand}
+                                />
+                            )
+                        })
+                    }
                 </FormGroup>: ''}
             </div>
             <div className="filter-option">
@@ -167,34 +163,23 @@ function Filter() {
                 </div>
                 {category ?
                 <FormGroup>
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.pants} name='pants' />}
-                        label='Calças'
-                    />
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.tankTop} name='tankTop' />}
-                        label='Regatas'
-                    />
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.tshirt} name='tshirt' />}
-                        label='Camisetas'
-                    />
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.shorts} name='shorts' />}
-                        label='Bermudas'
-                    />
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.hat} name='hat' />}
-                        label='Bonés'
-                    />
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.trunks} name='trunks' />}
-                        label='Sungas'
-                    />
-                    <FormControlLabel
-                        control={<Checkbox color='primary' onChange={handleChange} checked={checked.bikini} name='bikini' />}
-                        label='Biquínis'
-                    />
+                    {
+                        productCategory.map((categ, i) => {
+                            return (
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox 
+                                            color='primary' 
+                                            onChange={handleChangeCategory} 
+                                            value={categ}
+                                            name={categ}
+                                        />
+                                    }
+                                    label={categ}
+                                />
+                            )
+                        })
+                    }
                 </FormGroup> : ''}
             </div>
             <div className="filter-option">
@@ -235,9 +220,6 @@ function Filter() {
                                 fullWidth
                             />
                         </div>
-                    </div>
-                    <div className='price-button-container'>
-                        <Button type='submit' color='primary' variant='contained' fullWidth>Filtrar</Button>
                     </div>
                 </div>
                 : ''}

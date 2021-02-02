@@ -121,6 +121,10 @@
     width: 200px;
 }
 
+.details-content .size-product .select-size::before {
+    border: 1px solid #0080A8;
+}
+
 .details-content .size-product button {
     margin: 20px 0;
     margin-right: 6px;

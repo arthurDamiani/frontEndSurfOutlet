@@ -15,9 +15,6 @@ const DetailsProduct = () => {
     const products = useSelector(getAllProducts)
 
     const productID = products[prodID]
-
-
-    console.log(products)
     
     return (
         <div>

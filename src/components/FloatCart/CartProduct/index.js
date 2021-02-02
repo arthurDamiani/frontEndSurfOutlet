@@ -3,7 +3,6 @@ import React, { Fragment, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import Thumb from './../../Thumb'
-import { formatPrice } from '../../../services/util'
 
 import { addToCart, removeFromCart, decrementFromCart } from '../../../actions/products'
 
@@ -17,7 +16,6 @@ function CartProduct({products}) {
   const handleMouseOut = () => setIsMouseOver(false)
 
   const dispatch = useDispatch()
-
 
   const classes = ['shelf-item']
 
@@ -39,18 +37,18 @@ function CartProduct({products}) {
               alt={product.title}
             />
             <div className="shelf-item__details">
-              <p className="title">{product.title}</p>
+              <p className="title-cart">{product.title}</p>
               <p className="desc">
                 {product.style}<br /> 
-                Tamanho: {product.size}<br />
+                Tamanho: {product.selectedSize}<br />
                 Quantidade: {product.quantity}
               </p>
             </div>
             <div className="shelf-item__price">
-              <p>{`${product.currencyFormat}  ${formatPrice(product.price)}`}</p>
+              <p>{`${product.currencyFormat}  ${product.price}`}</p>
                 <div>
                   <button onClick={() => dispatch(decrementFromCart(product.id))} disabled={product.quantity === 1 ? true : false} className="change-product-button">-</button>
-                  <button onClick={() => dispatch(addToCart(product.id))} className="change-product-button">+</button>
+                  <button onClick={() => dispatch(addToCart({...product}))} className="change-product-button">+</button>
                 </div>
             </div>
         </div>

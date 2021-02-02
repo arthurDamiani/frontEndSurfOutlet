@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import './product.css'
 import Product from '../Products/ProductCard'
-import Filter from '../Filter/Filter'
+import Filter from '../Filter'
 
 import { getFilteredProducts } from '../../selectors/products'
 import { useSelector } from 'react-redux'
@@ -11,6 +11,7 @@ const ProductCardList = () => {
 
     //SORT FILTER PRODUCTS
     const [sort, setSort] = useState('')
+
     
     const handleChangeSort = e => {
        setSort(e.target.value) 
@@ -28,15 +29,14 @@ const ProductCardList = () => {
             <div className='products-wrapper'>
                 <div className='filter-sort'>
                     <p>{filteredProducts.length} produtos encontrados</p>
-                    <label>
-                        Ordenar 
                         <select value={sort} onChange={handleChangeSort}>
-                            <option value=''>Selecione</option>
-                            <option value='menor'>menor para maior</option>
-                            <option value='maior'>maior para menor</option>
+                            <option value=''>Ordenar por preço</option>
+                            <option value='menor'>Menor para maior</option>
+                            <option value='maior'>Maior para menor</option>
                         </select>
-                    </label>
                 </div>
+
+                
 
                 <div className="products">
                     {filteredProducts.map(product => <Product product={product} key={product.id} />)}

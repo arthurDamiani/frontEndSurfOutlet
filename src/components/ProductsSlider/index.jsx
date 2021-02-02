@@ -1,15 +1,20 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { getAllProducts } from '../../selectors/products'
+
 import './productsSlider.css'
+
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import roupa from '../../assets/roupa.png'
-import roupa2 from '../../assets/roupa2.png'
-import roupa3 from '../../assets/roupa3.png'
-import roupa4 from '../../assets/roupa4.png'
 import "bootstrap/dist/css/bootstrap-grid.css"
+import { Link } from 'react-router-dom'
+
 
 const ProductsSlider = () => {
+
+    const products = useSelector(getAllProducts)
+
     
     let settings = {
         dots: false,
@@ -51,61 +56,25 @@ const ProductsSlider = () => {
     return (
         <div className='container mt-5 carousel'>
             <Slider {...settings} className="slider">
-                <div className='card-wrapper'>
-                    <div className='card'>
-                        <div className='card-image'>
-                            <img src={roupa} alt=''/>
-                        </div>
-                        <div className='details'>
-                            <h5>JAQUETA DUPLA FACE BILLABONG<span className='price'>R$327,00</span></h5>
-                            <button>Ver detalhes</button>
-                        </div>
-                    </div>
-                </div>
-                <div className='card-wrapper'>
-                    <div className='card'>
-                        <div className='card-image'>
-                            <img src={roupa2} alt=''/>
-                        </div>
-                        <div className='details'>
-                            <h5>JAQUETA DUPLA FACE BILLABONG<span className='price'>R$327,00</span></h5>
-                            <button>Ver detalhes</button>
-                        </div>
-                    </div>
-                </div>
-                <div className='card-wrapper'>
-                    <div className='card'>
-                        <div className='card-image'>
-                            <img src={roupa3} alt=''/>
-                        </div>
-                        <div className='details'>
-                            <h5>JAQUETA DUPLA FACE BILLABONG<span className='price'>R$327,00</span></h5>
-                            <button>Ver detalhes</button>
-                        </div>
-                    </div>
-                </div>
-                <div className='card-wrapper'>
-                    <div className='card'>
-                        <div className='card-image'>
-                            <img src={roupa4} alt=''/>
-                        </div>
-                        <div className='details'>
-                            <h5>JAQUETA DUPLA FACE BILLABONG<span className='price'>R$327,00</span></h5>
-                            <button>Ver detalhes</button>
-                        </div>
-                    </div>
-                </div>
-                <div className='card-wrapper'>
-                    <div className='card'>
-                        <div className='card-image'>
-                            <img src={roupa2} alt=''/>
-                        </div>
-                        <div className='details'>
-                            <h5>JAQUETA DUPLA FACE BILLABONG<span className='price'>R$327,00</span></h5>
-                            <button>Ver detalhes</button>
-                        </div>
-                    </div>
-                </div>
+                {
+                    products.map(p => {
+                        return (
+                            <div className='card-wrapper'>
+                                <div className='card'>
+                                    <div className='card-image'>
+                                        <img src={p.image} alt=''/>
+                                    </div>
+                                    <div className='details'>
+                                        <h5>{p.title}<span className='price'>R${p.price}</span></h5>
+                                        <Link to={`/detailsProducts/${p.id}`}>
+                                          <button>Ver detalhes</button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
             </Slider>
         </div>
         
