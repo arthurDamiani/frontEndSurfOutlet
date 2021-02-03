@@ -14,13 +14,11 @@ function FloatCart() {
 
   const [isOpen, setIsOpen] = useState(false)
 
-  const products = useSelector(getCartState)
-
-  const cartInfo = useSelector(getCartState)
+  const productsCart = useSelector(getCartState)
 
   const total = useSelector(getCartTotal)
 
-  const itemQuantity = cartInfo
+  const itemQuantity = productsCart
     .map((item) => item.quantity)
     .reduce((item, total) => item + total, 0)
 
@@ -29,7 +27,7 @@ function FloatCart() {
 
   const closeFloatCart = () => setIsOpen(false)
 
-    let cartProducts = products.map(p => <CartProduct products={p} key={p.id} /> )
+    let cart = productsCart.map(p => <CartProduct products={p} key={p.id} /> )
 
     let classes = ['float-cart']
 
@@ -56,7 +54,7 @@ function FloatCart() {
               onClick={() => openFloatCart()}
               className="bag bag--float-cart-closed"
             >
-              <Cart height='45' width='45' color='#00556e' />
+              <Cart height='40' width='40' color='#0080A8' />
               <span className="bag__quantity">{itemQuantity}</span>
             </span>
           )}
@@ -64,15 +62,16 @@ function FloatCart() {
           <div className="float-cart__content">
             <div className="float-cart__header">
               <span className="bag">
+                <Cart height='40' width='40' color='#0080A8' />
                 <span className="bag__quantity">{itemQuantity}</span>
               </span>
               <span className="header-title">Carrinho</span>
             </div>
 
             <div className="float-cart__shelf-container">
-              {cartProducts} 
+              {cart} 
               
-              {products.length === 0 && (
+              {productsCart.length === 0 && (
                 <p className="shelf-empty">
                   Adicione algum produto no carrinho
                 </p>
@@ -88,7 +87,7 @@ function FloatCart() {
                 </p>
 
                 <small className="sub-price__installment">
-                  {!products.installments && (
+                  {!productsCart.installments && (
                     <span>
                       {`OU EM 10 x R$ ${(total / 10).toFixed(2)}`}
                     </span>

@@ -40,7 +40,7 @@ function CartProduct({products}) {
               <p className="title-cart">{product.title}</p>
               <p className="desc">
                 {product.style}<br /> 
-                Tamanho: {product.selectedSize}<br />
+                Tamanho: {product.size}<br />
                 Quantidade: {product.quantity}
               </p>
             </div>
