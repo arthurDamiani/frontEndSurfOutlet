@@ -7,6 +7,8 @@ import CartProduct from './CartProduct'
 import { getCartTotal, getCartState } from '../../selectors/products'
 import { ReactComponent as Cart } from '../../assets/shopping-cart-solid.svg'
 
+import {Link} from 'react-router-dom'
+
 
 import './style.css'
 
@@ -95,9 +97,11 @@ function FloatCart() {
                   )}
                 </small>
               </div>
-              <div className="buy-btn">
-                Finalizar
-              </div>
+              <Link to='/payment'>
+                <div className="buy-btn">
+                  Finalizar
+                </div>
+              </Link>
             </div>
           </div>
         </div>

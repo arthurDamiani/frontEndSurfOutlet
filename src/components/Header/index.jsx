@@ -3,7 +3,6 @@ import {TextField, InputAdornment} from '@material-ui/core'
 import {Search, AccountCircle} from '@material-ui/icons'
 import {FaBars} from 'react-icons/fa'
 import './header.css'
-import { Link } from 'react-router-dom'
 import FloatCart from '../FloatCart'
 import api from '../../services/api'
 
@@ -13,16 +12,18 @@ function Header() {
     const [showFilter, setShowFilter] = useState(0)
     const [userName, setUserName] = useState('')
 
+    const showSideBar = () => setSidebar(!sidebar)
+
+    const token = sessionStorage.getItem('key')
     const authorized = sessionStorage.getItem('authorized')
 
-    const showSideBar = () => setSidebar(!sidebar)
+    api.defaults.headers.common['Authorization'] = 'Bearer ' + token
 
     useEffect(() => getUserData(), [authorized])
 
     async function getUserData() {
         await api.get('/usuario')
         .then((res) => setUserName(res.data.nomeCompleto))
-        .catch(() => alert('Não foi possível pegar os dados!'))
     }
 
     function switchFilter() {
@@ -73,10 +74,10 @@ function Header() {
                     />
                 </form>
                 <nav className='nav-container'>
-                    <Link to='/login' className='nav-item'>
+                    <a href={authorized ? '/edit' : '/login'} className='nav-item'>
                         <AccountCircle fontSize="large" />
                         <p className='nav-item-legenda'>{authorized ? userName : 'Entre ou cadastre-se'}</p>
-                    </Link>
+                    </a>
                     <div className="nav-item">
                         <FloatCart />
                     </div>
@@ -85,10 +86,10 @@ function Header() {
             <div onMouseLeave={() => setShowFilter(0)}>
                 <nav onClick={showSideBar} className={sidebar ? 'menu-container active' : 'menu-container'}>
                     <div className='sidebar-top'>
-                        <Link to='#' className='sidebar-item'>
+                        <a href={authorized ? '/edit' : '/login'} className='sidebar-item'>
                             <AccountCircle fontSize="large" />
-                            <p className='nav-item-legenda'>Entre ou cadastre-se</p>
-                        </Link>
+                            <p className='nav-item-legenda'>{authorized ? userName : 'Entre ou cadastre-se'}</p>
+                        </a>
                     </div>
                     <a 
                         href='/products' 
