@@ -5,6 +5,9 @@ import ProductsCard from '../pages/ProductsCard'
 import Payment from '../pages/Payment'
 import EditAccount from '../pages/EditAccount'
 import DetailsProduct from '../components/DetailsProduct'
+import Login from '../components/Login'
+import Form from '../components/Form'
+import ForgotPassword from '../components/ForgotPassword'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
   
@@ -19,6 +22,9 @@ function Routes() {
 				<Route path="/detailsProducts/:id" exact={true} component={DetailsProduct} />
 				<Route path="/payment" exact component={Payment} />
 				<Route path="/edit" exact component={EditAccount} />
+				<Route path="/login" exact component={Login} />
+				<Route path="/form" exact component={Form} />
+				<Route path="/forgetPassword" exact component={ForgotPassword} />
 			</Switch>
 			<Footer />
 		</Router>

@@ -25,6 +25,7 @@ function Login() {
         })
         .then((res) => {
             sessionStorage.setItem('key', res.data.token)
+            sessionStorage.setItem('authorized', true)
             history.push('/payment')
         })
         .catch(() => alert('Usuário ou senha incorretos!'))
@@ -63,12 +64,12 @@ function Login() {
                         <Button type='submit' className='login-button' variant='contained' color='primary' fullWidth >Entrar</Button>
                     </ButtonsContainer>
                     <div className="forget-password">
-                        <p>Esqueceu sua senha?<a>Clique aqui</a></p>
+                        <p>Esqueceu sua senha?<a href='/forgetPassword'>Clique aqui</a></p>
                     </div>
                 </InputContainer>
                 <Separation />
                 <div className='sign-up'>
-                    <Button href='#' variant='contained' color='primary' ><GroupAdd />Cadastre-se</Button>
+                    <Button href='/form' variant='contained' color='primary' ><GroupAdd />Cadastre-se</Button>
                 </div>
             </Box>
         </Container>
