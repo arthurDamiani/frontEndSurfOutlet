@@ -1,4 +1,3 @@
-import {cpf} from 'cpf-cnpj-validator'
 
 function passwordValidator(password) {
     if(password.length < 8) {
@@ -7,6 +6,8 @@ function passwordValidator(password) {
         return {valid:true, text:''}
     }
 }
+
+const cpf = ''
 
 function cpfValidator(cpfForm) {
     if(!cpf.isValid(cpfForm)) {
