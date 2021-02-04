@@ -679,7 +679,7 @@ const productsDefaultState = {
     }
   ],
   cart: [],
-  total: 0
+  total: 0,
 }
 
 const productsReducer = (state = productsDefaultState, action) => {
@@ -688,7 +688,6 @@ const productsReducer = (state = productsDefaultState, action) => {
       const addedProduct = state.products.find((product) => action.payload.id === product.id)
       const existingProduct = state.cart.find((existingProd) => action.payload.id === existingProd.id)
 
-      
       if (existingProduct) {
         addedProduct.quantity += 1
         return {
@@ -703,7 +702,8 @@ const productsReducer = (state = productsDefaultState, action) => {
           cart: [...state.cart, addedProduct],
           total: newTotal
         }
-      };
+      }
+
     case 'REMOVE_FROM_CART':
       const productToRemove = state.cart.find((product) => action.id === product.id)
       const removeProduct = state.cart.filter((product) => action.id !== product.id)
@@ -714,6 +714,7 @@ const productsReducer = (state = productsDefaultState, action) => {
         cart: removeProduct,
         total: newTotal
       }
+
     case 'DECREMENT':
       const products = state.cart.find((product) => action.id === product.id)
 
@@ -727,6 +728,7 @@ const productsReducer = (state = productsDefaultState, action) => {
       } else {
         return state
       }
+
     case 'CLEAR_CART':
       return {
         ...state,

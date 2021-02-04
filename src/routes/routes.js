@@ -7,7 +7,7 @@ import EditAccount from '../pages/EditAccount'
 import DetailsProduct from '../components/DetailsProduct'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-  
+
 
 function Routes() {
 	return (

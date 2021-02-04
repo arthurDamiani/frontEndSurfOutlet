@@ -1,54 +1,41 @@
-import React, { useState, useEffect } from 'react'
-import { imageData } from './imageData'
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore'
-import NavigateNextIcon from '@material-ui/icons/NavigateNext'
-import './carouselImage.css'
-import { Link } from 'react-router-dom'
+import React from 'react'
 
-const ImageSlider = ({ slides }) => {
-  const [current, setCurrent] = useState(0)
-  const length = slides.length
+import { Carousel } from 'react-responsive-carousel'
+import "react-responsive-carousel/lib/styles/carousel.min.css" 
 
-  const nextSlide = () => setCurrent(current === length - 1 ? 0 : current + 1)
-
-  useEffect(() => {
-    let timer = setInterval(() => {
-      nextSlide()
-    }, 4000)
-    return () => clearInterval(timer)
-  })
- 
-
-  const prevSlide = () => setCurrent(current === 0 ? length - 1 : current - 1)
+const ImageSlider = () => {
+  
+  const getConfigurableProps = () => ({
+    showArrows: true,
+    showStatus: false,
+    showIndicators: true,
+    infiniteLoop: true,
+    showThumbs: false,
+    useKeyboardArrows: true,
+    autoPlay: true,
+    stopOnHover: true,
+    swipeable: true,
+    dynamicHeight: true,
+    emulateTouch: true,
+    selectedItem:0,
+    interval: 3000,
+    transitionTime: 900,
+    swipeScrollTolerance: 5,
+})
 
   return (
-    <section>
-      <NavigateBeforeIcon 
-        onClick={prevSlide}
-        className="left-arrow" 
-        style={{fontSize: 50}}
-      />
-      
-      <NavigateNextIcon 
-        onClick={nextSlide}
-        className="right-arrow" 
-        style={{fontSize: 50}}
-      />
-      
-      {imageData.map((slide, index) => {
-        return (
-          <div
-            className='slide'
-            key={index}
-          >
-            {index === current && (
-              <Link to={slide.link}><img href={slide.link} src={slide.image} alt='img' /></Link>
-            )}
-          </div>
-        )
-      })}
-    </section>
-  );
-};
+            <Carousel {...getConfigurableProps()}>
+                <div>
+                    <img src='https://images.unsplash.com/photo-1488402024618-0658e4c2b1f0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1476&q=80' alt='banner' style={{height: '600px'}}/>
+                </div>
+                <div>
+                    <img src='https://images.unsplash.com/photo-1457234068269-b58092525794?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80' alt='banner' style={{height: '600px'}}/>
+                </div>
+                <div>
+                    <img src='https://images.unsplash.com/photo-1531850934-ea5b88733491?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1385&q=80' alt='banner' style={{height: '600px'}}/>
+                </div>
+            </Carousel>
+  )
+}
 
 export default ImageSlider

@@ -9,21 +9,20 @@ import Select from 'react-select'
 
 const ProductDetails = ({ product }) => {
     const dispatch = useDispatch()
-
-    const [selectedSize, setSelectedSize] = useState('')
-
     // SIZES DROPDOWN 
     let sizes = []
-        sizes.push({label: product.size[0]})    
-        sizes.push({label: product.size[1]})    
-        sizes.push({label: product.size[2]})    
-        sizes.push({label: product.size[3]})    
+        sizes.push({label: 'P'})    
+        sizes.push({label: 'M'})    
+        sizes.push({label: 'G'})    
+        sizes.push({label: 'GG'})    
 
-    console.log(selectedSize)
+    const [selectedSize, setSelectedSize] = useState(sizes.label)
 
-    const onSelectedSizeChange = (newValue) => setSelectedSize(newValue.label)
-    
+    const onSelectedSizeChange = newValue => setSelectedSize(newValue.label)
+
     product.quantity = 1
+    product.size = selectedSize
+
 
     const imgThumb = [products[0].image, products[1].image, products[2].image, products[3].image]
     const [images, setImages] = useState(product.image)
@@ -52,16 +51,16 @@ const ProductDetails = ({ product }) => {
                     <h3 className='title-product'>{product.title}</h3>
                     <span className='price-product'>R$ {product.price}</span>
                     <div className='btn-buy'>
-                            <button onClick={() => dispatch(addToCart({...product, selectedSize}))}>COMPRAR AGORA</button>
-                            <button onClick={() => dispatch(addToCart({...product, selectedSize}))}>ADICIONAR AO CARRINHO</button>
+                            <button onClick={() => dispatch(addToCart({...product}))}>COMPRAR AGORA</button>
+                            <button onClick={() => dispatch(addToCart({...product}))}>ADICIONAR AO CARRINHO</button>
                     </div>
                     <div className='size-product'>
                         <Select
                             className='select-size'
                             placeholder="Selecione o tamanho"
                             onChange={onSelectedSizeChange}
-                            styles={{ menu: provided => ({ ...provided, zIndex: 10 }) }}
                             options={sizes}
+                            required
                         />
                     </div>
                     <div className='colors-product'>
@@ -81,10 +80,6 @@ const ProductDetails = ({ product }) => {
                         forro no capuz em malha colorida, cordão como regulagem,
                         estampa frente e costas e etiquetas personalizadas.</p>
                     </div>
-                </div>
-                <div className="suggestion">
-                    <h3>TALVEZ VOCÊ GOSTE TAMBÉM</h3>
-                    <ProductsSlider />
                 </div>
             </div>
         </Fragment>

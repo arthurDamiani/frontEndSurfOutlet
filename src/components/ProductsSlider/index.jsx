@@ -57,9 +57,9 @@ const ProductsSlider = () => {
         <div className='container mt-5 carousel'>
             <Slider {...settings} className="slider">
                 {
-                    products.map(p => {
+                    products.map((p, i) => {
                         return (
-                            <div className='card-wrapper'>
+                            <div className='card-wrapper' key={i}>
                                 <div className='card'>
                                     <div className='card-image'>
                                         <img src={p.image} alt=''/>
