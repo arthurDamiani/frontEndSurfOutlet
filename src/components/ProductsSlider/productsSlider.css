@@ -120,6 +120,14 @@
     z-index: 999;
 }
 
+.carousel .slick-prev {
+    margin-left: -1.2rem;
+}
+
+.carousel .slick-next {
+    margin-right: -1.2rem;
+}
+
 .carousel .slick-prev:before, .carousel .slick-next:before {
     color: #0080a8;
     font-size: 2rem;

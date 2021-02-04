@@ -60,6 +60,7 @@ const ProductDetails = ({ product }) => {
                             placeholder="Selecione o tamanho"
                             onChange={onSelectedSizeChange}
                             options={sizes}
+                            required
                         />
                     </div>
                     <div className='colors-product'>
@@ -79,10 +80,6 @@ const ProductDetails = ({ product }) => {
                         forro no capuz em malha colorida, cordão como regulagem,
                         estampa frente e costas e etiquetas personalizadas.</p>
                     </div>
-                </div>
-                <div className="suggestion">
-                    <h3>TALVEZ VOCÊ GOSTE TAMBÉM</h3>
-                    <ProductsSlider />
                 </div>
             </div>
         </Fragment>

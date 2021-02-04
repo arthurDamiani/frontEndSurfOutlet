@@ -166,29 +166,6 @@
     margin-top: 5px;
 }
 
-.suggestion {
-    margin: 50px 50px;
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-}
-
-.suggestion h3 {
-    border-left: 2px solid rgba(0, 128, 168, 0.6);
-    padding-left: 10px;
-    margin-left: 40px;
-}
-
-.suggestion .carousel {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50%;
-    padding: 0px;
-    margin: -130px;
-}
-
 @media screen and (max-width: 768px) {
     .details-content .btn button {
         margin: 6px 0;

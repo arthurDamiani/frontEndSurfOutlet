@@ -7,7 +7,7 @@
   background-color: #1b1a20;
   box-sizing: border-box;
   transition: right 0.3s;
-  z-index: 99;
+  z-index: 99999;
 }
 
 .float-cart--open {
