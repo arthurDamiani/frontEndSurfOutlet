@@ -63,9 +63,9 @@ function Header() {
                     />
                 </form>
                 <nav className='nav-container'>
-                    <Link to='#' className='nav-item'>
+                    <Link to='#' className='nav-item account'>
                         <AccountCircle fontSize="large" />
-                        <p className='nav-item-legenda'>Entre ou cadastre-se</p>
+                        <p className='nav-item-legend'>Entre ou cadastre-se</p>
                     </Link>
                     <div className="nav-item">
                         <FloatCart />
