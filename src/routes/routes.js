@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop'
 import Landing from '../pages/Landing'
 import ProductsCard from '../pages/ProductsCard'
 import Payment from '../pages/Payment'
@@ -16,6 +17,7 @@ function Routes() {
 	return (
 		<Router>
 			<Header />
+			<ScrollToTop />
 			<Switch>
 				<Route path="/" exact component={Landing} />
 				<Route path="/products" exact component={ProductsCard} />

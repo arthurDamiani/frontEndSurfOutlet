@@ -26,6 +26,7 @@ function Login() {
         .then((res) => {
             sessionStorage.setItem('key', res.data.token)
             sessionStorage.setItem('authorized', true)
+            alert('Usuário logado com sucesso!')
             history.push('/')
         })
         .catch(() => alert('Usuário ou senha incorretos!'))
