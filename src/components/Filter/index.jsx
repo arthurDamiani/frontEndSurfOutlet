@@ -32,6 +32,8 @@ function Filter() {
     const [minPrice, setMinPrice] = useState('')
     const [maxPrice, setMaxPrice] = useState('')
 
+    const [checked, setChecked] = useState(false)
+
     const handleChangeBrand = e => {
         const value = e.target.value
 
@@ -133,7 +135,6 @@ function Filter() {
             <div className="filter-option">
                 <div className='filter-option-top' onClick={() => setBrands(!brands)}>
                     <Button  color='primary' size='large' fullWidth>Marcas</Button>
-                    {brands ? <ExpandLess color='primary' /> : <ExpandMore color='primary' />}
                 </div>
                 {brands ?
                 <FormGroup>
@@ -146,7 +147,7 @@ function Filter() {
                                             color='primary' 
                                             onChange={handleChangeBrand} 
                                             name={brand} 
-                                            value={brand} 
+                                            value={brand}
                                         />
                                     }
                                     label={brand}

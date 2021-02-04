@@ -1,5 +1,5 @@
 import React from 'react'
-import {imageData} from '../components/CarouselImage/imageData'
+
 import CarouselImage from '../components/CarouselImage'
 import {Payment, LocalShipping, AttachMoney} from '@material-ui/icons'
 import modeloPe from '../assets/modelo.png'
@@ -10,7 +10,7 @@ import '../styles/Landing.css'
 function Landing() {
     return(
         <div className='landing-container'>
-            <CarouselImage slides={imageData}/>
+            <CarouselImage />
             <div className='payment-information-container'>
                 <div className='payment-information'>
                     <Payment fontSize='large' />
@@ -31,7 +31,7 @@ function Landing() {
             </div>
             <div className='products-carousel-container'>
                 <h3 className='products-carousel-title'>Novidades</h3>
-                {/*<ProductsSlider /> */}
+                {/* <ProductsSlider />  */}
             </div>
             <div className='images-container'>
                 <img className='left-image' src='https://images.boardriders.com/global/billabong-products/all/default/hi-res/j3sb29bimu_billabong,l_1220_frt1.jpg' alt='roupa billabong' />
@@ -42,7 +42,7 @@ function Landing() {
             </div>
             <div className='products-carousel-container'>
                 <h3 className='products-carousel-title'>Mais vendidos</h3>
-                {/*<ProductsSlider /> */}
+                {/* <ProductsSlider />  */}
             </div>
             <div className="images-container">
                 <img className='equal-images' src={modeloPe} alt='roupa billabong' />

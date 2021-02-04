@@ -1,4 +1,5 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
+import FadeLoader from "react-spinners/FadeLoader"
 import './product.css'
 import Product from '../Products/ProductCard'
 import Filter from '../Filter'
@@ -8,6 +9,12 @@ import { useSelector } from 'react-redux'
  
 const ProductCardList = () => {
     const filteredProducts = useSelector(getFilteredProducts)
+
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        filteredProducts ? setLoading(false) : setLoading(true)
+    }, [filteredProducts])
 
     //SORT FILTER PRODUCTS
     const [sort, setSort] = useState('')
@@ -21,7 +28,7 @@ const ProductCardList = () => {
        } else {
         filteredProducts.sort((a, b) => (a.id < b.id ? 1 : -1))
        }
-       return filteredProducts
+       return filteredProducts 
     }
 
     return ( 
@@ -39,8 +46,10 @@ const ProductCardList = () => {
                 
 
                 <div className="products">
+                    <FadeLoader color={'#0080A8'} loading={loading} height={30} width={5} radius={10} margin={2} />
                     {filteredProducts.map(product => <Product product={product} key={product.id} />)}
                 </div>
+
                 <div className="filter">
                         <Filter />
                 </div>

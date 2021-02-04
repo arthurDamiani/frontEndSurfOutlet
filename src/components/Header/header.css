@@ -42,25 +42,25 @@
     font-size: 1.125rem;
     max-width: 6rem;
     margin: 1rem 0.5rem;
-
 }
 
 .menu-container {
-    width: 100%;
-    background-image: linear-gradient(130deg , #65beda, #006a8a);
+    background-image: linear-gradient(190deg , #7dd9f5, #005772);
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 1.5rem 0;
+    justify-content: center;
+    padding: 1.5rem 8rem;
 }
 
 .menu-item {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: #fff;
+    margin: 0 1rem;
+    transition: all ease 0.3s;
 }
 
 .menu-item-active {
-    border-bottom: 4px solid #000;
+    transform: translate(0, -20%);
 }
 
 .sidebar-item {
@@ -68,12 +68,13 @@
 }
 
 .menu-filter-container {
-    background-color: rgba(0, 128, 168, 0.5);
-    width: 80vw;
+    background-image: linear-gradient(130deg , #005772, #7dd9f5);
+    z-index: 9999;
+    width: 68vw;
+    left: 15vw;
     height: 19rem;
     position: absolute;
-    left: 10vw;
-    transition: all ease 1s;
+    transition: all ease 0.3s;
     padding: 2.25rem;
     font-size: 1.5rem;
     display: grid;
