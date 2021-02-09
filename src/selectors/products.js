@@ -12,6 +12,26 @@ export const getAllProductCategory = state => state.productsReducer.products
     .map((product) => product.category)
     .reduce((unique, category) => unique.includes(category) ? unique : [...unique, category], [])
 
+export const getAllProductGenre = state => state.productsReducer.products
+    .map((product) => product.genre)
+    .reduce((unique, genre) => unique.includes(genre) ? unique : [...unique, genre], [])
+
+export const getAllProductSize = state => state.productsReducer.products
+    .map((product) => product.size)
+    .reduce((unique, size) => unique.includes(size) ? unique : [...unique, size], [])
+
+export const getAllProductPrice = state => state.productsReducer.products
+    .map((product) => product.price)
+    .reduce((unique, price) => unique.includes(price) ? unique : [...unique, price], [])
+
+export const getAllProductColor = state => state.productsReducer.products
+    .map((product) => product.color)
+    .reduce((unique, color) => unique.includes(color) ? unique : [...unique, color], [])
+
+export const getAllProductDepartment = state => state.productsReducer.products
+    .map((product) => product.department)
+    .reduce((unique, department) => unique.includes(department) ? unique : [...unique, department], [])
+
 
 export const getFilteredProducts = state => {
     const { productsReducer: { products }, filters } = state
