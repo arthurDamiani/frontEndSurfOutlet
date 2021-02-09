@@ -6,6 +6,7 @@ import modeloPe from '../assets/modelo.png'
 import modeloLado from '../assets/modelo2.png'
 
 import '../styles/Landing.css'
+import ProductsSlider from '../components/ProductsSlider'
 
 function Landing() {
     return(
@@ -31,7 +32,7 @@ function Landing() {
             </div>
             <div className='products-carousel-container'>
                 <h3 className='products-carousel-title'>Novidades</h3>
-                {/* <ProductsSlider />  */}
+                <ProductsSlider /> 
             </div>
             <div className='images-container'>
                 <img className='left-image' src='https://images.boardriders.com/global/billabong-products/all/default/hi-res/j3sb29bimu_billabong,l_1220_frt1.jpg' alt='roupa billabong' />
@@ -42,7 +43,7 @@ function Landing() {
             </div>
             <div className='products-carousel-container'>
                 <h3 className='products-carousel-title'>Mais vendidos</h3>
-                {/* <ProductsSlider />  */}
+                <ProductsSlider /> 
             </div>
             <div className="images-container">
                 <img className='equal-images' src={modeloPe} alt='roupa billabong' />

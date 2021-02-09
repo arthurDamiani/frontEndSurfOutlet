@@ -11,6 +11,7 @@ import Form from '../components/Form'
 import ForgotPassword from '../components/ForgotPassword'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import ProductsSlider from '../components/ProductsSlider'
 
 
 function Routes() {
