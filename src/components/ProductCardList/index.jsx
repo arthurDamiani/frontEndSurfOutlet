@@ -3,6 +3,7 @@ import FadeLoader from "react-spinners/FadeLoader"
 import './product.css'
 import Product from '../Products/ProductCard'
 import Filter from '../Filter'
+import api from '../../services/api'
 
 import { getFilteredProducts } from '../../selectors/products'
 import { useSelector } from 'react-redux'
@@ -13,10 +14,10 @@ const ProductCardList = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
+        getProducts()
         filteredProducts ? setLoading(false) : setLoading(true)
     }, [filteredProducts])
 
-    //SORT FILTER PRODUCTS
     const [sort, setSort] = useState('')
 
     
@@ -29,6 +30,12 @@ const ProductCardList = () => {
         filteredProducts.sort((a, b) => (a.id < b.id ? 1 : -1))
        }
        return filteredProducts 
+    }
+
+    async function getProducts() {
+        await api.get('/produto')
+        .then((res) => console.log(res.data.retorno.produtos))
+        .catch(() => alert('deu ruim!'))
     }
 
     return ( 
