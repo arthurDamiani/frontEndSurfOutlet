@@ -4,12 +4,12 @@ import './product.css'
 import Product from '../Products/ProductCard'
 import Filter from '../Filter'
 import Pagination from '../Pagination'
+import api from '../../services/api'
 
 import { getFilteredProducts } from '../../selectors/products'
 import { useSelector } from 'react-redux'
 
 import axios from 'axios'
-import api from '../../services/api'
  
 const ProductCardList = () => {
     const filteredProducts = useSelector(getFilteredProducts)
@@ -31,13 +31,6 @@ const ProductCardList = () => {
         fetchProducts()
     })
 
-    async function getProducts() {
-        await api.get('/produto')
-        .then(res => console.log(res.data))
-        .catch(() => alert('Não foi possível pegar os produtos'))
-    }
-    // getProducts()
-
     const indexOfLastPost = currentPage * postPerPage
     const indexOfFirstPost = indexOfLastPost - postPerPage
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
@@ -45,7 +38,6 @@ const ProductCardList = () => {
     //CHANGE PAGE
     const paginate = pageNumber => setCurrentPage(pageNumber)
 
-    //SORT FILTER PRODUCTS
     const [sort, setSort] = useState('')
 
     const handleChangeSort = e => {
@@ -58,6 +50,13 @@ const ProductCardList = () => {
        }
        return filteredProducts 
     }
+
+    async function getProducts() {
+        await api.get('/produto')
+        .then((res) => console.log(res.data.retorno.produtos))
+        .catch(() => alert('deu ruim!'))
+    }
+    getProducts()
 
     return ( 
         <Fragment>
