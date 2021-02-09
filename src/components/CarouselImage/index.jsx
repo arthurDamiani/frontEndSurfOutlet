@@ -17,8 +17,8 @@ const ImageSlider = () => {
     swipeable: true,
     dynamicHeight: true,
     emulateTouch: true,
-    selectedItem:0,
-    interval: 3000,
+    selectedItem: 0,
+    interval: 2000,
     transitionTime: 900,
     swipeScrollTolerance: 5,
 })

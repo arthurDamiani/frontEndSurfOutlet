@@ -46,7 +46,7 @@ const ProductsSlider = () => {
                  infinite={true}
                  transitionDuration={500}
                  removeArrowOnDeviceType={["mobile"]}
-                 autoPlaySpeed={3000}
+                 autoPlaySpeed={2000}
                  slidesToSlide={1}
                  swipeable
                  renderDotsOutside={true}
