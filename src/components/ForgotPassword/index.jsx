@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import {TextField, InputAdornment, Button } from '@material-ui/core'
 import {Person, LockOpen, Description} from '@material-ui/icons'
-import Container from '../utils/Container'
-import Title from '../utils/Title'
-import Box from '../utils/Box'
-import Separation from '../utils/Separation'
-import InputContainer from '../utils/InputContainer'
-import ButtonsContainer from '../utils/ButtonsContainer'
+import Container from '../Utils/Container'
+import Title from '../Utils/Title'
+import Box from '../Utils/Box'
+import Separation from '../Utils/Separation'
+import InputContainer from '../Utils/InputContainer'
+import ButtonsContainer from '../Utils/ButtonsContainer'
 
 
 function ForgotPassword() {

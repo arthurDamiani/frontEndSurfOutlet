@@ -214,67 +214,68 @@ function Payment() {
                         <option value={1}>Cartão</option>
                         <option value={2}>Boleto</option>
                     </Select>
-                    {paymentType === 1 ?
-                    <PaymentBox type={2}>
-                        <Select
-                            native
-                            value={cardType}
-                            onChange={(e) => setCardType(e.target.value)}
-                            variant='outlined'
-                            className='white-background'
-                            fullWidth
-                        >
-                            <option defaultChecked value=''>Tipo Cartão</option>
-                            <option value='credit'>Crédito</option>
-                            <option value='debit'>Débito</option>
-                        </Select>
-                        <TextField 
-                            value={installments}
-                            onChange={(e) => setInstallments(e.target.value)}
-                            id='installments'
-                            label='parcelas'
-                            variant='outlined'
-                            margin='normal'
-                            type='number'
-                            className='white-background'
-                            required
-                            fullWidth
-                        />
-                        <TextField 
-                            value={cardNumber}
-                            onChange={(e) => setCardNumber(e.target.value)}
-                            id='cardNumber'
-                            label='Número do cartão'
-                            variant='outlined'
-                            margin='normal'
-                            className='white-background'
-                            required
-                            fullWidth
-                        />
-                        <TextField 
-                            value={valid}
-                            onChange={(e) => setValid(e.target.value)}
-                            id='valid'
-                            label='Validade'
-                            variant='outlined'
-                            margin='normal'
-                            className='white-background'
-                            required
-                        />
-                        <div className='first-line-input'>
+                    <div className={paymentType === '1' ? '' : 'payment-card-box-disabled'}>
+                        <PaymentBox type={2}>
+                            <Select
+                                native
+                                value={cardType}
+                                onChange={(e) => setCardType(e.target.value)}
+                                variant='outlined'
+                                className='white-background'
+                                fullWidth
+                            >
+                                <option defaultChecked value=''>Tipo Cartão</option>
+                                <option value='credit'>Crédito</option>
+                                <option value='debit'>Débito</option>
+                            </Select>
                             <TextField 
-                                value={cvv}
-                                onChange={(e) => setCvv(e.target.value)}
-                                id='cvv'
-                                label='CVV'
+                                value={installments}
+                                onChange={(e) => setInstallments(e.target.value)}
+                                id='installments'
+                                label='parcelas'
                                 variant='outlined'
                                 margin='normal'
                                 type='number'
                                 className='white-background'
                                 required
+                                fullWidth
                             />
-                        </div>
-                    </PaymentBox> : ''}
+                            <TextField 
+                                value={cardNumber}
+                                onChange={(e) => setCardNumber(e.target.value)}
+                                id='cardNumber'
+                                label='Número do cartão'
+                                variant='outlined'
+                                margin='normal'
+                                className='white-background'
+                                required
+                                fullWidth
+                            />
+                            <TextField 
+                                value={valid}
+                                onChange={(e) => setValid(e.target.value)}
+                                id='valid'
+                                label='Validade'
+                                variant='outlined'
+                                margin='normal'
+                                className='white-background'
+                                required
+                            />
+                            <div className='first-line-input'>
+                                <TextField 
+                                    value={cvv}
+                                    onChange={(e) => setCvv(e.target.value)}
+                                    id='cvv'
+                                    label='CVV'
+                                    variant='outlined'
+                                    margin='normal'
+                                    type='number'
+                                    className='white-background'
+                                    required
+                                />
+                            </div>
+                        </PaymentBox>
+                    </div>
                 </div>
             </div>
             <div className='payment-button-container'>

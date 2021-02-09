@@ -47,3 +47,7 @@
     margin: 1rem 0;
 }
 
+.payment-card-box-disabled {
+    display: none;
+}
+

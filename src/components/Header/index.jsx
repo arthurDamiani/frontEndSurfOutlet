@@ -1,17 +1,30 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {TextField, InputAdornment} from '@material-ui/core'
 import {Search, AccountCircle} from '@material-ui/icons'
 import {FaBars} from 'react-icons/fa'
 import './header.css'
-import { Link } from 'react-router-dom'
 import FloatCart from '../FloatCart'
+import api from '../../services/api'
 
 function Header() {
     const [search, setSearch] = useState('')
     const [sidebar, setSidebar] = useState(false)
     const [showFilter, setShowFilter] = useState(0)
+    const [userName, setUserName] = useState('')
 
     const showSideBar = () => setSidebar(!sidebar)
+
+    const token = sessionStorage.getItem('key')
+    const authorized = sessionStorage.getItem('authorized')
+
+    api.defaults.headers.common['Authorization'] = 'Bearer ' + token
+
+    useEffect(() => getUserData(), [authorized])
+
+    async function getUserData() {
+        await api.get('/usuario')
+        .then((res) => setUserName(res.data.nomeCompleto))
+    }
 
     function switchFilter() {
         switch (showFilter) {
@@ -40,11 +53,9 @@ function Header() {
 
     return (
         <header id='header'>
-            <nav className='header-top' onClick={showFilter}>
-                <div className="navbar">
-                    <a onClick={showSideBar} href='#' className='menu-bars'>
-                        <FaBars />
-                    </a>
+            <nav className='header-top'>
+                <div onClick={showSideBar} className="navbar">
+                    <FaBars />
                 </div>
                 <a href='/' className='header-logo'>Molokai</a>
                 <form onSubmit={(e) => {
@@ -63,10 +74,10 @@ function Header() {
                     />
                 </form>
                 <nav className='nav-container'>
-                    <Link to='#' className='nav-item account'>
+                    <a href={authorized ? '/edit' : '/login'} className='nav-item'>
                         <AccountCircle fontSize="large" />
-                        <p className='nav-item-legend'>Entre ou cadastre-se</p>
-                    </Link>
+                        <p className='nav-item-legenda'>{authorized ? userName : 'Entre ou cadastre-se'}</p>
+                    </a>
                     <div className="nav-item">
                         <FloatCart />
                     </div>
@@ -75,10 +86,10 @@ function Header() {
             <div onMouseLeave={() => setShowFilter(0)}>
                 <nav onClick={showSideBar} className={sidebar ? 'menu-container active' : 'menu-container'}>
                     <div className='sidebar-top'>
-                        <Link to='#' className='sidebar-item'>
+                        <a href={authorized ? '/edit' : '/login'} className='sidebar-item'>
                             <AccountCircle fontSize="large" />
-                            <p className='nav-item-legenda'>Entre ou cadastre-se</p>
-                        </Link>
+                            <p className='nav-item-legenda'>{authorized ? userName : 'Entre ou cadastre-se'}</p>
+                        </a>
                     </div>
                     <a 
                         href='/products' 

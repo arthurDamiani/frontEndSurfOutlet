@@ -91,7 +91,7 @@ function EditAccount() {
                     <li className={formOption === 2 ? 'edit-bordered' : ''}>
                         <Button onClick={() => setFormOption(2)} color='primary' >Endereço</Button>
                     </li>
-                    <li><Button color='primary'>Voltar</Button></li>
+                    <li><Button href='/' color='primary'>Voltar</Button></li>
                 </ul>
                 <div className='form-container'>
                     {personalData.length !== 0 ? switchFormOption() : ''}

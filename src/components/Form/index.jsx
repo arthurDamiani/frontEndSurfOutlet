@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useHistory} from 'react-router-dom'
 import {Stepper, Step, StepLabel, Container} from '@material-ui/core'
 import UserData from './UserData'
 import AddressData from './AddressData'
@@ -9,6 +10,7 @@ import api from '../../services/api'
 import './form.css'
 
 function Form() {
+    const history = useHistory()
     const [currentStep, setCurrentStep] = useState(0)
     const [collectedData, setcollectedData] = useState({email: '',password: '', name: '', cpf: '', phone: ''})
 
@@ -19,6 +21,7 @@ function Form() {
         })
         .then((res) => {
             sessionStorage.setItem('key', res.data.token)
+            sessionStorage.setItem('authorized', true)
             api.defaults.headers.common['Authorization'] = 'Bearer ' + res.data.token
         })
         .catch(() => alert('Usuário ou senha incorretos!'))
@@ -50,14 +53,16 @@ function Form() {
             numero: number,
             rua: street
         })
-        .then(() => next())
+        .then(() => {
+            alert('Conta cadastrada com sucesso!')
+            history.push('/')
+        })
         .catch(() => alert('Falha ao cadastrar endereço!'))
     }
 
     const forms = [
         <UserData data={collectedData} onSubmit={signUpUser} signup={true} />,
         <AddressData data='' onSubmit={signUpAddress} goBack={goBack} signup={true} />,
-        <h5>Obrigado pelo cadastro!</h5>
     ]
 
     function next() {
@@ -73,7 +78,6 @@ function Form() {
             <Stepper activeStep={currentStep}>
                 <Step><StepLabel>Login</StepLabel></Step>
                 <Step><StepLabel>Endereço</StepLabel></Step>
-                <Step><StepLabel>Finalizado</StepLabel></Step>
             </Stepper>
             <FormValidations.Provider value={{password:passwordValidator, cpf:cpfValidator, phone:phoneValidator}}>
                 {forms[currentStep]}

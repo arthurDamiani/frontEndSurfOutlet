@@ -38,7 +38,7 @@
     align-items: center;
 }
 
-.nav-item-legend {
+.nav-item-legenda {
     font-size: 1.125rem;
     max-width: 6rem;
     margin: 1rem 0.5rem;
@@ -50,6 +50,7 @@
     align-items: center;
     justify-content: center;
     padding: 1.5rem 8rem;
+    z-index: 9999;
 }
 
 .menu-item {
@@ -86,12 +87,12 @@
     display: none;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
     .navbar {
         display: flex;
     }
 
-    .account {
+    .nav-item:first-child {
         display: none;
     }
 
@@ -100,6 +101,7 @@
     }
 
     .menu-container {
+        background-color: #0080a8;
         width: 300px;
         height: 100%;
         position: fixed;
@@ -108,13 +110,11 @@
         transition: 850ms;
         flex-direction: column;
         padding: 0;
-        justify-content: flex-start;
     }
 
     .menu-container.active {
         left: 0;
         transition: 350ms;
-        z-index: 99;
     }
 
     .sidebar-item:first-child {
@@ -125,6 +125,16 @@
 
     .menu-item {
         margin-bottom: 1rem;
+    }
+
+    .menu-filter-container {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .carrinho-legenda {
+        display: none;
     }
 }
 
@@ -143,21 +153,16 @@
         left: 1.5rem;
     }
 
-    .cart {
-        position: fixed;
-        top: 1rem;
-        right: 1.5rem;
-        z-index: auto;
+    .nav-item {
+        display: none;
     }
 
     .sidebar-top {
-        width: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
         margin: 1.5rem;
     }
-
+    
     .sidebar-item {
         display: flex;
         align-items: center;
