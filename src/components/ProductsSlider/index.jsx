@@ -4,59 +4,55 @@ import { getAllProducts } from '../../selectors/products'
 
 import './productsSlider.css'
 
-import Slider from 'react-slick'
-import 'slick-carousel/slick/slick.css'
-import 'slick-carousel/slick/slick-theme.css'
-import "bootstrap/dist/css/bootstrap-grid.css"
-import { Link } from 'react-router-dom'
+import Carousel from "react-multi-carousel"
+import "react-multi-carousel/lib/styles.css"
 
+import { Link } from 'react-router-dom'
 
 const ProductsSlider = () => {
 
     const products = useSelector(getAllProducts)
 
-    
-    let settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        pauseOnHover: true,
-        cssEase: 'linear',
-        responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                infinite: true    
-              }
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                initialSlide: 2
-              }
-            },
-            {
-              breakpoint: 480,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1
-              }
-            }
-          ]
+    const responsive = {
+        superLargeDesktop: {
+          breakpoint: { max: 4000, min: 1800 },
+          items: 5
+        },
+        desktop: {
+          breakpoint: { max: 1800, min: 1315 },
+          items: 4
+        },
+        tablet: {
+          breakpoint: { max: 1315, min: 1100 },
+          items: 3
+        },
+        mobileX: {
+          breakpoint: { max: 1100, min: 830 },
+          items: 2
+        },
+        mobile: {
+            breakpoint: { max: 830, min: 0 },
+            items: 1
+          }
     }
 
     return (
-        <div className='container mt-5 carousel'>
-            <Slider {...settings} className="slider">
-                {
+        <div>
+            <Carousel 
+                 responsive={responsive}
+                 minimumTouchDrag={80}
+                 renderButtonGroupOutside={false}
+                 containerClass="container-padding-bottom"
+                 infinite={true}
+                 transitionDuration={500}
+                 removeArrowOnDeviceType={["mobile"]}
+                 autoPlaySpeed={3000}
+                 slidesToSlide={1}
+                 swipeable
+                 renderDotsOutside={true}
+                 autoPlay
+            >
+            {
                     products.map((p, i) => {
                         return (
                             <div className='card-wrapper' key={i}>
@@ -75,7 +71,7 @@ const ProductsSlider = () => {
                         )
                     })
                 }
-            </Slider>
+            </Carousel>
         </div>
         
     )

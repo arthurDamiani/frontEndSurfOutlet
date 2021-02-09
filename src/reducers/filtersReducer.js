@@ -16,15 +16,15 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
         ...state,
         brand: [...state.brand, action.brand]
       }
-    case 'SET_CATEGORY_FILTER':
-      return {
-        ...state,
-        category: [...state.category, action.category]
-      }
     case 'REMOVE_BRAND_FILTER':
       return {
         ...state,
         brand: state.brand.filter((brand) => brand !== action.brand)
+      }
+    case 'SET_CATEGORY_FILTER':
+      return {
+        ...state,
+        category: [...state.category, action.category]
       }
     case 'REMOVE_CATEGORY_FILTER':
       return {

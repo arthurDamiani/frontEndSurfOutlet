@@ -1,14 +1,19 @@
-.carousel {
-    margin: 5rem 10rem;
+.container-padding-bottom {
+    margin: 50px 100px;
+    width: calc(80vw - 200px);
 }
 
 .card-wrapper {
-    position: relative;
-    width: 100vw;
-    height: 100%;
-    margin-left: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.react-multiple-carousel__arrow {
+    position: absolute;
+    margin: auto -1rem;
+}
+    
 .card-wrapper:active, .card-wrapper:hover, .card-wrapper:focus {
     outline: none;
     border: none;
@@ -16,8 +21,8 @@
 
 .card {
     position: relative;
-    width: 220px;
-    height: 300px;
+    width: 200px;
+    height: 270px;
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
@@ -112,27 +117,8 @@
     border: none;
 }
 
-/* setas */
-.carousel .slick-prev, .carousel .slick-next {
-    position: absolute;
-    display: flex;
-    width: 50px;
-    height: 50px;
-    z-index: 999;
-}
 
-.carousel .slick-prev {
-    margin-left: -1.2rem;
-}
 
-.carousel .slick-next {
-    margin-right: -1.2rem;
-}
-
-.carousel .slick-prev:before, .carousel .slick-next:before {
-    color: #0080a8;
-    font-size: 2rem;
-}
 
 
 
