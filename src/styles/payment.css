@@ -42,12 +42,3 @@
     margin-right: 1rem;
 }
 
-.payment-button-container {
-    align-self: flex-end;
-    margin: 1rem 0;
-}
-
-.payment-card-box-disabled {
-    display: none;
-}
-
