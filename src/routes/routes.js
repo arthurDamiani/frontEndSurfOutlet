@@ -29,7 +29,7 @@ function Routes() {
 				<Route path="/form" exact component={Form} />
 				<Route path="/forgetPassword" exact component={ForgotPassword} />
 			</Switch>
-			<Footer />
+			{/* <Footer /> */}
 		</Router>
 	)
 }

@@ -24,6 +24,7 @@
      display: flex;
      align-items: center;
      justify-content: center;
+     width: 100vw;
 }
 
 .pagination  li {
@@ -39,10 +40,15 @@
     transition: all ease 0.3s;
 }
 
-.pagination  li:hover {
+.pagination li:hover {
     background-color: #0080A8;
     color: #fff;
     transition: all ease 0.3s;
+}
+
+.pagination li .page {
+    background-color: #0080A8;
+
 }
 
 .arrow-left, .arrow-right {
