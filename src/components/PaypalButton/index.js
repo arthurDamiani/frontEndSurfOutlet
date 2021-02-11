@@ -4,27 +4,32 @@ function PaypalButton() {
     const paypal = useRef()
     
     useEffect(() => {
-        window.paypal.Buttons({
+        window.paypal
+          .Buttons({
             createOrder: (data, actions, err) => {
-                return actions.order.create({
-                    intent: 'CAPTURE',
-                    purchese_units: [
-                        {
-                            description: 'Moletom Billabong',
-                            amount: {
-                                currency_code: 'BRL',
-                                value: 100.00,
-                            },
-                        },
-                    ],
-                })
+              return actions.order.create({
+                intent: "CAPTURE",
+                purchase_units: [
+                  {
+                    description: 'teste',
+                    amount: {
+                      currency_code: "BRL",
+                      value: 10.00,
+                    },
+                  },
+                ],
+              });
             },
             onApprove: async (data, actions) => {
-                return actions.order.capture().then((details) => console.log(details))
+              const order = await actions.order.capture();
+              console.log(order);
             },
-            onError: async (err) => console.log(err)
-        }).render(paypal.current)
-    }, [])
+            onError: (err) => {
+              console.log(err);
+            },
+          })
+          .render(paypal.current);
+      }, []);
 
     return (
         <div>
