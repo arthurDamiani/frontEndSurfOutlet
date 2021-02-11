@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import NumeratedTitled from '../components/Utils/NumeratedTitle'
 import PaymentBox from '../components/Utils/PaymentBox'
 import {Button, TextField, Select} from '@material-ui/core'
+import PaypalButton from '../components/PaypalButton'
 import api from '../services/api'
 
 import '../styles/payment.css'
@@ -279,7 +280,7 @@ function Payment() {
                 </div>
             </div>
             <div className='payment-button-container'>
-                <Button variant='contained' color='primary'>Finalizar compra</Button>
+                <PaypalButton />
             </div>
         </div>
     )
