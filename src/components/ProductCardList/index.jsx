@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useMemo, useState } from 'react'
 import FadeLoader from "react-spinners/FadeLoader"
 import './product.css'
 import Product from '../Products/ProductCard'
@@ -8,28 +8,27 @@ import api from '../../services/api'
 
 import { getFilteredProducts } from '../../selectors/products'
 import { useSelector } from 'react-redux'
-
-import axios from 'axios'
  
 const ProductCardList = () => {
-    const filteredProducts = useSelector(getFilteredProducts)
+    const filteredProducts = useSelector(getFilteredProducts)   
 
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState(filteredProducts)
     const [loading, setLoading] = useState(false)
     
     const [currentPage, setCurrentPage] = useState(1)
     const [postPerPage, setPostPerPage] = useState(9)
 
-    useEffect(() => {
-        const fetchProducts = async () => {
-            setLoading(false)
-            // const res = await axios.get('url')
-            // setPosts(res.data)
-            setPosts(filteredProducts)
-        }
+    // useMemo(() => {
+    //     const fetchProducts = async () => {
+    //         posts.length > 0 ? setLoading(false) : setLoading(true)
 
-        fetchProducts()
-    })
+    //         const res = await api.get('/produto')
+    //         const products = (res.data.retorno.produtos).map(el => el.produto)
+    //         setPosts(products)
+    //     }
+
+    //     fetchProducts()
+    // }, [posts.length])
 
     const indexOfLastPost = currentPage * postPerPage
     const indexOfFirstPost = indexOfLastPost - postPerPage
@@ -44,19 +43,12 @@ const ProductCardList = () => {
        setSort(e.target.value) 
 
        if(sort !== '') {
-        filteredProducts.sort((a, b) => (sort === 'menor') ? (a.price < b.price ? 1 : -1) : (a.price > b.price ? 1 : -1))
+        posts.sort((a, b) => (sort === 'menor') ? (a.price < b.price ? 1 : -1) : (a.price > b.price ? 1 : -1))
        } else {
-        filteredProducts.sort((a, b) => (a.id < b.id ? 1 : -1))
+        posts.sort((a, b) => (a.id < b.id ? 1 : -1))
        }
-       return filteredProducts 
+       return posts 
     }
-
-    async function getProducts() {
-        await api.get('/produto')
-        .then((res) => console.log(res.data.retorno.produtos))
-        .catch(() => alert('deu ruim!'))
-    }
-    getProducts()
 
     return ( 
         <Fragment>
@@ -74,7 +66,10 @@ const ProductCardList = () => {
                    
                     {
                         loading === true ? 
-                        <FadeLoader color={'#0080A8'} loading={loading} height={70} width={15} radius={10} margin={2} className='spinner' /> :
+                        <div className="spinner">
+                            <FadeLoader color={'#0080A8'} loading={loading} height={35} width={7.5} radius={5} margin={15} />
+                        </div>
+                         :
                         currentPosts.map(product => <Product product={product} key={product.id} />)
                     }
 
@@ -88,7 +83,6 @@ const ProductCardList = () => {
                 </div>
             </div>
         </Fragment>
-        
     )
 }
 

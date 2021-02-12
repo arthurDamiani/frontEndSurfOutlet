@@ -31,6 +31,10 @@
     margin-left: 7rem;
 }
 
+.products .spinner {
+    margin: 200px 400px;
+}
+
 .card-grid {
     min-width: 300px;
     min-height: 250px;

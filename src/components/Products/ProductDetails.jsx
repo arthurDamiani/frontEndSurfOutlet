@@ -1,14 +1,16 @@
 import React, {useState, Fragment} from 'react'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../../actions/products'
+import { ReactComponent as Cart } from '../../assets/shopping-cart-solid.svg'
 
 import './productDetails.css'
 import products  from '../../data/products'
-import ProductsSlider from '../../components/ProductsSlider'
+
 import Select from 'react-select'
 
 const ProductDetails = ({ product }) => {
     const dispatch = useDispatch()
+
     // SIZES DROPDOWN 
     let sizes = []
         sizes.push({label: 'P'})    
@@ -20,9 +22,7 @@ const ProductDetails = ({ product }) => {
 
     const onSelectedSizeChange = newValue => setSelectedSize(newValue.label)
 
-    product.quantity = 1
     product.size = selectedSize
-
 
     const imgThumb = [products[0].image, products[1].image, products[2].image, products[3].image]
     const [images, setImages] = useState(product.image)
@@ -51,8 +51,7 @@ const ProductDetails = ({ product }) => {
                     <h3 className='title-product'>{product.title}</h3>
                     <span className='price-product'>R$ {product.price}</span>
                     <div className='btn-buy'>
-                            <button onClick={() => dispatch(addToCart({...product}))}>COMPRAR AGORA</button>
-                            <button onClick={() => dispatch(addToCart({...product}))}>ADICIONAR AO CARRINHO</button>
+                            <button onClick={() => dispatch(addToCart({...product}))}>ADICIONAR AO{<Cart height='20' width='20' color='#fff' />}</button>
                     </div>
                     <div className='size-product'>
                         <Select
@@ -60,7 +59,7 @@ const ProductDetails = ({ product }) => {
                             placeholder="Selecione o tamanho"
                             onChange={onSelectedSizeChange}
                             options={sizes}
-                            required
+                            required={true}
                         />
                     </div>
                     <div className='colors-product'>

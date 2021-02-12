@@ -36,9 +36,10 @@ function Product({product}) {
                 </Link>
             </div>
             <div className="content">
-                <h3>{product.title}</h3>
+            {/* h3 */}
+                <h6>{product.descricao}</h6> 
                 <div className='price'>
-                    R$ {product.price}       
+                    R$ {product.preco}
                     {productInstallment}
                 </div>
                 <p className='discount'>{product.discount}</p>

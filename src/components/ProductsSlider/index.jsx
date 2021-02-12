@@ -28,11 +28,11 @@ const ProductsSlider = () => {
         },
         mobileX: {
           breakpoint: { max: 1100, min: 830 },
-          items: 2
+          items: 3
         },
         mobile: {
             breakpoint: { max: 830, min: 0 },
-            items: 1
+            items: 2
           }
     }
 
