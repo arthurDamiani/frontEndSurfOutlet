@@ -18,18 +18,18 @@ function PaypalButton() {
                     },
                   },
                 ],
-              });
+              })
             },
             onApprove: async (data, actions) => {
-              const order = await actions.order.capture();
-              console.log(order);
+              const order = await actions.order.capture()
+              console.log(order)
             },
             onError: (err) => {
-              console.log(err);
+              console.log(err)
             },
           })
-          .render(paypal.current);
-      }, []);
+          .render(paypal.current)
+      }, [])
 
     return (
         <div>
