@@ -16,7 +16,7 @@ const ProductCardList = () => {
     const [loading, setLoading] = useState(false)
     
     const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage, setPostPerPage] = useState(9)
+    const [postPerPage, setPostPerPage] = useState(15)
 
     // useMemo(() => {
     //     const fetchProducts = async () => {
@@ -54,7 +54,7 @@ const ProductCardList = () => {
         <Fragment>
             <div className='products-wrapper'>
                 <div className='filter-sort'>
-                    <p>{currentPosts.length} produtos encontrados</p>
+                    <p>{posts.length} produtos encontrados</p>
                         <select value={sort} onChange={handleChangeSort}>
                             <option value=''>Ordenar por preço</option>
                             <option value='menor'>Menor para maior</option>
@@ -70,7 +70,7 @@ const ProductCardList = () => {
                             <FadeLoader color={'#0080A8'} loading={loading} height={35} width={7.5} radius={5} margin={15} />
                         </div>
                          :
-                        currentPosts.map(product => <Product product={product} key={product.id} />)
+                         posts.map(product => <Product product={product} key={product.id} />)
                     }
 
                     <Pagination productsPerPage={postPerPage} totalProducts={posts.length} paginate={paginate} />  

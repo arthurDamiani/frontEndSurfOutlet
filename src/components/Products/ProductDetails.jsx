@@ -18,7 +18,7 @@ const ProductDetails = ({ product }) => {
         sizes.push({label: 'G'})    
         sizes.push({label: 'GG'})    
 
-    const [selectedSize, setSelectedSize] = useState(sizes.label)
+    const [selectedSize, setSelectedSize] = useState('')
 
     const onSelectedSizeChange = newValue => setSelectedSize(newValue.label)
 
@@ -50,8 +50,13 @@ const ProductDetails = ({ product }) => {
                 <div className='details-content'>
                     <h3 className='title-product'>{product.title}</h3>
                     <span className='price-product'>R$ {product.price}</span>
+
                     <div className='btn-buy'>
-                            <button onClick={() => dispatch(addToCart({...product}))}>ADICIONAR AO{<Cart height='20' width='20' color='#fff' />}</button>
+                            <button 
+                                 onClick={() => product.size !== '' ? dispatch(addToCart({...product})) : window.alert('Selecione um tamanho antes de adicionar ao carrinho')}
+                            >
+                                ADICIONAR AO {<Cart height='20' width='20' color='#fff' />}
+                            </button>
                     </div>
                     <div className='size-product'>
                         <Select

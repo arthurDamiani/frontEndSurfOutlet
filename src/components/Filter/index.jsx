@@ -27,20 +27,13 @@ function Filter() {
     const [brands, setBrands] = useState(false)
     const [category, setCategory] = useState(false)
 
-    
-    const [ brandOptions, setBrandOptions ] = useState(productBrands.map((brand, i) => {
-        return { label: brand , value: brand }
-    }))
-    
-    const [selected, setSelected] = useState([])
-
     const handleChangeBrand = e => {
         const value = e.target.value
         
         if (e.target.checked) {
-            setBrandOptions(dispatch(setFilterBrand(value)))
+            dispatch(setFilterBrand(value))
         } else {
-            setBrandOptions(dispatch(removeFilterBrand(value)))
+            dispatch(removeFilterBrand(value))
         }
     }
 
@@ -76,6 +69,7 @@ function Filter() {
                         productBrands.map((brand, i) => {
                             return (
                                 <FormControlLabel
+                                    key={i}
                                     control={
                                         <Checkbox 
                                             color='primary' 
@@ -102,6 +96,7 @@ function Filter() {
                         productCategory.map((categ, i) => {
                             return (
                                 <FormControlLabel
+                                    key={i}
                                     control={
                                         <Checkbox 
                                             color='primary' 

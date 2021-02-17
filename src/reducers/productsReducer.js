@@ -2,15 +2,6 @@ import roupa from '../assets/roupa.png'
 import roupa2 from '../assets/roupa2.png'
 import roupa3 from '../assets/roupa3.png'
 import roupa4 from '../assets/roupa4.png'
-import api from '../services/api'
-
-
-const fetchProducts = async () => {
-    const res = await api.get('/produto').then(response => response)
-    return (res.data.retorno.produtos).map(el => el.produto)
-}
-
-Promise.any([fetchProducts()]).then((value) => console.log(value))
 
 const productsDefaultState = {
     products: [
