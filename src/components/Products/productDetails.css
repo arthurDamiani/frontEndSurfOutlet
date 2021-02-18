@@ -171,10 +171,33 @@
     .details-wrapper {
         height: auto;
         flex-direction: column;
+        justify-content: center;
     }
 
     .thumb {
         width: 60%;
+    }
+
+    .details-content {
+        align-items: center;
+    }
+
+    .colors-product{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-product {
+        text-align: center;
+    }
+}
+
+@media(max-width: 600px) {
+    .details-wrapper {
+        padding: 0;
+        margin: 0;
+        margin-top: 2rem;
     }
 }
 
