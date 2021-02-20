@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Button, Checkbox, FormGroup, FormControlLabel, TextField, InputAdornment} from '@material-ui/core'
-import {ExpandMore, ExpandLess, AttachMoney} from '@material-ui/icons'
+import {ExpandMore, ExpandLess, FilterList, Close} from '@material-ui/icons'
 
 import MultiSelect from "react-multi-select-component";
 
@@ -47,8 +47,11 @@ function Filter() {
         }
     }
 
+    const [filter, setFilter] = useState(false)
+    const showFilter = () => setFilter(!filter)
+
     return (
-        <div className='filter'>
+        <div className={filter ? 'filter active' : 'filter'}>
             {/* <div className='filter-option'>
                 <MultiSelect
                     options={brandOptions}
@@ -58,60 +61,67 @@ function Filter() {
                 />
             </div> */}
 
-            <div className="filter-option">
-                <div className='filter-option-top' onClick={() => setBrands(!brands)}>
-                    <Button  color='primary' size='large' fullWidth>Marcas</Button>
-                    {brands ? <ExpandLess color='primary' /> : <ExpandMore color='primary' />}
+            {filter ? 
+            <>
+                <div onClick={showFilter} className='close-filter'>
+                    <Close color='primary' />
                 </div>
-                {brands ?
-                <FormGroup>
-                    {
-                        productBrands.map((brand, i) => {
-                            return (
-                                <FormControlLabel
-                                    key={i}
-                                    control={
-                                        <Checkbox 
-                                            color='primary' 
-                                            onChange={handleChangeBrand} 
-                                            name={brand} 
-                                            value={brand} 
-                                        />
-                                    }
-                                    label={brand}
-                                />
-                            )
-                        })
-                    }
-                </FormGroup>: ''}
-            </div>
-            <div className="filter-option">
-                <div className='filter-option-top' onClick={() => setCategory(!category)}>
-                    <Button  color='primary' size='large' fullWidth>Categorias</Button>
-                    {category ? <ExpandLess color='primary' /> : <ExpandMore color='primary' />}
+
+                <div className="filter-option">
+                    <div className='filter-option-top' onClick={() => setBrands(!brands)}>
+                        <Button  color='primary' size='large' fullWidth>Marcas</Button>
+                        {brands ? <ExpandLess color='primary' /> : <ExpandMore color='primary' />}
+                    </div>
+                    {brands ?
+                    <FormGroup>
+                        {
+                            productBrands.map((brand, i) => {
+                                return (
+                                    <FormControlLabel
+                                        key={i}
+                                        control={
+                                            <Checkbox 
+                                                color='primary' 
+                                                onChange={handleChangeBrand} 
+                                                name={brand} 
+                                                value={brand} 
+                                            />
+                                        }
+                                        label={brand}
+                                    />
+                                )
+                            })
+                        }
+                    </FormGroup>: ''}
                 </div>
-                {category ?
-                <FormGroup>
-                    {
-                        productCategory.map((categ, i) => {
-                            return (
-                                <FormControlLabel
-                                    key={i}
-                                    control={
-                                        <Checkbox 
-                                            color='primary' 
-                                            onChange={handleChangeCategory} 
-                                            value={categ}
-                                            name={categ}
-                                        />
-                                    }
-                                    label={categ}
-                                />
-                            )
-                        })
-                    }
-                </FormGroup> : ''}
-            </div>
+                <div className="filter-option">
+                    <div className='filter-option-top' onClick={() => setCategory(!category)}>
+                        <Button  color='primary' size='large' fullWidth>Categorias</Button>
+                        {category ? <ExpandLess color='primary' /> : <ExpandMore color='primary' />}
+                    </div>
+                    {category ?
+                    <FormGroup>
+                        {
+                            productCategory.map((categ, i) => {
+                                return (
+                                    <FormControlLabel
+                                        key={i}
+                                        control={
+                                            <Checkbox 
+                                                color='primary' 
+                                                onChange={handleChangeCategory} 
+                                                value={categ}
+                                                name={categ}
+                                            />
+                                        }
+                                        label={categ}
+                                    />
+                                )
+                            })
+                        }
+                    </FormGroup> : ''}
+                </div> 
+            </>: <div className='open-filter' onClick={showFilter}><FilterList color='primary' /></div>}
         </div>
     )
 }

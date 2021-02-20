@@ -2,6 +2,12 @@
     width: 200px;
 }
 
+.open-filter {
+    position: absolute;
+    top: -2.5rem;
+    right: 0.5rem;
+}
+
 .filter {
     width: 20vw;
     height: 80vh;
@@ -10,7 +16,12 @@
     flex-direction: column;
     align-items: center;
     margin-top: 2rem;
+    z-index: 9999;
  }
+
+.close-filter {
+    display: none;
+}
 
 .filter-option {
     width: 70%;
@@ -81,15 +92,19 @@
 
 @media(max-width: 700px) {
     .filter {
-        flex-direction: row;
-        border-right: none;
-        border-bottom: 1px solid #0080a8;
-        width: 80vw;
-        height: auto;
-        align-items: flex-start;
+        position: fixed;
+        left: -100%;
     }
 
-    .filter-option {
-        border-bottom: none;
+    .filter.active {
+        left: 0;
+        transition: 350ms;
+    }
+
+    .close-filter {
+        display: flex;
+        position: absolute;
+        top: -2.5rem;
+        right: 0.5rem;
     }
 }
