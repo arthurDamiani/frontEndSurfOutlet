@@ -109,7 +109,8 @@
         left: -100%;
         transition: 850ms;
         flex-direction: column;
-        padding: 0;
+        justify-content: flex-start;
+        padding: 1rem 0;
     }
 
     .menu-container.active {

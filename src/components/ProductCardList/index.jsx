@@ -62,7 +62,7 @@ const ProductCardList = () => {
                         </select>
                 </div>
 
-                <div className="products">
+                <div className="filter-products">
                    
                     {
                         loading === true ? 

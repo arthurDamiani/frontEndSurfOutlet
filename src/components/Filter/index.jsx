@@ -8,6 +8,7 @@ import './filter.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllProducts, getAllProductBrands, getAllProductCategory } from '../../selectors/products'
 import { setFilterBrand, removeFilterBrand, setFilterCategory, removeFilterCategory } from '../../actions/filters'
+import useWindowDimensions from '../../hooks/useWindowDimensions'
 
 function Filter() {
 
@@ -49,9 +50,18 @@ function Filter() {
 
     const [filter, setFilter] = useState(false)
     const showFilter = () => setFilter(!filter)
+    const { width } = useWindowDimensions()
+    const showFilterBars = test() 
+    function test() {
+        if(width <= 700 && !filter) {
+            return false
+        } else {
+            return true
+        }
+    }
 
     return (
-        <div className={filter ? 'filter active' : 'filter'}>
+        <div className='filter active'>
             {/* <div className='filter-option'>
                 <MultiSelect
                     options={brandOptions}
@@ -61,7 +71,7 @@ function Filter() {
                 />
             </div> */}
 
-            {filter ? 
+            {showFilterBars ? 
             <>
                 <div onClick={showFilter} className='close-filter'>
                     <Close color='primary' />
