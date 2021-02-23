@@ -1,3 +1,8 @@
+export const getProducts = (product) => ({
+  type: 'GET_API',
+  payload: product
+});
+
 export const addToCart = (product) => ({
   type: 'ADD_TO_CART',
   payload: product

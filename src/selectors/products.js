@@ -48,8 +48,8 @@ export const getFilteredProducts = state => {
         }
 
     }).sort((a, b) => {
-        const textA = a.brand.toUpperCase();
-        const textB = b.brand.toUpperCase();
+        const textA = a.brand
+        const textB = b.brand
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
     })
 }

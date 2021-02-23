@@ -96,3 +96,31 @@
 .content .payment {
     margin: 10px 0;
 }
+
+.paginationsBttn {
+    width: 80%;
+    height: 100px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.paginationsBttn a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid #0080A8;
+    color: #0080A8;
+    cursor: pointer;
+}
+
+.paginationsBttn a:hover {
+    color: white;
+    background-color: #0080A8;
+}
+
+.paginationActive a {
+    color: white;
+    background-color: #0080A8;
+}

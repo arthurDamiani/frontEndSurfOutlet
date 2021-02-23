@@ -16,6 +16,7 @@ function Filter() {
     const products = useSelector(getAllProducts)
 
     const productBrands = useSelector(getAllProductBrands)
+
     const productCategory = useSelector(getAllProductCategory)
 
     const brandsItemsCount = {}

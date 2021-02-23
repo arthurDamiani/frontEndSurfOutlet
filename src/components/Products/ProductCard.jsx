@@ -37,7 +37,7 @@ function Product({product}) {
             </div>
             <div className="content">
             {/* h3 */}
-                <h6>{product.descricao}</h6> 
+                <h6>{product.title}</h6> 
                 <div className='price'>
                     R$ {product.preco}
                     {productInstallment}

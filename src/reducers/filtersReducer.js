@@ -5,6 +5,7 @@ const filtersReducerDefaultState = {
 }
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
+
   switch (action.type) {
     case 'SET_TEXT_FILTER':
       return {
@@ -16,6 +17,7 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
         ...state,
         brand: [...state.brand, action.brand]
       }
+
     case 'REMOVE_BRAND_FILTER':
       return {
         ...state,
@@ -42,5 +44,6 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
       return state
   }
 }
+
 
 export default filtersReducer;

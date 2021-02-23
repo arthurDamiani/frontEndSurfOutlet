@@ -3,58 +3,56 @@ import FadeLoader from "react-spinners/FadeLoader"
 import './product.css'
 import Product from '../Products/ProductCard'
 import Filter from '../Filter'
-import Pagination from '../Pagination'
 import api from '../../services/api'
+import ReactPaginate from 'react-paginate'
 
 import { getFilteredProducts } from '../../selectors/products'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProducts } from '../../actions/products'
+
  
 const ProductCardList = () => {
-    const filteredProducts = useSelector(getFilteredProducts)   
+    const dispatch = useDispatch()
 
-    const [posts, setPosts] = useState(filteredProducts)
-    const [loading, setLoading] = useState(false)
-    
-    const [currentPage, setCurrentPage] = useState(1)
-    const [postPerPage, setPostPerPage] = useState(15)
-
-    // useMemo(() => {
-    //     const fetchProducts = async () => {
-    //         posts.length > 0 ? setLoading(false) : setLoading(true)
-
-    //         const res = await api.get('/produto')
-    //         const products = (res.data.retorno.produtos).map(el => el.produto)
-    //         setPosts(products)
-    //     }
-
-    //     fetchProducts()
-    // }, [posts.length])
-
-    const indexOfLastPost = currentPage * postPerPage
-    const indexOfFirstPost = indexOfLastPost - postPerPage
-    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost)
-
-    //CHANGE PAGE
-    const paginate = pageNumber => setCurrentPage(pageNumber)
+    const products = useSelector(getFilteredProducts)   
 
     const [sort, setSort] = useState('')
+
+    const [loading, setLoading] = useState(false)
+
+    const [currentPage, setCurrentPage] = useState(1)
+
+    useMemo(() => {
+        const fetchProducts = async () => {
+            products.length > 0 ? setLoading(false) : setLoading(true)
+
+            const res = await api.get('/produto/' + currentPage)
+            const prod = (res.data.retorno.produtos).map(el => el.produto)
+            
+            dispatch(getProducts(prod)) 
+        }
+
+        fetchProducts()
+    }, [currentPage, dispatch, products.length])
+    
+    const changePage = ({selected}) => setCurrentPage(selected)
 
     const handleChangeSort = e => {
        setSort(e.target.value) 
 
        if(sort !== '') {
-        posts.sort((a, b) => (sort === 'menor') ? (a.price < b.price ? 1 : -1) : (a.price > b.price ? 1 : -1))
+        products.sort((a, b) => (sort === 'menor') ? (a.price < b.price ? 1 : -1) : (a.price > b.price ? 1 : -1))
        } else {
-        posts.sort((a, b) => (a.id < b.id ? 1 : -1))
+        products.sort((a, b) => (a.id < b.id ? 1 : -1))
        }
-       return posts 
+       return products 
     }
 
     return ( 
         <Fragment>
             <div className='products-wrapper'>
                 <div className='filter-sort'>
-                    <p>{posts.length} produtos encontrados</p>
+                    <p>{products.length} produtos encontrados</p>
                         <select value={sort} onChange={handleChangeSort}>
                             <option value=''>Ordenar por preço</option>
                             <option value='menor'>Menor para maior</option>
@@ -70,13 +68,22 @@ const ProductCardList = () => {
                             <FadeLoader color={'#0080A8'} loading={loading} height={35} width={7.5} radius={5} margin={15} />
                         </div>
                          :
-                         posts.map(product => <Product product={product} key={product.id} />)
+                         products.map(product => <Product product={product} key={product.id} />)
                     }
-
-                    <Pagination productsPerPage={postPerPage} totalProducts={posts.length} paginate={paginate} />  
                     
                 </div>
 
+                <ReactPaginate
+                    previousLabel={'<'}
+                    nextLabel={'>'}
+                    pageCount={10}
+                    onPageChange={changePage}
+                    containerClassName={'paginationsBttn'}
+                    previousLinkClassName={'previousBttn'}
+                    nextLinkClassName={'nextBttn'}
+                    disabledClassName={'paginationDisabled'}
+                    activeClassName={'paginationActive'}
+                />
 
                 <div className="filter">
                         <Filter />
