@@ -52,7 +52,7 @@ const ProductCardList = () => {
 
     return ( 
         <Fragment>
-            <div className='products-wrapper'>
+            <div className='products-wrapper-test'>
                 <div className='filter-sort'>
                     <p>{posts.length} produtos encontrados</p>
                         <select value={sort} onChange={handleChangeSort}>

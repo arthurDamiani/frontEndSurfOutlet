@@ -1,22 +1,19 @@
-.products-wrapper {
+.products-wrapper-test {
+    display: flex;
+    flex-direction: column;
     max-width: 1000px;
     width: 100%;
-    right: 0;
+    margin-left: 14rem;
 }
 
 .filter-sort {
     margin: 15px 0;
     display: inline-flex;
-    justify-content: space-between;
-}
-
-.filter-sort p {
-    margin-left: 130px;
+    justify-content: space-around;
 }
 
 .filter-sort select {
-    position: absolute;
-    margin-left: 955px;
+    
     padding: 5px;
     outline: none;
     border: 1px solid #0080A8;
@@ -99,6 +96,18 @@
 
 @media(max-width: 700px) {
     .filter-products {
-        margin-left: 80vw;
+        width: 100%;
+        justify-content: flex-end;
+        margin: 0;
+    }
+
+    .card-grid {
+        margin: 25px;
+    }
+}
+
+@media(min-width: 1300px) {
+    .products-wrapper-test {
+        max-width: 1500px;
     }
 }
