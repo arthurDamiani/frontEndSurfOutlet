@@ -39,7 +39,7 @@ function Product({product}) {
             {/* h3 */}
                 <h6>{product.title}</h6> 
                 <div className='price'>
-                    R$ {product.preco}
+                    R$ {(product.preco).replace('.', ',')}
                     {productInstallment}
                 </div>
                 <p className='discount'>{product.discount}</p>

@@ -9,7 +9,6 @@ import ReactPaginate from 'react-paginate'
 import { getFilteredProducts } from '../../selectors/products'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../actions/products'
-
  
 const ProductCardList = () => {
     const dispatch = useDispatch()
@@ -28,12 +27,16 @@ const ProductCardList = () => {
 
             const res = await api.get('/produto/' + currentPage)
             const prod = (res.data.retorno.produtos).map(el => el.produto)
+
+            console.log(prod)
             
             dispatch(getProducts(prod)) 
         }
 
         fetchProducts()
     }, [currentPage, dispatch, products.length])
+
+    console.log(products.map(product => console.log(product)))
     
     const changePage = ({selected}) => setCurrentPage(selected)
 
@@ -88,6 +91,7 @@ const ProductCardList = () => {
                 <div className="filter">
                         <Filter />
                 </div>
+
             </div>
         </Fragment>
     )

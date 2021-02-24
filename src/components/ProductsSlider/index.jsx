@@ -1,17 +1,33 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts } from '../../selectors/products'
 
+import api from '../../services/api'
 import './productsSlider.css'
 
 import Carousel from "react-multi-carousel"
 import "react-multi-carousel/lib/styles.css"
 
 import { Link } from 'react-router-dom'
+import { getProducts } from '../../actions/products'
 
 const ProductsSlider = () => {
 
+    const dispatch = useDispatch()
     const products = useSelector(getAllProducts)
+
+    useMemo(() => {
+      const fetchProducts = async () => {
+          const res = await api.get('/produto')
+          const prod = (res.data.retorno.produtos).map(el => el.produto)
+
+          console.log(prod)
+          
+          dispatch(getProducts(prod)) 
+      }
+
+      fetchProducts()
+  }, [dispatch])
 
     const responsive = {
         superLargeDesktop: {
@@ -61,7 +77,7 @@ const ProductsSlider = () => {
                                         <img src={p.image} alt=''/>
                                     </div>
                                     <div className='details'>
-                                        <h5>{p.title}<span className='price'>R${p.price}</span></h5>
+                                        <h5>{p.descricao}<span className='price'>R${p.preco.replace('.', ',')}</span></h5>
                                         <Link to={`/detailsProducts/${p.id}`}>
                                           <button>Ver detalhes</button>
                                         </Link>
