@@ -1,24 +1,41 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getAllProducts } from '../../selectors/products'
+import { getProducts } from '../../actions/products'
+
+import api from '../../services/api'
  
 import ProductDetails from '../Products/ProductDetails'
 
- 
 const DetailsProduct = () => {
+    const dispatch = useDispatch()
 
-    const param = useParams()
+    const paramId = useParams()
 
-    const prodID = (param.id - 1) 
-    
     const products = useSelector(getAllProducts)
 
-    const productID = products[prodID]
-    
+    useMemo(() => {
+        const fetchProducts = async () => {
+
+            const res = await api.get('/produto/')
+            const prod = (res.data.retorno.produtos).map(el => el.produto)
+            
+            dispatch(getProducts(prod))            
+        }
+
+        fetchProducts()
+    }, [dispatch])
+
+    const productDetails = products.filter(el => el.id === paramId.id)
+ 
+    const productDetailsOk = productDetails[0]
+
+    console.log(productDetailsOk)
+
     return (
         <div>
-            <ProductDetails product={productID} key={prodID}/>  
+            <ProductDetails product={productDetailsOk} key={productDetailsOk.id}/>  
         </div>
     )
 }

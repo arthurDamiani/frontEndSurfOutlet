@@ -1,13 +1,14 @@
-import React, {useState} from 'react'
+import React, {useMemo, useState} from 'react'
 import {Button, Checkbox, FormGroup, FormControlLabel, TextField, InputAdornment} from '@material-ui/core'
 import {ExpandMore, ExpandLess, AttachMoney} from '@material-ui/icons'
 
-import MultiSelect from "react-multi-select-component";
+import api from '../../services/api'
 
 import './filter.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllProducts, getAllProductBrands, getAllProductCategory } from '../../selectors/products'
 import { setFilterBrand, removeFilterBrand, setFilterCategory, removeFilterCategory } from '../../actions/filters'
+import { getProducts } from '../../actions/products'
 
 function Filter() {
 
@@ -18,6 +19,18 @@ function Filter() {
     const productBrands = useSelector(getAllProductBrands)
 
     const productCategory = useSelector(getAllProductCategory)
+
+    useMemo(() => {
+        const fetchProducts = async () => {
+
+            const res = await api.get('/produto')
+            const prod = (res.data.retorno.produtos).map(el => el.produto)
+            
+            dispatch(getProducts(prod)) 
+        }
+
+        fetchProducts()
+    }, [dispatch])
 
     const brandsItemsCount = {}
     products.forEach(product => brandsItemsCount[product.brand] = brandsItemsCount[product.brand] + 1 || 1)

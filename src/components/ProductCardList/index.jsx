@@ -27,16 +27,12 @@ const ProductCardList = () => {
 
             const res = await api.get('/produto/' + currentPage)
             const prod = (res.data.retorno.produtos).map(el => el.produto)
-
-            console.log(prod)
             
             dispatch(getProducts(prod)) 
         }
 
         fetchProducts()
     }, [currentPage, dispatch, products.length])
-
-    console.log(products.map(product => console.log(product)))
     
     const changePage = ({selected}) => setCurrentPage(selected)
 
@@ -63,30 +59,30 @@ const ProductCardList = () => {
                         </select>
                 </div>
 
-                <div className="products">
-                   
                     {
                         loading === true ? 
                         <div className="spinner">
                             <FadeLoader color={'#0080A8'} loading={loading} height={35} width={7.5} radius={5} margin={15} />
                         </div>
                          :
-                         products.map(product => <Product product={product} key={product.id} />)
+                         <div className="products">
+                            { products.map(product => <Product product={product} key={product.id} />) }
+
+                            <ReactPaginate
+                            previousLabel={'<'}
+                            nextLabel={'>'}
+                            pageCount={10}
+                            onPageChange={changePage}
+                            containerClassName={'paginationsBttn'}
+                            previousLinkClassName={'previousBttn'}
+                            nextLinkClassName={'nextBttn'}
+                            disabledClassName={'paginationDisabled'}
+                            activeClassName={'paginationActive'}
+                            />
+                         </div>
+                    
                     }
                     
-                </div>
-
-                <ReactPaginate
-                    previousLabel={'<'}
-                    nextLabel={'>'}
-                    pageCount={10}
-                    onPageChange={changePage}
-                    containerClassName={'paginationsBttn'}
-                    previousLinkClassName={'previousBttn'}
-                    nextLinkClassName={'nextBttn'}
-                    disabledClassName={'paginationDisabled'}
-                    activeClassName={'paginationActive'}
-                />
 
                 <div className="filter">
                         <Filter />

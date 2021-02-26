@@ -21,11 +21,11 @@ const productsReducer = (state = productsDefaultState, action) => {
         addedProduct.quantity += 1
         return {
           ...state,
-          total: state.total + addedProduct.price
+          total: state.total + parseFloat(addedProduct.preco)
         }
       } else {
         addedProduct.quantity = 1;
-        const newTotal = state.total + addedProduct.price
+        const newTotal = state.total + parseFloat(addedProduct.preco)
         return {
           ...state,
           cart: [...state.cart, addedProduct],
@@ -37,7 +37,7 @@ const productsReducer = (state = productsDefaultState, action) => {
       const productToRemove = state.cart.find((product) => action.id === product.id)
       const removeProduct = state.cart.filter((product) => action.id !== product.id)
 
-      const newTotal = state.total - (productToRemove.price * productToRemove.quantity)
+      const newTotal = state.total - (productToRemove.preco * productToRemove.quantity)
       return {
         ...state,
         cart: removeProduct,
@@ -49,7 +49,7 @@ const productsReducer = (state = productsDefaultState, action) => {
 
       if (products.quantity > 1) {
         products.quantity -= 1;
-        const newTotal = state.total - products.price
+        const newTotal = state.total - products.preco
         return {
           ...state,
           total: newTotal

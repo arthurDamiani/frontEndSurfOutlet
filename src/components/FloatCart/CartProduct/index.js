@@ -37,7 +37,7 @@ function CartProduct({products}) {
               alt={product.title}
             />
             <div className="shelf-item__details">
-              <p className="title-cart">{product.title}</p>
+              <p className="title-cart">{product.descricao}</p>
               <p className="desc">
                 {product.style}<br /> 
                 Tamanho: {product.size}<br />
@@ -45,7 +45,7 @@ function CartProduct({products}) {
               </p>
             </div>
             <div className="shelf-item__price">
-              <p>{`${product.currencyFormat}  ${product.price}`}</p>
+              <p>{parseFloat(product.preco)}</p> 
                 <div>
                   <button onClick={() => dispatch(decrementFromCart(product.id))} disabled={product.quantity === 1 ? true : false} className="change-product-button">-</button>
                   <button onClick={() => dispatch(addToCart({...product}))} className="change-product-button">+</button>

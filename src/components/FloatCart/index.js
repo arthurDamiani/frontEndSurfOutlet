@@ -1,14 +1,9 @@
-import React, { useState, Fragment } from 'react'
- 
+import React, { useState, Fragment, useMemo } from 'react'
 import { useSelector } from 'react-redux'
-
 import CartProduct from './CartProduct'
-
 import { getCartTotal, getCartState } from '../../selectors/products'
 import { ReactComponent as Cart } from '../../assets/shopping-cart-solid.svg'
-
 import {Link} from 'react-router-dom'
-
 
 import './style.css'
 
@@ -23,7 +18,6 @@ function FloatCart() {
   const itemQuantity = productsCart
     .map((item) => item.quantity)
     .reduce((item, total) => item + total, 0)
-
 
   const openFloatCart = () => setIsOpen(true)
 
@@ -85,13 +79,13 @@ function FloatCart() {
               <div className="sub-price">
 
                 <p className="sub-price__val">
-                  {`R$ ${total.toFixed(2)}`}
+                  {`R$ ${total}`}
                 </p>
 
                 <small className="sub-price__installment">
                   {!productsCart.installments && (
                     <span>
-                      {`OU EM 10 x R$ ${(total / 10).toFixed(2)}`}
+                      {`OU EM 10 x R$ ${(total / 10)}`}
                     </span>
                   )}
                 </small>

@@ -53,8 +53,7 @@ const ProductDetails = ({ product }) => {
 
                     <div className='btn-buy'>
                             <button 
-                                 onClick={() => dispatch(addToCart({...product}))}
-                                //  onClick={() => product.size !== '' ? dispatch(addToCart({...product})) : window.alert('Selecione um tamanho antes de adicionar ao carrinho')}
+                                 onClick={() => product.size !== '' ? dispatch(addToCart({...product})) : window.alert('Selecione um tamanho antes de adicionar ao carrinho')}
                             >
                                 ADICIONAR AO {<Cart height='20' width='20' color='#fff' />}
                             </button>
