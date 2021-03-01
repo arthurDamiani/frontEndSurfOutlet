@@ -33,8 +33,8 @@ function CartProduct({products}) {
               onClick={() => dispatch(removeFromCart(product.id))}
             />
             <Thumb
-              src={product.image}
-              alt={product.title}
+              src={product.imageThumbnail}
+              alt={product.descricao}
             />
             <div className="shelf-item__details">
               <p className="title-cart">{product.descricao}</p>

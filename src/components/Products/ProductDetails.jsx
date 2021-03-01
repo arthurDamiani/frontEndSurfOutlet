@@ -5,6 +5,7 @@ import { ReactComponent as Cart } from '../../assets/shopping-cart-solid.svg'
 
 import './productDetails.css'
 import products  from '../../data/products'
+import NumberFormat from 'react-number-format'
 
 import Select from 'react-select'
 
@@ -49,7 +50,7 @@ const ProductDetails = ({ product }) => {
                 </div>
                 <div className='details-content'>
                     <h3 className='title-product'>{product.descricao}</h3>
-                    <span className='price-product'>R$ {product.preco}</span>
+                    <span className='price-product'><NumberFormat value={(product.preco)} displayType={'text'} decimalScale={2} thousandSeparator={true} prefix={'R$'} /></span>
 
                     <div className='btn-buy'>
                             <button 

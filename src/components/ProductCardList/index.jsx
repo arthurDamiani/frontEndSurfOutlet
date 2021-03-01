@@ -21,6 +21,8 @@ const ProductCardList = () => {
 
     const [currentPage, setCurrentPage] = useState(1)
 
+    const totalPages = (4745 / 100)
+
     useMemo(() => {
         const fetchProducts = async () => {
             products.length > 0 ? setLoading(false) : setLoading(true)
@@ -34,13 +36,22 @@ const ProductCardList = () => {
         fetchProducts()
     }, [currentPage, dispatch, products.length])
     
-    const changePage = ({selected}) => setCurrentPage(selected)
+    const changePage = ({selected}) => {
+        setCurrentPage(selected + 1) 
+    }
+
+    useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo(0, 0, {behavior: 'smooth'})
+          }, 700)
+        
+      }, [currentPage])
 
     const handleChangeSort = e => {
        setSort(e.target.value) 
 
        if(sort !== '') {
-        products.sort((a, b) => (sort === 'menor') ? (a.price < b.price ? 1 : -1) : (a.price > b.price ? 1 : -1))
+        products.sort((a, b) => (sort === 'menor') ? (a.preco < b.preco ? 1 : -1) : (a.preco > b.preco ? 1 : -1))
        } else {
         products.sort((a, b) => (a.id < b.id ? 1 : -1))
        }
@@ -69,21 +80,20 @@ const ProductCardList = () => {
                             { products.map(product => <Product product={product} key={product.id} />) }
 
                             <ReactPaginate
-                            previousLabel={'<'}
-                            nextLabel={'>'}
-                            pageCount={10}
-                            onPageChange={changePage}
-                            containerClassName={'paginationsBttn'}
-                            previousLinkClassName={'previousBttn'}
-                            nextLinkClassName={'nextBttn'}
-                            disabledClassName={'paginationDisabled'}
-                            activeClassName={'paginationActive'}
+                                previousLabel={'<'}
+                                nextLabel={'>'}
+                                pageCount={totalPages}
+                                onPageChange={changePage}
+                                containerClassName={'paginationsBttn'}
+                                previousLinkClassName={'previousBttn'}
+                                nextLinkClassName={'nextBttn'}
+                                disabledClassName={'paginationDisabled'}
+                                activeClassName={'paginationActive'}
                             />
                          </div>
                     
                     }
                     
-
                 <div className="filter">
                         <Filter />
                 </div>

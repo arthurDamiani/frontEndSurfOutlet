@@ -12,6 +12,7 @@ const DetailsProduct = () => {
     const dispatch = useDispatch()
 
     const paramId = useParams()
+    console.log(paramId)
 
     const products = useSelector(getAllProducts)
 
@@ -27,15 +28,13 @@ const DetailsProduct = () => {
         fetchProducts()
     }, [dispatch])
 
-    const productDetails = products.filter(el => el.id === paramId.id)
+    const productDetails = products.filter(el => el.codigo === paramId.codigo)
  
-    const productDetailsOk = productDetails[0]
-
-    console.log(productDetailsOk)
+    console.log(productDetails[0])
 
     return (
         <div>
-            <ProductDetails product={productDetailsOk} key={productDetailsOk.id}/>  
+            <ProductDetails product={productDetails[0]} />  
         </div>
     )
 }

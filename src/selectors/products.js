@@ -5,11 +5,11 @@ export const getCartTotal = state => state.productsReducer.total;
 export const getAllProducts = state => state.productsReducer.products;
 
 export const getAllProductBrands = state => state.productsReducer.products
-    .map((product) => product.brand)
+    .map((product) => product.marca)
     .reduce((unique, brand) => unique.includes(brand) ? unique : [...unique, brand], [])
 
 export const getAllProductCategory = state => state.productsReducer.products
-    .map((product) => product.category)
+    .map((product) => product.preco)
     .reduce((unique, category) => unique.includes(category) ? unique : [...unique, category], [])
 
 export const getAllProductGenre = state => state.productsReducer.products
@@ -47,9 +47,10 @@ export const getFilteredProducts = state => {
             return product
         }
 
+
     }).sort((a, b) => {
-        const textA = a.brand
-        const textB = b.brand
+        const textA = a.marca
+        const textB = b.marca
         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
     })
 }

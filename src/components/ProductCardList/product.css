@@ -113,11 +113,13 @@
     border: 1px solid #0080A8;
     color: #0080A8;
     cursor: pointer;
+    transition: all ease-in 0.4s;
 }
 
 .paginationsBttn a:hover {
     color: white;
     background-color: #0080A8;
+    transition: all ease-in-out 0.4s;
 }
 
 .paginationActive a {

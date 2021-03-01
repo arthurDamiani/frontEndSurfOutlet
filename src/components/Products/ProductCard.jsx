@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { clearFilters } from '../../actions/filters'
 
 import {Link}  from 'react-router-dom'
+import NumberFormat from 'react-number-format'
  
 function Product({product}) {
   
@@ -31,7 +32,7 @@ function Product({product}) {
         <div className="card-grid" key={product.id}>
             <div className="img-content">
                 <img src={product.image} alt={product.title}/>
-                <Link to={`/detailsProducts/${product.id}`} onClick={() => dispatch(clearFilters())}>
+                <Link to={`/detailsProducts/${product.codigo}`} onClick={() => dispatch(clearFilters())}>
                     <button>Ver detalhes</button>
                 </Link>
             </div>
@@ -39,7 +40,7 @@ function Product({product}) {
             {/* h3 */}
                 <h6>{product.title}</h6> 
                 <div className='price'>
-                    R$ {(product.preco).replace('.', ',')}
+                    <NumberFormat value={(product.preco)} displayType={'text'} decimalScale={2} thousandSeparator={true} prefix={'R$'} />
                     {productInstallment}
                 </div>
                 <p className='discount'>{product.discount}</p>

@@ -11,8 +11,6 @@ import Form from '../components/Form'
 import ForgotPassword from '../components/ForgotPassword'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import ProductsSlider from '../components/ProductsSlider'
-
 
 function Routes() {
 	return (
@@ -22,7 +20,7 @@ function Routes() {
 			<Switch>
 				<Route path="/" exact component={Landing} />
 				<Route path="/products" exact component={ProductsCard} />
-				<Route path="/detailsProducts/:id" exact={true} component={DetailsProduct} />
+				<Route path="/detailsProducts/:codigo" exact={true} component={DetailsProduct} />
 				<Route path="/payment" exact component={Payment} />
 				<Route path="/edit" exact component={EditAccount} />
 				<Route path="/login" exact component={Login} />
