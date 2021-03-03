@@ -7,28 +7,28 @@ const HeaderContent = ({masc}) => {
         <>
             <div className='wrapper-header'>
                 <div className='header-title'>
-                    <a>Vestuário</a>
+                    <a>VESTUÁRIO</a>
                 </div>
                 <div className='header-subtitle-vest'>
-                    <a>Camisetas</a>
-                    <a>Camisas</a>
-                    <a>Bermudas</a>
-                    <a>Calças</a>
-                    <a>Jaqueta</a>
-                    <a>Moletom</a>
+                    <a>CAMISETAS</a>
+                    <a>CAMISAS</a>
+                    <a>BERMUDAS</a>
+                    <a>CALÇAS</a>
+                    <a>JAQUETA</a>
+                    <a>MOLETOM</a>
                 </div>
             </div>
 
             <div className='wrapper-header'>
                 <div className='header-title'>
-                    <a>Acessórios</a>
+                    <a>ACESSÓRIOS</a>
                 </div>
                 <div className='header-subtitle-vest'>
-                    <a>Bonés</a>
-                    <a>Gorros</a>
-                    <a>Mochilas</a>
-                    <a>Carteiras</a>
-                    <a>Cintos</a>
+                    <a>BONÉS</a>
+                    <a>GORROS</a>
+                    <a>MOCHILAS</a>
+                    <a>CARTEIRAS</a>
+                    <a>CINTOS</a>
                 </div>
             </div>
 

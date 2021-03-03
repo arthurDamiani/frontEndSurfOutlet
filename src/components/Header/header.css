@@ -90,6 +90,43 @@
     display: none;
 }
 
+.header-image {
+    position: absolute;
+    right: 0;
+    margin-right: 90px;
+    margin-top: 10px;
+    width: 800px;
+    height: 300px;
+    cursor: pointer;
+    object-fit: contain;
+}
+
+.header-image:hover {
+    transform: scale(1.07) skewY(0.6deg);
+}
+
+.header-subtitle {
+    position: absolute;
+    margin-top: 1rem;
+    margin-left: 250px;
+    margin-top: 50px;
+}
+
+.header-subtitle a {
+    font-weight: 800;
+
+    font-size: 23px;
+    display: block;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #fff;
+    padding: 0.2rem 0;
+    transition: all ease-in-out 0.3s;
+}
+
+.header-subtitle a:hover {
+    transform: translate(15%, -5%);
+}
+
 @media (max-width: 800px) {
     .navbar {
         display: flex;

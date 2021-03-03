@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, Fragment} from 'react'
 import {TextField, InputAdornment} from '@material-ui/core'
 import {Search, AccountCircle} from '@material-ui/icons'
 import {FaBars} from 'react-icons/fa'
@@ -35,9 +35,21 @@ function Header() {
         switch (showFilter) {
             case 1:
                 return (
-                    <>
-
-                    </>
+                    <Fragment>
+                        <div className='header-subtitle'>
+                            <a>PRANCHAS</a>
+                            <a>WETSUITS</a>
+                            <a>LEASH</a>
+                            <a>RACKS</a>
+                            <a>QUILHAS</a>
+                            <a>STAND UP</a>
+                        </div>
+                        <img 
+                            className='header-image'
+                            src="https://images.tcdn.com.br/img/img_prod/812998/1612288585_wetsuits-01-min.jpg" 
+                            alt='header-img'
+                        />
+                    </Fragment>
                 )
             case 2:
                 return <HeaderContent masc={masc} />
@@ -123,23 +135,23 @@ function Header() {
                     <a 
                         href='/products' 
                         className={showFilter === 5 ? 'menu-item menu-item-active' : 'menu-item'} 
-                        onMouseEnter={() => setShowFilter(5)} 
-                    >Calçados</a>
+                        onMouseEnter={() => setShowFilter(0)} 
+                    >Acessórios</a>
                     <a 
                         href='/products' 
                         className={showFilter === 6 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(0)} 
-                    >Óculos</a>
+                    >Calçados</a>
                     <a 
                         href='/products' 
                         className={showFilter === 7 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(0)} 
-                    >Relógios</a>
+                    >Óculos</a>
                     <a 
                         href='/products' 
                         className={showFilter === 8 ? 'menu-item menu-item-active' : 'menu-item'} 
-                        onMouseEnter={() => setShowFilter(8)} 
-                    >Acessórios</a>
+                        onMouseEnter={() => setShowFilter(0)} 
+                    >Relógio</a>
                     <a 
                         href='/products' 
                         className={showFilter === 9 ? 'menu-item menu-item-active' : 'menu-item'} 

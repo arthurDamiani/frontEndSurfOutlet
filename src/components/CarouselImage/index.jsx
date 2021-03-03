@@ -19,7 +19,7 @@ const ImageSlider = () => {
     emulateTouch: true,
     selectedItem: 0,
     interval: 3000,
-    transitionTime: 1100,
+    transitionTime: 900,
     swipeScrollTolerance: 5,
 })
 

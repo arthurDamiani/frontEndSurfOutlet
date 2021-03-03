@@ -9,7 +9,7 @@
 .header-title a {
     color: #d88c00;
     font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border-left: 1px solid #005772;
     padding-left: 0.5rem;
 }
@@ -36,9 +36,10 @@
     right: 0;
     margin-right: 200px;
     margin-top: 10px;
-    width: 400px;
+    width: 500px;
     height: 300px;
     cursor: pointer;
+    object-fit: cover;
 }
 
 .header-img:hover {
