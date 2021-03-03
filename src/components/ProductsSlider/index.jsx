@@ -11,6 +11,7 @@ import "react-multi-carousel/lib/styles.css"
 
 import { Link } from 'react-router-dom'
 import { getProducts } from '../../actions/products'
+import NumberFormat from 'react-number-format'
 
 const ProductsSlider = () => {
     const dispatch = useDispatch()
@@ -21,7 +22,7 @@ const ProductsSlider = () => {
       const fetchProducts = async () => {
           products.length > 0 ? setLoading(false) : setLoading(true)
           
-          const res = await api.get('/produto')
+          const res = await api.get('/produtos')
           const prod = (res.data.retorno.produtos).map(el => el.produto)
 
           console.log(prod)
@@ -87,7 +88,11 @@ const ProductsSlider = () => {
                                           <img src={p.image} alt=''/>
                                       </div>
                                       <div className='details'>
-                                          <h5>{p.descricao}<span className='price'>R${p.preco.replace('.', ',')}</span></h5>
+                                          <h5>{p.descricao}
+                                            <span className='price'>
+                                              <NumberFormat value={(p.preco)} displayType={'text'} decimalScale={2} thousandSeparator={true} prefix={'R$'} />
+                                            </span>
+                                          </h5>
                                           <Link to={`/detailsProducts/${p.id}`}>
                                             <button>Ver detalhes</button>
                                           </Link>

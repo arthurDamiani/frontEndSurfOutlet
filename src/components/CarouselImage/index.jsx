@@ -1,4 +1,5 @@
 import React from 'react'
+import './carouselImage.css'
 
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css" 
@@ -13,26 +14,25 @@ const ImageSlider = () => {
     showThumbs: false,
     useKeyboardArrows: true,
     autoPlay: true,
-    stopOnHover: true,
     swipeable: true,
     dynamicHeight: true,
     emulateTouch: true,
     selectedItem: 0,
-    interval: 2000,
-    transitionTime: 900,
+    interval: 3000,
+    transitionTime: 1100,
     swipeScrollTolerance: 5,
 })
 
   return (
             <Carousel {...getConfigurableProps()}>
-                <div>
-                    <img src='https://images.unsplash.com/photo-1488402024618-0658e4c2b1f0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1476&q=80' alt='banner' style={{height: '600px'}}/>
+                <div className='wrapper-carousel-landing'>
+                    <img src='https://d2e5mvjndnxyoo.cloudfront.net/Custom/Content/Banners/71/716_banner637485753180159385.jpg' alt='banner' style={{height: '500px'}}/>
                 </div>
-                <div>
-                    <img src='https://images.unsplash.com/photo-1457234068269-b58092525794?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1489&q=80' alt='banner' style={{height: '600px'}}/>
+                <div className='wrapper-carousel-landing'>
+                    <img src="https://d14amky6yu8q07.cloudfront.net/Custom/Content/Banners/68/68_banner637501919855005115.jpg" alt='banner' style={{height: '500px'}}/>
                 </div>
-                <div>
-                    <img src='https://images.unsplash.com/photo-1531850934-ea5b88733491?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1385&q=80' alt='banner' style={{height: '600px'}}/>
+                <div className='wrapper-carousel-landing'>
+                    <img src='https://mormaiishop.vteximg.com.br/arquivos/ids/2445343/BANNER-SHORT-BOARDSHORT_1600x430.jpg?v=637472918891700000' alt='banner' style={{height: '500px'}}/>
                 </div>
             </Carousel>
   )

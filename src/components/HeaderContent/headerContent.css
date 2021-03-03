@@ -1,0 +1,46 @@
+.wrapper-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 150px;
+    flex-direction: column;
+}
+
+.header-title a {
+    color: #d88c00;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    border-left: 1px solid #005772;
+    padding-left: 0.5rem;
+}
+
+.header-subtitle-vest {
+    margin-top: 1rem;
+}
+
+.header-subtitle-vest a {
+    font-size: 20px;
+    display: block;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #fff;
+    padding: 0.2rem 0;
+    transition: all ease-in-out 0.3s;
+}
+
+.header-subtitle-vest a:hover {
+    transform: translate(15%, -5%);
+}
+
+.header-img  {
+    position: absolute;
+    right: 0;
+    margin-right: 200px;
+    margin-top: 10px;
+    width: 400px;
+    height: 300px;
+    cursor: pointer;
+}
+
+.header-img:hover {
+    transform: scale(1.02) skewY(0.6deg);
+}

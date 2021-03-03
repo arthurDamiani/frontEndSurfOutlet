@@ -23,7 +23,7 @@ const ProductDetails = ({ product }) => {
 
     const onSelectedSizeChange = newValue => setSelectedSize(newValue.label)
 
-    // product.size = selectedSize
+    product.codigo = selectedSize
 
     const imgThumb = [products[0].imageThumbnail, products[1].imageThumbnail, products[2].imageThumbnail, products[3].imageThumbnail]
     const [images, setImages] = useState(product.imageThumbnail)
@@ -54,7 +54,7 @@ const ProductDetails = ({ product }) => {
 
                     <div className='btn-buy'>
                             <button 
-                                 onClick={() => product.size !== '' ? dispatch(addToCart({...product})) : window.alert('Selecione um tamanho antes de adicionar ao carrinho')}
+                                 onClick={() => product.codigo !== '' ? dispatch(addToCart({...product})) : window.alert('Selecione um tamanho antes de adicionar ao carrinho')}
                             >
                                 ADICIONAR AO {<Cart height='20' width='20' color='#fff' />}
                             </button>

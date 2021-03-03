@@ -31,7 +31,7 @@ function Product({product}) {
     return (
         <div className="card-grid" key={product.id}>
             <div className="img-content">
-                <img src={product.image} alt={product.title}/>
+                <img src={product.imageThumbnail} alt={product.title}/>
                 <Link to={`/detailsProducts/${product.codigo}`} onClick={() => dispatch(clearFilters())}>
                     <button>Ver detalhes</button>
                 </Link>

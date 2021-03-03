@@ -3,8 +3,13 @@ import {TextField, InputAdornment} from '@material-ui/core'
 import {Search, AccountCircle} from '@material-ui/icons'
 import {FaBars} from 'react-icons/fa'
 import './header.css'
+
 import FloatCart from '../FloatCart'
+import HeaderContent from '../HeaderContent'
 import api from '../../services/api'
+import masc from '../../assets/headerMasc.jpg'
+import fem from '../../assets/headerFem.jpg'
+import kid from '../../assets/headerKidd.jpg'
 
 function Header() {
     const [search, setSearch] = useState('')
@@ -29,13 +34,17 @@ function Header() {
     function switchFilter() {
         switch (showFilter) {
             case 1:
-                return <a>Laicra</a>
+                return (
+                    <>
+
+                    </>
+                )
             case 2:
-                return <a>Camiseta</a>
+                return <HeaderContent masc={masc} />
             case 3:
-                return <a>Top</a>
+                return <HeaderContent masc={fem} />
             case 4:
-                return <a>Tênis</a>
+                return <HeaderContent masc={kid} />
             case 5:
                 return <a>Calça</a>
             case 6:
@@ -110,21 +119,21 @@ function Header() {
                         href='/products' 
                         className={showFilter === 4 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(4)} 
-                    >Calçados</a>
+                    >Juvenil</a>
                     <a 
                         href='/products' 
                         className={showFilter === 5 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(5)} 
-                    >Juvenil</a>
+                    >Calçados</a>
                     <a 
                         href='/products' 
                         className={showFilter === 6 ? 'menu-item menu-item-active' : 'menu-item'} 
-                        onMouseEnter={() => setShowFilter(6)} 
+                        onMouseEnter={() => setShowFilter(0)} 
                     >Óculos</a>
                     <a 
                         href='/products' 
                         className={showFilter === 7 ? 'menu-item menu-item-active' : 'menu-item'} 
-                        onMouseEnter={() => setShowFilter(7)} 
+                        onMouseEnter={() => setShowFilter(0)} 
                     >Relógios</a>
                     <a 
                         href='/products' 
@@ -134,8 +143,8 @@ function Header() {
                     <a 
                         href='/products' 
                         className={showFilter === 9 ? 'menu-item menu-item-active' : 'menu-item'} 
-                        onMouseEnter={() => setShowFilter(9)} 
-                    >Marcas</a>
+                        onMouseEnter={() => setShowFilter(0)} 
+                    >Outlet</a>
                 </nav>
                 <div className={showFilter === 0 ? 'menu-filter-container filter-hide' : 'menu-filter-container'}>
                     {switchFilter()}

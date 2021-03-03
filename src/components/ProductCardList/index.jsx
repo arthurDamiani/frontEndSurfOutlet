@@ -27,7 +27,7 @@ const ProductCardList = () => {
         const fetchProducts = async () => {
             products.length > 0 ? setLoading(false) : setLoading(true)
 
-            const res = await api.get('/produto/' + currentPage)
+            const res = await api.get('/produtos/' + currentPage)
             const prod = (res.data.retorno.produtos).map(el => el.produto)
             
             dispatch(getProducts(prod)) 

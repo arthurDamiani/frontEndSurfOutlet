@@ -27,7 +27,7 @@ function Landing() {
                 </div>
                 <div className='payment-information'>
                     <AttachMoney fontSize='large' />
-                    <p className='payment-information-text'>1% <strong>DESCONTO</strong> no <strong>BOLETO</strong></p>
+                    <p className='payment-information-text'>10% de <strong>DESCONTO</strong> no <strong>BOLETO</strong></p>
                 </div>
             </div>
             <div className='products-carousel-container'>
@@ -37,7 +37,7 @@ function Landing() {
             <div className='images-container'>
                 <img className='left-image' src='https://images.boardriders.com/global/billabong-products/all/default/hi-res/j3sb29bimu_billabong,l_1220_frt1.jpg' alt='roupa billabong' />
                 <div className='right-images-container'>
-                    <img className='right-image' src='https://i1.wp.com/buzztv.pt/wp-content/uploads/2017/12/Iggy-Pop.jpeg?resize=640%2C250&ssl=1' alt='Surfistas' />
+                    <img className='right-image' src="https://dafitistatic-a.akamaihd.net/dynamic_yield/cms/static/kanui/images/129656a67616__banner_homesurf-BERMUDAS-SURF.jpg" alt='Surfistas' />
                     <img className='right-image' src={modeloLado} alt='Surfistas' /> 
                 </div>
             </div>
@@ -46,8 +46,8 @@ function Landing() {
                 <ProductsSlider /> 
             </div>
             <div className="images-container">
-                <img className='equal-images' src={modeloPe} alt='roupa billabong' />
-                <img className='equal-images' src='https://images.stylight.net/image/upload/t_web_product_330x440bg/q_auto:eco,f_auto/ggcztakij08y6pb4oebo.jpg' alt='roupa billabong' />
+                <img className='equal-images' src='https://d2e5mvjndnxyoo.cloudfront.net/Custom/Content/Banners/50/50_banner637335224265250393.jpg' alt='roupa billabong' />
+                <img className='equal-images' src='https://d2e5mvjndnxyoo.cloudfront.net/Custom/Content/Banners/51/51_banner637335222001214070.jpg' alt='roupa billabong' />
             </div>
         </div>
     )

@@ -1,131 +1,159 @@
-import React, {useMemo, useState} from 'react'
+import React, {useState} from 'react'
+
+import Select from 'react-select'
+import makeAnimated from 'react-select/animated'
+
 import {Button, Checkbox, FormGroup, FormControlLabel, TextField, InputAdornment} from '@material-ui/core'
 import {ExpandMore, ExpandLess, AttachMoney} from '@material-ui/icons'
-
-import api from '../../services/api'
 
 import './filter.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllProducts, getAllProductBrands, getAllProductCategory } from '../../selectors/products'
 import { setFilterBrand, removeFilterBrand, setFilterCategory, removeFilterCategory } from '../../actions/filters'
-import { getProducts } from '../../actions/products'
 
 function Filter() {
+    // const dispatch = useDispatch()
 
-    const dispatch = useDispatch()
+    const animatedComponents = makeAnimated()
 
-    const products = useSelector(getAllProducts)
+    const department = 
+    [
+        {label: 'VESTUÁRIO', value: 'VESTUÁRIO'},
+        {label: 'SURF', value: 'SURF'},
+        {label: 'CALÇADOS', value: 'CALÇADOS'},
+        {label: 'ÓCULOS', value: 'ÓCULOS'},
+        {label: 'RELÓGIOS', value: 'RELÓGIOS'},
+        {label: 'ACESSÓRIOS', value: 'ACESSÓRIOS'},
+    ]
 
-    const productBrands = useSelector(getAllProductBrands)
+    const genre = 
+    [
+        {label: 'MASCULINO', value: 'masculino'},
+        {label: 'FEMININO', value: 'feminino'},
+        {label: 'JUVENIL', value: 'juvenil'}
+    ]
 
-    const productCategory = useSelector(getAllProductCategory)
+    const price = 
+    [
+        {label: 'Até R$ 99,00', value: 'até R$ 99,00'},
+        {label: 'R$ 100,00 a R$ 199,00', value: 'R$ 100,00 até R$ 199,00'},
+        {label: 'R$ 200,00 a R$ 299,00', value: 'R$ 200,00 a R$ 299,00'},
+        {label: 'R$ 300,00 a R$ 399,00', value: 'R$ 300,00 a R$ 399,00'},
+        {label: 'R$ 400,00 a R$ 499,00', value: 'R$ 400,00 a R$ 499,00'},
+        {label: 'Acima de R$ 500,00', value: 'Acima de R$ 500,00'},
+    ]
+    
+    const brands = useSelector(getAllProductBrands)
+    
+    const category = useSelector(getAllProductCategory)
 
-    useMemo(() => {
-        const fetchProducts = async () => {
 
-            const res = await api.get('/produto')
-            const prod = (res.data.retorno.produtos).map(el => el.produto)
-            
-            dispatch(getProducts(prod)) 
-        }
-
-        fetchProducts()
-    }, [dispatch])
-
-    const brandsItemsCount = {}
-    products.forEach(product => brandsItemsCount[product.brand] = brandsItemsCount[product.brand] + 1 || 1)
-
-    const categoryItemsCount = {}
-    products.forEach(product => categoryItemsCount[product.category] = categoryItemsCount[product.category] + 1 || 1)
-
-    const [brands, setBrands] = useState(false)
-    const [category, setCategory] = useState(false)
-
-    const handleChangeBrand = e => {
-        const value = e.target.value
+    // const handleChangeBrand = e => {
+    //     const value = e.target.value
         
-        if (e.target.checked) {
-            dispatch(setFilterBrand(value))
-        } else {
-            dispatch(removeFilterBrand(value))
-        }
-    }
+    //     if (e.target.checked) {
+    //         dispatch(setFilterBrand(value))
+    //     } else {
+    //         dispatch(removeFilterBrand(value))
+    //     }
+    // }
 
-    const handleChangeCategory = e => {
-        const value = e.target.value
+    // const handleChangeCategory = e => {
+    //     const value = e.target.value
         
-        if (e.target.checked) {
-            dispatch(setFilterCategory(value))
-        } else {
-            dispatch(removeFilterCategory(value))
-        }
-    }
+    //     if (e.target.checked) {
+    //         dispatch(setFilterCategory(value))
+    //     } else {
+    //         dispatch(removeFilterCategory(value))
+    //     }
+    // }
 
     return (
         <div className='filter'>
-            {/* <div className='filter-option'>
-                <MultiSelect
-                    options={brandOptions}
-                    value={selected}
-                    onChange={handleChangeBrand}
-                    labelledBy={"Select"}
-                />
-            </div> */}
 
-            <div className="filter-option">
-                <div className='filter-option-top' onClick={() => setBrands(!brands)}>
-                    <Button  color='primary' size='large' fullWidth>Marcas</Button>
-                    {brands ? <ExpandLess color='primary' /> : <ExpandMore color='primary' />}
-                </div>
-                {brands ?
-                <FormGroup>
-                    {
-                        productBrands.map((brand, i) => {
-                            return (
-                                <FormControlLabel
-                                    key={i}
-                                    control={
-                                        <Checkbox 
-                                            color='primary' 
-                                            onChange={handleChangeBrand} 
-                                            name={brand} 
-                                            value={brand} 
-                                        />
-                                    }
-                                    label={brand}
-                                />
-                            )
-                        })
-                    }
-                </FormGroup>: ''}
+            <h3>FILTROS</h3>
+
+            <div className='filter-option'>
+                 <Select
+                    placeholder='DEPARTAMENTO'
+                    closeMenuOnSelect={false}
+                    className="basic-multi-select"
+                    name="genero"
+                    components={animatedComponents}
+                    isMulti={true}
+                    options={department}
+                    classNamePrefix="select"
+                />
             </div>
-            <div className="filter-option">
-                <div className='filter-option-top' onClick={() => setCategory(!category)}>
-                    <Button  color='primary' size='large' fullWidth>Categorias</Button>
-                    {category ? <ExpandLess color='primary' /> : <ExpandMore color='primary' />}
-                </div>
-                {category ?
-                <FormGroup>
-                    {
-                        productCategory.map((categ, i) => {
-                            return (
-                                <FormControlLabel
-                                    key={i}
-                                    control={
-                                        <Checkbox 
-                                            color='primary' 
-                                            onChange={handleChangeCategory} 
-                                            value={categ}
-                                            name={categ}
-                                        />
-                                    }
-                                    label={categ}
-                                />
-                            )
-                        })
-                    }
-                </FormGroup> : ''}
+            
+            <div className='filter-option'>
+                <Select
+                    placeholder='GÊNERO'
+                    closeMenuOnSelect={false}
+                    className="basic-multi-select"
+                    name="marcas"
+                    components={animatedComponents}
+                    isMulti={true}
+                    options={genre}
+                    classNamePrefix="select"
+                />
             </div>
+
+
+            <div className='filter-option'>
+                <Select
+                    placeholder='TAMANHO'
+                    closeMenuOnSelect={false}
+                    className="basic-multi-select"
+                    name="marcas"
+                    components={animatedComponents}
+                    isMulti={true}
+                    options={brands.map(el =>  ({ label: el, value: el })  )}
+                    classNamePrefix="select"
+                />
+            </div>
+
+            <div className='filter-option'>
+                <Select
+                    placeholder='COR'
+                    closeMenuOnSelect={false}
+                    className="basic-multi-select"
+                    name="marcas"
+                    components={animatedComponents}
+                    isMulti={true}
+                    options={brands.map(el =>  ({ label: el, value: el })  )}
+                    classNamePrefix="select"
+                />
+            </div>
+
+            <div className='filter-option'>
+                <Select
+                    placeholder='MARCA'
+                    closeMenuOnSelect={false}
+                    className="basic-multi-select"
+                    name="marcas"
+                    components={animatedComponents}
+                    isMulti={true}
+                    options={brands.map(el =>  ({ label: el, value: el })  )}
+                    classNamePrefix="select"
+                />
+            </div>
+
+            <div className='filter-option'>
+                <Select
+                    placeholder='PREÇO'
+                    closeMenuOnSelect={false}
+                    className="basic-multi-select"
+                    name="marcas"
+                    components={animatedComponents}
+                    isMulti={false}
+                    options={price}
+                    classNamePrefix="select"
+                />
+            </div>
+
+
+
         </div>
     )
 }
