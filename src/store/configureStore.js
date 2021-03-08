@@ -1,16 +1,19 @@
 import { createStore, combineReducers } from 'redux'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
 import productsReducer from './../reducers/productsReducer'
 import filtersReducer from '../reducers/filtersReducer'
 
-const configureStore = () => {
-  const store = createStore(
-    combineReducers({
+const rootReducer = combineReducers({
       productsReducer,
       filters: filtersReducer,
-    }),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-  return store
-}
+})
 
-export default configureStore
+const persistedReducer = persistReducer({
+  key: 'root',
+  storage
+}, rootReducer)
+
+export const store = createStore(persistedReducer)
+export const persistedStore = persistStore(store)

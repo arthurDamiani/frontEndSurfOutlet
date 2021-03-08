@@ -37,17 +37,18 @@ function Header() {
                 return (
                     <Fragment>
                         <div className='header-subtitle'>
-                            <a>PRANCHAS</a>
-                            <a>WETSUITS</a>
-                            <a>LEASH</a>
-                            <a>RACKS</a>
-                            <a>QUILHAS</a>
-                            <a>STAND UP</a>
+                            <a href='/products'>PRANCHAS</a>
+                            <a href='/products'>WETSUITS</a>
+                            <a href='/products'>LEASH</a>
+                            <a href='/products'>RACKS</a>
+                            <a href='/products'>QUILHAS</a>
+                            <a href='/products'>STAND UP</a>
                         </div>
                         <img 
                             className='header-image'
                             src="https://images.tcdn.com.br/img/img_prod/812998/1612288585_wetsuits-01-min.jpg" 
                             alt='header-img'
+                            href='/products'
                         />
                     </Fragment>
                 )

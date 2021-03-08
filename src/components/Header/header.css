@@ -54,9 +54,9 @@
 }
 
 .menu-item {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    font-size: 1.2rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
     color: #fff;
     margin: 0 1rem;
     transition: all ease 0.3s;
@@ -95,14 +95,14 @@
     right: 0;
     margin-right: 90px;
     margin-top: 10px;
-    width: 800px;
+    width: 750px;
     height: 300px;
     cursor: pointer;
-    object-fit: contain;
 }
 
 .header-image:hover {
-    transform: scale(1.07) skewY(0.6deg);
+    transform: scale(1.02) skewY(0.6deg);
+    border: 1px solid #d88c00;
 }
 
 .header-subtitle {
@@ -114,7 +114,6 @@
 
 .header-subtitle a {
     font-weight: 800;
-
     font-size: 23px;
     display: block;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

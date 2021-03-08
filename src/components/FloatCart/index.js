@@ -61,7 +61,7 @@ function FloatCart() {
                 <Cart height='40' width='40' color='#0080A8' />
                 <span className="bag__quantity">{itemQuantity}</span>
               </span>
-              <span className="header-title">Carrinho</span>
+              <span className="header-title">CARRINHO</span>
             </div>
 
             <div className="float-cart__shelf-container">

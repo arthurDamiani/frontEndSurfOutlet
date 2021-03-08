@@ -8,6 +8,7 @@ import products  from '../../data/products'
 import NumberFormat from 'react-number-format'
 
 import Select from 'react-select'
+import ColorSelect from '../SelectColor'
 
 const ProductDetails = ({ product }) => {
     const dispatch = useDispatch()
@@ -69,13 +70,7 @@ const ProductDetails = ({ product }) => {
                         />
                     </div>
                     <div className='colors-product'>
-                        <h3>COR</h3>
-                        <div>
-                            <button className='rosa'></button>
-                            <button className='vermelho'></button>
-                            <button className='branco'></button>
-                            <button className='azul'></button>
-                        </div>
+                        <ColorSelect />
 
                         <span className='composition-product'>
                         <p>COMPOSIÇÃO: 53% Poliéster / 47% Algodão</p>  

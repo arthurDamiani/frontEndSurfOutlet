@@ -8,10 +8,12 @@
 
 .header-title a {
     color: #d88c00;
-    font-weight: 600;
+    font-weight: 800;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border-left: 1px solid #005772;
     padding-left: 0.5rem;
+    font-size: 25px;
+
 }
 
 .header-subtitle-vest {
@@ -19,9 +21,10 @@
 }
 
 .header-subtitle-vest a {
-    font-size: 20px;
+    font-size: 23px;
     display: block;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 800;
     color: #fff;
     padding: 0.2rem 0;
     transition: all ease-in-out 0.3s;
@@ -44,4 +47,5 @@
 
 .header-img:hover {
     transform: scale(1.02) skewY(0.6deg);
+    border: 1px solid #d88c00;
 }
