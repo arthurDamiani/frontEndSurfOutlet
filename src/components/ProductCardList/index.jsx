@@ -6,14 +6,14 @@ import Filter from '../Filter'
 import api from '../../services/api'
 import ReactPaginate from 'react-paginate'
 
-import { getFilteredProducts } from '../../selectors/products'
+import { getAllProducts } from '../../selectors/products'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../actions/products'
  
 const ProductCardList = () => {
     const dispatch = useDispatch()
 
-    const products = useSelector(getFilteredProducts)   
+    const products = useSelector(getAllProducts)   
 
     const [sort, setSort] = useState('')
 
@@ -29,12 +29,14 @@ const ProductCardList = () => {
 
             const res = await api.get('/produtos/' + currentPage)
             const prod = (res.data.retorno.produtos).map(el => el.produto)
+            console.log(prod)
             
             dispatch(getProducts(prod)) 
         }
 
         fetchProducts()
     }, [currentPage, dispatch, products.length])
+
     
     const changePage = ({selected}) => {
         setCurrentPage(selected + 1) 
@@ -43,7 +45,7 @@ const ProductCardList = () => {
     useEffect(() => {
         setTimeout(() => {
             window.scrollTo(0, 0, {behavior: 'smooth'})
-          }, 700)
+          }, 2000)
         
       }, [currentPage])
 

@@ -17,22 +17,7 @@ const ProductsSlider = () => {
     const dispatch = useDispatch()
     const products = useSelector(getAllProducts)
     const [loading, setLoading] = useState(false)
-
-    useMemo(() => {
-      const fetchProducts = async () => {
-          products.length > 0 ? setLoading(false) : setLoading(true)
-          
-          const res = await api.get('/produtos')
-          const prod = (res.data.retorno.produtos).map(el => el.produto)
-
-          console.log(prod)
-          
-          dispatch(getProducts(prod)) 
-      }
-
-      fetchProducts()
-  }, [dispatch, products.length])
-
+    
     const responsive = {
         superLargeDesktop: {
           breakpoint: { max: 4000, min: 1800 },

@@ -38,7 +38,7 @@ function Product({product}) {
             </div>
             <div className="content">
             {/* h3 */}
-                <h6>{product.title}</h6> 
+                <h6>{product.descricao}</h6> 
                 <div className='price'>
                     <NumberFormat value={(product.preco)} displayType={'text'} decimalScale={2} thousandSeparator={true} prefix={'R$'} />
                     {productInstallment}

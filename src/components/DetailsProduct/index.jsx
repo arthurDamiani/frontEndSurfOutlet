@@ -12,7 +12,6 @@ const DetailsProduct = () => {
     const dispatch = useDispatch()
 
     const paramId = useParams()
-    console.log(paramId)
 
     const products = useSelector(getAllProducts)
 
@@ -29,9 +28,8 @@ const DetailsProduct = () => {
     }, [dispatch])
 
     const productDetails = products.filter(el => el.codigo === paramId.codigo)
- 
     console.log(productDetails[0])
-
+ 
     return (
         <div>
             <ProductDetails product={productDetails[0]} />  

@@ -8,24 +8,35 @@ import products  from '../../data/products'
 import NumberFormat from 'react-number-format'
 
 import Select from 'react-select'
-import ColorSelect from '../SelectColor'
 
 const ProductDetails = ({ product }) => {
     const dispatch = useDispatch()
 
-    // SIZES DROPDOWN 
-    let sizes = []
-        sizes.push({label: 'P'})    
-        sizes.push({label: 'M'})    
-        sizes.push({label: 'G'})    
-        sizes.push({label: 'GG'})    
-
     const [selectedSize, setSelectedSize] = useState('')
+    const [selectedColor, setSelectedColor] = useState('')
 
-    const onSelectedSizeChange = newValue => setSelectedSize(newValue.label)
+    const onSelectedSizeChange = value => setSelectedSize(...value.label)
+    const onSelectedColorChange = value => setSelectedColor(...value.label)
 
-    product.codigo = selectedSize
+    console.log(selectedSize)
+    console.log(selectedColor)
 
+    const addToCartFn = () => selectedSize === '' || selectedColor === '' ? window.alert('Selecione um tamanho e uma cor antes de adicionar ao carrinho') : dispatch(addToCart({...product}))
+       
+    // COLORS
+    const cores = (product.variacoes).map(el => el.variacao).map(el => el.nome).map(el => el.substr(4)).map(el => el.split(';')).map(el => el.slice(0, 1))
+    
+    let colors = cores.map((el, i) => {
+        return {label: el}
+    })
+
+    // SIZES
+    const tamanhos = (product.variacoes).map(el => el.variacao).map(el => el.codigo).map(el => el.substr(10))
+
+    let sizes = tamanhos.map((el, i) => {
+        return {label: el}
+    })
+  
     const imgThumb = [products[0].imageThumbnail, products[1].imageThumbnail, products[2].imageThumbnail, products[3].imageThumbnail]
     const [images, setImages] = useState(product.imageThumbnail)
 
@@ -55,7 +66,7 @@ const ProductDetails = ({ product }) => {
 
                     <div className='btn-buy'>
                             <button 
-                                 onClick={() => product.codigo !== '' ? dispatch(addToCart({...product})) : window.alert('Selecione um tamanho antes de adicionar ao carrinho')}
+                                 onClick={() => addToCartFn()}
                             >
                                 ADICIONAR AO {<Cart height='20' width='20' color='#fff' />}
                             </button>
@@ -63,14 +74,20 @@ const ProductDetails = ({ product }) => {
                     <div className='size-product'>
                         <Select
                             className='select-size'
-                            placeholder="Selecione o tamanho"
+                            placeholder="Selecione um tamanho"
                             onChange={onSelectedSizeChange}
                             options={sizes}
                             required={true}
                         />
                     </div>
                     <div className='colors-product'>
-                        <ColorSelect />
+                        <Select
+                            className='select-size'
+                            placeholder="Selecione uma cor"
+                            onChange={onSelectedColorChange}
+                            options={colors}
+                            required={true}
+                        />
 
                         <span className='composition-product'>
                         <p>COMPOSIÇÃO: 53% Poliéster / 47% Algodão</p>  

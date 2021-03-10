@@ -33,24 +33,24 @@ export const getAllProductDepartment = state => state.productsReducer.products
     .reduce((unique, department) => unique.includes(department) ? unique : [...unique, department], [])
 
 
-export const getFilteredProducts = state => {
-    const { productsReducer: { products }, filters } = state
-    return products.filter((product) => {
+// export const getFilteredProducts = state => {
+//     const { productsReducer: { products }, filters } = state
+//     return products.filter((product) => {
 
-        if (filters.brand.length > 0 && filters.category.length === 0) {
-            return filters.brand.includes(product.brand)
-        } else if (filters.brand.length === 0 && filters.category.length > 0) {
-            return filters.category.includes(product.category)
-        } else if (filters.brand.length > 0 && filters.category.length > 0) {
-            return filters.brand.includes(product.brand) && filters.category.includes(product.category)
-        } else {
-            return product
-        }
+//         if (filters.brand.length > 0 && filters.category.length === 0) {
+//             return filters.brand.includes(product.brand)
+//         } else if (filters.brand.length === 0 && filters.category.length > 0) {
+//             return filters.category.includes(product.category)
+//         } else if (filters.brand.length > 0 && filters.category.length > 0) {
+//             return filters.brand.includes(product.brand) && filters.category.includes(product.category)
+//         } else {
+//             return product
+//         }
 
 
-    }).sort((a, b) => {
-        const textA = a.marca
-        const textB = b.marca
-        return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
-    })
-}
+//     }).sort((a, b) => {
+//         const textA = a.marca
+//         const textB = b.marca
+//         return (textA < textB) ? -1 : (textA > textB) ? 1 : 0
+//     })
+// }

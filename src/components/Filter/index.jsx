@@ -1,37 +1,37 @@
-import React, {useState} from 'react'
+import React, {useMemo, useState} from 'react'
 
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 
-import {Button, Checkbox, FormGroup, FormControlLabel, TextField, InputAdornment} from '@material-ui/core'
-import {ExpandMore, ExpandLess, AttachMoney} from '@material-ui/icons'
-
 import './filter.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllProducts, getAllProductBrands, getAllProductCategory } from '../../selectors/products'
-import { setFilterBrand, removeFilterBrand, setFilterCategory, removeFilterCategory } from '../../actions/filters'
+import { getAllProducts, getAllProductBrands } from '../../selectors/products'
+import api from '../../services/api'
+import { getProducts } from '../../actions/products'
+
 
 function Filter() {
-    // const dispatch = useDispatch()
+    const [selectedOption, setSelectedOption] = useState([])
+
+    const dispatch = useDispatch()
+    const products = useSelector(getAllProducts)
+
+    const filter = {...selectedOption.map(el => el.value)}
+    console.log(filter)
+
+    // useMemo(() => {  
+    //     const fetchProducts = async () => {
+    //       const res = await api.get(`/produtos/categoria?marca=${filter[0]}`)
+    //       const prodFilter = (res.data).map(el => el.produto)
+    //       console.log(prodFilter)
+  
+    //       dispatch(getProducts(prodFilter)) 
+  
+    //   }
+    //   fetchProducts()
+    // }, [dispatch, filter])
 
     const animatedComponents = makeAnimated()
-
-    const department = 
-    [
-        {label: 'VESTUÁRIO', value: 'VESTUÁRIO'},
-        {label: 'SURF', value: 'SURF'},
-        {label: 'CALÇADOS', value: 'CALÇADOS'},
-        {label: 'ÓCULOS', value: 'ÓCULOS'},
-        {label: 'RELÓGIOS', value: 'RELÓGIOS'},
-        {label: 'ACESSÓRIOS', value: 'ACESSÓRIOS'},
-    ]
-
-    const genre = 
-    [
-        {label: 'MASCULINO', value: 'masculino'},
-        {label: 'FEMININO', value: 'feminino'},
-        {label: 'JUVENIL', value: 'juvenil'}
-    ]
 
     const price = 
     [
@@ -44,61 +44,12 @@ function Filter() {
     ]
     
     const brands = useSelector(getAllProductBrands)
+
     
-    const category = useSelector(getAllProductCategory)
-
-
-    // const handleChangeBrand = e => {
-    //     const value = e.target.value
-        
-    //     if (e.target.checked) {
-    //         dispatch(setFilterBrand(value))
-    //     } else {
-    //         dispatch(removeFilterBrand(value))
-    //     }
-    // }
-
-    // const handleChangeCategory = e => {
-    //     const value = e.target.value
-        
-    //     if (e.target.checked) {
-    //         dispatch(setFilterCategory(value))
-    //     } else {
-    //         dispatch(removeFilterCategory(value))
-    //     }
-    // }
-
     return (
         <div className='filter'>
 
             <h3>FILTROS</h3>
-
-            <div className='filter-option'>
-                 <Select
-                    placeholder='DEPARTAMENTO'
-                    closeMenuOnSelect={false}
-                    className="basic-multi-select"
-                    name="genero"
-                    components={animatedComponents}
-                    isMulti={true}
-                    options={department}
-                    classNamePrefix="select"
-                />
-            </div>
-            
-            <div className='filter-option'>
-                <Select
-                    placeholder='GÊNERO'
-                    closeMenuOnSelect={false}
-                    className="basic-multi-select"
-                    name="marcas"
-                    components={animatedComponents}
-                    isMulti={true}
-                    options={genre}
-                    classNamePrefix="select"
-                />
-            </div>
-
 
             <div className='filter-option'>
                 <Select
@@ -110,6 +61,7 @@ function Filter() {
                     isMulti={true}
                     options={brands.map(el =>  ({ label: el, value: el })  )}
                     classNamePrefix="select"
+                    onChange={setSelectedOption}
                 />
             </div>
 
@@ -123,6 +75,7 @@ function Filter() {
                     isMulti={true}
                     options={brands.map(el =>  ({ label: el, value: el })  )}
                     classNamePrefix="select"
+                    onChange={setSelectedOption}
                 />
             </div>
 
@@ -136,6 +89,7 @@ function Filter() {
                     isMulti={true}
                     options={brands.map(el =>  ({ label: el, value: el })  )}
                     classNamePrefix="select"
+                    onChange={setSelectedOption}
                 />
             </div>
 
@@ -149,6 +103,7 @@ function Filter() {
                     isMulti={false}
                     options={price}
                     classNamePrefix="select"
+                    onChange={setSelectedOption}
                 />
             </div>
 
