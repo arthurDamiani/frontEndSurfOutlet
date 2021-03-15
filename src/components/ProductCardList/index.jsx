@@ -27,15 +27,15 @@ const ProductCardList = () => {
         const fetchProducts = async () => {
             products.length > 0 ? setLoading(false) : setLoading(true)
 
-            const res = await api.get('/produtos/' + currentPage)
-            const prod = (res.data.retorno.produtos).map(el => el.produto)
+            const res = await api.get('/produtos/categoria?tamanho=M')
+            const prod = (res.data).map(el => el.produto)
             console.log(prod)
             
             dispatch(getProducts(prod)) 
         }
 
         fetchProducts()
-    }, [currentPage, dispatch, products.length])
+    }, [dispatch, products.length])
 
     
     const changePage = ({selected}) => {

@@ -1,9 +1,10 @@
-import React, {useMemo, useState} from 'react'
+import React, {useEffect, useMemo, useState} from 'react'
+import './filter.css'
 
+import chroma from 'chroma-js'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
 
-import './filter.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllProducts, getAllProductBrands } from '../../selectors/products'
 import api from '../../services/api'
@@ -11,27 +12,105 @@ import { getProducts } from '../../actions/products'
 
 
 function Filter() {
+    const dispatch = useDispatch()
+
+    const products = useSelector(getAllProducts) 
+    const [loading, setLoading] = useState(false)
+
     const [selectedOption, setSelectedOption] = useState([])
 
-    const dispatch = useDispatch()
-    const products = useSelector(getAllProducts)
+    const filtersApi = selectedOption.map(el => el.value)
+    console.log(filtersApi)
 
-    const filter = {...selectedOption.map(el => el.value)}
-    console.log(filter)
+    const addFilterApi = async () => {
+        products.length > 0 ? setLoading(false) : setLoading(true)
 
-    // useMemo(() => {  
-    //     const fetchProducts = async () => {
-    //       const res = await api.get(`/produtos/categoria?marca=${filter[0]}`)
-    //       const prodFilter = (res.data).map(el => el.produto)
-    //       console.log(prodFilter)
-  
-    //       dispatch(getProducts(prodFilter)) 
-  
-    //   }
-    //   fetchProducts()
-    // }, [dispatch, filter])
+        const prodFilter = await api.get('/produtos/categoria?tamanho=M' )
+            .then(res => res.data)
+            .then(res => res.map(el => el.produto))
+            .then(res => console.log(res))
+            
+        dispatch(getProducts(prodFilter)) 
+
+    }
 
     const animatedComponents = makeAnimated()
+
+    const size = 
+    [
+        {label: '38', value: '38'},
+        {label: '39', value: '39'},
+        {label: '40', value: '40'},
+        {label: '41', value: '41'},
+        {label: '42', value: '42'},
+        {label: '43', value: '43'},
+        {label: '44', value: '44'},
+        {label: 'PP', value: 'PP'},
+        {label: 'P', value: 'P'},
+        {label: 'M', value: 'M'},
+        {label: 'G', value: 'G'},
+        {label: 'GG', value: 'GG'},
+    ]
+
+    const colors = [
+        { value: 'Azul', label: 'Azul', color: '#0052CC' },
+        { value: 'Preto', label: 'Preto', color: '#000' },
+        { value: 'Roxo', label: 'Roxo', color: '#5243AA' },
+        { value: 'Vermelho', label: 'Vermelho', color: '#ff0000' },
+        { value: 'Laranja', label: 'Laranja', color: '#FF8B00' },
+        { value: 'Amarelo', label: 'Amarelo', color: '#FFC400' },
+        { value: 'Verde', label: 'Verde', color: '#36B37E' },
+        { value: 'Branco', label: 'Branco', color: '#c2c2c2'},
+    ]
+
+    const dot = (color = '#ccc') => ({
+        alignItems: 'center',
+        display: 'flex',
+      
+        ':before': {
+          backgroundColor: color,
+          borderRadius: 10,
+          content: '" "',
+          display: 'block',
+          marginRight: 8,
+          height: 10,
+          width: 10,
+        },
+    })
+
+    const colourStyles = {
+        control: styles => ({ ...styles, backgroundColor: 'white', width: '200px' }),
+        option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+          const color = chroma(data.color);
+          return {
+            ...styles,
+            backgroundColor: isDisabled
+              ? null
+              : isSelected
+              ? data.color
+              : isFocused
+              ? color.alpha(0.1).css()
+              : null,
+            color: isDisabled
+              ? '#ccc'
+              : isSelected
+              ? chroma.contrast(color, 'white') > 2
+                ? 'white'
+                : 'black'
+              : data.color,
+            cursor: isDisabled ? 'not-allowed' : 'default',
+      
+            ':active': {
+              ...styles[':active'],
+              backgroundColor:
+                !isDisabled && (isSelected ? data.color : color.alpha(0.3).css()),
+            },
+          };
+        },
+        input: styles => ({ ...styles, ...dot() }),
+        placeholder: styles => ({ ...styles, ...dot() }),
+        singleValue: (styles, { data }) => ({ ...styles, ...dot(data.color) }),
+    }
 
     const price = 
     [
@@ -59,7 +138,7 @@ function Filter() {
                     name="marcas"
                     components={animatedComponents}
                     isMulti={true}
-                    options={brands.map(el =>  ({ label: el, value: el })  )}
+                    options={size}
                     classNamePrefix="select"
                     onChange={setSelectedOption}
                 />
@@ -73,7 +152,8 @@ function Filter() {
                     name="marcas"
                     components={animatedComponents}
                     isMulti={true}
-                    options={brands.map(el =>  ({ label: el, value: el })  )}
+                    styles={colourStyles}
+                    options={colors}
                     classNamePrefix="select"
                     onChange={setSelectedOption}
                 />
@@ -107,7 +187,12 @@ function Filter() {
                 />
             </div>
 
-
+            <button 
+                className='btn-filter' 
+                onClick={addFilterApi}
+            > 
+                FILTRAR 
+            </button>
 
         </div>
     )

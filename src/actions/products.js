@@ -1,23 +1,28 @@
 export const getProducts = (product) => ({
   type: 'GET_API',
   payload: product
-});
+})
 
 export const addToCart = (product) => ({
   type: 'ADD_TO_CART',
   payload: product
-});
+})
 
-export const removeFromCart = (id) => ({
+export const removeFromCart = (codigo) => ({
   type: 'REMOVE_FROM_CART',
-  id
-});
+  codigo
+})
 
-export const decrementFromCart = (id) => ({
+export const decrementFromCart = (codigo) => ({
   type: 'DECREMENT',
-  id
+  codigo
+})
+
+export const incrementFromCart = (codigo) => ({
+  type: 'INCREMENT',
+  codigo
 })
 
 export const clearCart = () => ({
   type: 'CLEAR_CART'
-});
+})

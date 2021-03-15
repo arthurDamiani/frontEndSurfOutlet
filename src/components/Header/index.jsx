@@ -10,6 +10,7 @@ import api from '../../services/api'
 import masc from '../../assets/headerMasc.jpg'
 import fem from '../../assets/headerFem.jpg'
 import kid from '../../assets/headerKidd.jpg'
+import { Link } from 'react-router-dom'
 
 function Header() {
     const [search, setSearch] = useState('')
@@ -37,18 +38,17 @@ function Header() {
                 return (
                     <Fragment>
                         <div className='header-subtitle'>
-                            <a href='/products'>PRANCHAS</a>
-                            <a href='/products'>WETSUITS</a>
-                            <a href='/products'>LEASH</a>
-                            <a href='/products'>RACKS</a>
-                            <a href='/products'>QUILHAS</a>
-                            <a href='/products'>STAND UP</a>
+                            <Link to='/products'>PRANCHAS</Link>
+                            <Link to='/products'>WETSUITS</Link>
+                            <Link to='/products'>LEASH</Link>
+                            <Link to='/products'>RACKS</Link>
+                            <Link to='/products'>QUILHAS</Link>
+                            <Link to='/products'>STAND UP</Link>
                         </div>
                         <img 
                             className='header-image'
                             src="https://images.tcdn.com.br/img/img_prod/812998/1612288585_wetsuits-01-min.jpg" 
                             alt='header-img'
-                            href='/products'
                         />
                     </Fragment>
                 )
@@ -59,15 +59,29 @@ function Header() {
             case 4:
                 return <HeaderContent masc={kid} />
             case 5:
-                return <a>Calça</a>
+                return (
+                    <div className='wrapper-header-image-calcado'>
+                        <div className='header-image-calcado'>
+                            <img 
+                                src="https://images.tcdn.com.br/img/img_prod/812998/1612288585_wetsuits-01-min.jpg" 
+                                alt='header-img'
+                            />
+                            <Link to='/products' className='masc-calc'>MASCULINO</Link>
+                        </div>
+                        
+                        <div className='header-image-calcado-2'>
+                            <img 
+                                src="https://images.tcdn.com.br/img/img_prod/812998/1612288585_wetsuits-01-min.jpg" 
+                                alt='header-img'
+                            />
+                            <Link to='/products' className='fem-calc'>FEMININO</Link>
+                        </div>
+                    </div>
+                )
             case 6:
-                return <a>Oakley</a>
             case 7:
-                return <a>Invicta</a>
             case 8:
-                return <a>Pulseira</a>
             case 9: 
-                return <a>Billabong</a>
             default:
                 break
         }
@@ -79,7 +93,7 @@ function Header() {
                 <div onClick={showSideBar} className="navbar">
                     <FaBars />
                 </div>
-                <a href='/' className='header-logo'>Molokai</a>
+                <Link to='/' className='header-logo'>Molokai</Link>
                 <form onSubmit={(e) => {
                     e.preventDefault()
                     console.log(search)
@@ -108,56 +122,56 @@ function Header() {
             <div onMouseLeave={() => setShowFilter(0)}>
                 <nav onClick={showSideBar} className={sidebar ? 'menu-container active' : 'menu-container'}>
                     <div className='sidebar-top'>
-                        <a href={authorized ? '/edit' : '/login'} className='sidebar-item'>
+                        <Link to={authorized ? '/edit' : '/login'} className='sidebar-item'>
                             <AccountCircle fontSize="large" />
                             <p className='nav-item-legenda'>{authorized ? userName : 'Entre ou cadastre-se'}</p>
-                        </a>
+                        </Link>
                     </div>
-                    <a 
-                        href='/products' 
+                    <Link 
+                        to='/products' 
                         className={showFilter === 1 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(1)} 
-                    >Surf</a>
-                    <a
-                        href='/products' 
+                    >Surf</Link>
+                    <Link
+                        to='/products' 
                         className={showFilter === 2 ? 'menu-item menu-item-active' : 'menu-item'}  
                         onMouseEnter={() => setShowFilter(2)} 
-                    >Masculino</a>
-                    <a 
-                        href='/products' 
+                    >Masculino</Link>
+                    <Link
+                        to='/products' 
                         className={showFilter === 3 ? 'menu-item menu-item-active' : 'menu-item'}  
                         onMouseEnter={() => setShowFilter(3)} 
-                    >Feminino</a>
-                    <a 
-                        href='/products' 
+                    >Feminino</Link>
+                    <Link 
+                        to='/products' 
                         className={showFilter === 4 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(4)} 
-                    >Juvenil</a>
-                    <a 
-                        href='/products' 
+                    >Juvenil</Link>
+                    <Link 
+                        to='/products' 
                         className={showFilter === 5 ? 'menu-item menu-item-active' : 'menu-item'} 
-                        onMouseEnter={() => setShowFilter(0)} 
-                    >Acessórios</a>
-                    <a 
-                        href='/products' 
+                        onMouseEnter={() => setShowFilter(5)} 
+                    >Calçados</Link>
+                    <Link 
+                        to='/products' 
                         className={showFilter === 6 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(0)} 
-                    >Calçados</a>
-                    <a 
-                        href='/products' 
+                    >Acessórios</Link>
+                    <Link 
+                        to='/products' 
                         className={showFilter === 7 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(0)} 
-                    >Óculos</a>
-                    <a 
-                        href='/products' 
+                    >Óculos</Link>
+                    <Link 
+                        to='/products' 
                         className={showFilter === 8 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(0)} 
-                    >Relógio</a>
-                    <a 
-                        href='/products' 
+                    >Relógio</Link>
+                    <Link 
+                        to='/products' 
                         className={showFilter === 9 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(0)} 
-                    >Outlet</a>
+                    >Outlet</Link>
                 </nav>
                 <div className={showFilter === 0 ? 'menu-filter-container filter-hide' : 'menu-filter-container'}>
                     {switchFilter()}

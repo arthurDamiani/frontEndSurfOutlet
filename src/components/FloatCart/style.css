@@ -115,9 +115,10 @@
   text-decoration: line-through;
   opacity: 0.6;
 }
-.float-cart__shelf-container .shelf-item--mouseover .shelf-item__price {
+.float-cart__shelf-container .shelf-item--mouseover .shelf-item__price p{
   text-decoration: line-through;
   opacity: 0.6;
+  margin: 10px;
 }
 .float-cart__shelf-container .shelf-item__del {
   width: 16px;

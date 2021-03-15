@@ -14,18 +14,20 @@ const productsReducer = (state = productsDefaultState, action) => {
       }
 
     case 'ADD_TO_CART':
-      const addedProduct = state.products.find((product) => action.payload.id === product.id)
-      const existingProduct = state.cart.find((existingProd) => action.payload.id === existingProd.id)
+      const addedProduct = state.products.find((product) => action.payload.codigo === product.codigo)
+      const existingProduct = state.cart.find((existingProd) => action.payload.codigo === existingProd.codigo)
 
       if (existingProduct) {
-        addedProduct.quantity += 1
+        window.alert('Produto ja foi adicionado no carrinho')
+
         return {
           ...state,
-          total: state.total + parseFloat(addedProduct.preco)
         }
+
       } else {
-        addedProduct.quantity = 1;
+        addedProduct.quantity = 1
         const newTotal = state.total + parseFloat(addedProduct.preco)
+
         return {
           ...state,
           cart: [...state.cart, addedProduct],
@@ -34,10 +36,11 @@ const productsReducer = (state = productsDefaultState, action) => {
       }
 
     case 'REMOVE_FROM_CART':
-      const productToRemove = state.cart.find((product) => action.id === product.id)
-      const removeProduct = state.cart.filter((product) => action.id !== product.id)
+      const productToRemove = state.cart.find((product) => action.codigo === product.codigo)
+      const removeProduct = state.cart.filter((product) => action.codigo !== product.codigo)
 
-      const newTotal = state.total - (productToRemove.preco * productToRemove.quantity)
+      const newTotal = state.total - (parseFloat(productToRemove.preco) * productToRemove.quantity)
+
       return {
         ...state,
         cart: removeProduct,
@@ -45,19 +48,34 @@ const productsReducer = (state = productsDefaultState, action) => {
       }
 
     case 'DECREMENT':
-      const products = state.cart.find((product) => action.id === product.id)
+      const products = state.cart.find((product) => action.codigo === product.codigo)
 
       if (products.quantity > 1) {
-        products.quantity -= 1;
-        const newTotal = state.total - products.preco
+        products.quantity -= 1
+        const newTotalDecrement = state.total - parseFloat(products.preco)
+
         return {
           ...state,
-          total: newTotal
+          total: newTotalDecrement
         }
+        
       } else {
         return state
       }
 
+      case 'INCREMENT':
+      const productsIncrement = state.cart.find((product) => action.codigo === product.codigo)
+
+
+      productsIncrement.quantity += 1
+      const newTotalIncrement = state.total + parseFloat(productsIncrement.preco)
+  
+      return {
+        ...state,
+        total: newTotalIncrement
+      }
+          
+      
     case 'CLEAR_CART':
       return {
         ...state,

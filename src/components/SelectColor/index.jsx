@@ -25,7 +25,7 @@ export const colourOptions = [
     { value: 'orange', label: 'Laranja', color: '#FF8B00' },
     { value: 'yellow', label: 'Amarelo', color: '#FFC400' },
     { value: 'green', label: 'Verde', color: '#36B37E' },
-    { value: 'silver', label: 'White', color: '#fff', isDisabled: true},
+    { value: 'silver', label: 'White', color: '#c2c2c2', isDisabled: true},
   ]
 
 const colourStyles = {

@@ -1,7 +1,6 @@
 import React from 'react'
 import './productCard.css'
 import { useDispatch } from 'react-redux'
-import { clearFilters } from '../../actions/filters'
 
 import {Link}  from 'react-router-dom'
 import NumberFormat from 'react-number-format'
@@ -32,7 +31,7 @@ function Product({product}) {
         <div className="card-grid" key={product.id}>
             <div className="img-content">
                 <img src={product.imageThumbnail} alt={product.title}/>
-                <Link to={`/detailsProducts/${product.codigo}`} onClick={() => dispatch(clearFilters())}>
+                <Link to={`/detailsProducts/${product.codigo}`} >
                     <button>Ver detalhes</button>
                 </Link>
             </div>

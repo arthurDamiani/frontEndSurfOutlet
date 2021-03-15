@@ -14,7 +14,6 @@ function FloatCart() {
   const productsCart = useSelector(getCartState)
 
   const total = useSelector(getCartTotal)
-  console.log(total)
 
   const itemQuantity = productsCart
     .map((item) => item.quantity)

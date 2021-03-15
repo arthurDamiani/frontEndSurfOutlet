@@ -18,11 +18,17 @@ const ProductDetails = ({ product }) => {
     const onSelectedSizeChange = value => setSelectedSize(...value.label)
     const onSelectedColorChange = value => setSelectedColor(...value.label)
 
-    console.log(selectedSize)
-    console.log(selectedColor)
 
-    const addToCartFn = () => selectedSize === '' || selectedColor === '' ? window.alert('Selecione um tamanho e uma cor antes de adicionar ao carrinho') : dispatch(addToCart({...product}))
+    function addSizeAndColorToCart() {
+        localStorage.setItem('@surfoutlet/color', selectedColor)
+        localStorage.setItem('@surfoutlet/size', selectedSize)
+    }
+
+    const addToCartFn = () => selectedSize === '' || selectedColor === '' ? window.alert('Selecione um tamanho e uma cor antes de adicionar ao carrinho') : (dispatch(addToCart({...product})) && addSizeAndColorToCart())
        
+    console.log(localStorage.getItem('@surfoutlet/size'))
+    console.log(localStorage.getItem('@surfoutlet/color'))
+
     // COLORS
     const cores = (product.variacoes).map(el => el.variacao).map(el => el.nome).map(el => el.substr(4)).map(el => el.split(';')).map(el => el.slice(0, 1))
     

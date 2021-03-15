@@ -126,6 +126,89 @@
     transform: translate(15%, -5%);
 }
 
+.wrapper-header-image-calcado {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 125px;
+    margin-left: -150px;
+}
+
+.header-image-calcado img {
+    width: 500px;
+    height: 280px;
+    cursor: pointer;
+    object-fit: cover;
+    transition: all ease-in-out 0.6s;
+}
+
+.header-image-calcado-2 img {
+    width: 500px;
+    height: 280px;
+    cursor: pointer;
+    object-fit: cover;
+    margin-left: 50px;
+    transition: all ease-in-out 0.6s;
+}
+
+.header-image-calcado img:hover {
+    transform: scale(1.02) skewY(1.4deg);
+    border: 1px solid #d88c00;
+    opacity: 0.6;
+    transition: all ease-in-out 0.6s;
+}
+
+
+.header-image-calcado-2 img:hover {
+    transform: scale(1.02) skewY(0.7deg);
+    border: 1px solid #d88c00;
+    opacity: 0.6;
+    transition: all ease-in-out 0.6s;
+}
+
+.header-image-calcado .masc-calc {
+    position: absolute;
+    bottom: 10px;
+    left: 160px;
+    cursor: pointer;
+    opacity: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    font-family: 800;
+    color: #fff;
+    background-color: #000;
+    border-radius: 6px;
+    padding: 10px;
+    transition: all ease-in-out 0.8s;
+}
+
+.header-image-calcado-2 .fem-calc {
+    position: absolute;
+    right: -540px;
+    bottom: 10px;
+    cursor: pointer;
+    opacity: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    font-family: 800;
+    color: #fff;
+    background-color: #000;
+    border-radius: 6px;
+    padding: 10px;
+    transition: all ease-in-out 0.8s;
+}
+
+.header-image-calcado:hover .masc-calc {
+    opacity: 1;
+}
+
+
+.header-image-calcado-2:hover .fem-calc {
+    opacity: 1;
+}
+
+
 @media (max-width: 800px) {
     .navbar {
         display: flex;

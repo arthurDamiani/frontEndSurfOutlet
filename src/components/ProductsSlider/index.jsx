@@ -17,6 +17,20 @@ const ProductsSlider = () => {
     const dispatch = useDispatch()
     const products = useSelector(getAllProducts)
     const [loading, setLoading] = useState(false)
+
+    useMemo(() => {
+      const fetchProducts = async () => {
+          products.length > 0 ? setLoading(false) : setLoading(true)
+
+          const res = await api.get('/produtos/categoria?tamanho=M')
+          const prod = (res.data).map(el => el.produto)
+          console.log(prod)
+          
+          dispatch(getProducts(prod)) 
+      }
+
+      fetchProducts()
+  }, [dispatch, products.length])
     
     const responsive = {
         superLargeDesktop: {
@@ -70,7 +84,7 @@ const ProductsSlider = () => {
                               <div className='card-wrapper' key={i}>
                                   <div className='card'>
                                       <div className='card-image'>
-                                          <img src={p.image} alt=''/>
+                                          <img src={p.imageThumbnail} alt=''/>
                                       </div>
                                       <div className='details'>
                                           <h5>{p.descricao}
@@ -78,8 +92,8 @@ const ProductsSlider = () => {
                                               <NumberFormat value={(p.preco)} displayType={'text'} decimalScale={2} thousandSeparator={true} prefix={'R$'} />
                                             </span>
                                           </h5>
-                                          <Link to={`/detailsProducts/${p.id}`}>
-                                            <button>Ver detalhes</button>
+                                          <Link to={`/detailsProducts/${p.codigo}`} >
+                                            <button>VER DETALHES</button>
                                           </Link>
                                       </div>
                                   </div>

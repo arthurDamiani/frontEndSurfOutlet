@@ -1,8 +1,8 @@
-export const getCartState = state => state.productsReducer.cart;
+export const getCartState = state => state.productsReducer.cart
 
-export const getCartTotal = state => state.productsReducer.total;
+export const getCartTotal = state => state.productsReducer.total
 
-export const getAllProducts = state => state.productsReducer.products;
+export const getAllProducts = state => state.productsReducer.products
 
 export const getAllProductBrands = state => state.productsReducer.products
     .map((product) => product.marca)
