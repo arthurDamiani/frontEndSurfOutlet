@@ -25,9 +25,6 @@ const ProductDetails = ({ product }) => {
     }
 
     const addToCartFn = () => selectedSize === '' || selectedColor === '' ? window.alert('Selecione um tamanho e uma cor antes de adicionar ao carrinho') : (dispatch(addToCart({...product})) && addSizeAndColorToCart())
-       
-    console.log(localStorage.getItem('@surfoutlet/size'))
-    console.log(localStorage.getItem('@surfoutlet/color'))
 
     // COLORS
     const cores = (product.variacoes).map(el => el.variacao).map(el => el.nome).map(el => el.substr(4)).map(el => el.split(';')).map(el => el.slice(0, 1))
@@ -37,7 +34,7 @@ const ProductDetails = ({ product }) => {
     })
 
     // SIZES
-    const tamanhos = (product.variacoes).map(el => el.variacao).map(el => el.codigo).map(el => el.substr(10))
+    const tamanhos = (product.variacoes).map(el => el.variacao).map(el => el.nome).map(el => el.split(';')).map(el => el.slice(1, 2))
 
     let sizes = tamanhos.map((el, i) => {
         return {label: el}

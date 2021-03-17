@@ -30,7 +30,7 @@ const ProductsSlider = () => {
       }
 
       fetchProducts()
-  }, [dispatch, products.length])
+  }, [dispatch])
     
     const responsive = {
         superLargeDesktop: {

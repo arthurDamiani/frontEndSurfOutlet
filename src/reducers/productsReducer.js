@@ -63,7 +63,7 @@ const productsReducer = (state = productsDefaultState, action) => {
         return state
       }
 
-      case 'INCREMENT':
+    case 'INCREMENT':
       const productsIncrement = state.cart.find((product) => action.codigo === product.codigo)
 
 
@@ -74,6 +74,12 @@ const productsReducer = (state = productsDefaultState, action) => {
         ...state,
         total: newTotalIncrement
       }
+
+    case 'CLEAR_PRODUCTS':
+      return {
+        ...state,
+        products: []
+      }
           
       
     case 'CLEAR_CART':
@@ -82,6 +88,7 @@ const productsReducer = (state = productsDefaultState, action) => {
         cart: [],
         total: 0
       }
+
     default:
       return state
   }

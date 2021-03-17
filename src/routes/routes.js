@@ -19,8 +19,14 @@ function Routes() {
 			<ScrollToTop />
 			<Switch>
 				<Route path="/" exact component={Landing} />
-				<Route path="/products" exact component={ProductsCard} />
-				<Route path="/detailsProducts/:codigo" exact={true} component={DetailsProduct} />
+				<Route path="/produtos/:categoria/" exact component={ProductsCard} />
+				<Route path="/produtos/:categoria/:subcategoria" exact component={ProductsCard} />
+
+				<Route path="/produtos/:categoria/:subcategoria/:tipo" exact component={ProductsCard} />
+
+
+
+				<Route path="/detailsProducts/:codigo" exact component={DetailsProduct} />
 				<Route path="/payment" exact component={Payment} />
 				<Route path="/edit" exact component={EditAccount} />
 				<Route path="/login" exact component={Login} />

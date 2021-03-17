@@ -13,6 +13,7 @@ import kid from '../../assets/headerKidd.jpg'
 import { Link } from 'react-router-dom'
 
 function Header() {
+
     const [search, setSearch] = useState('')
     const [sidebar, setSidebar] = useState(false)
     const [showFilter, setShowFilter] = useState(0)
@@ -32,18 +33,19 @@ function Header() {
         .then((res) => setUserName(res.data.nomeCompleto))
     }
 
+       
     function switchFilter() {
         switch (showFilter) {
             case 1:
                 return (
                     <Fragment>
                         <div className='header-subtitle'>
-                            <Link to='/products'>PRANCHAS</Link>
-                            <Link to='/products'>WETSUITS</Link>
-                            <Link to='/products'>LEASH</Link>
-                            <Link to='/products'>RACKS</Link>
-                            <Link to='/products'>QUILHAS</Link>
-                            <Link to='/products'>STAND UP</Link>
+                            <Link to='/produtos/Surf/Prancha'>PRANCHAS</Link>
+                            <Link to='/produtos/Surf/Wetsuit'>WETSUITS</Link>
+                            <Link to='/produtos/Surf/Leash'>LEASH</Link>
+                            <Link to='/produtos/Surf/Rack'>RACKS</Link>
+                            <Link to='/produtos/Surf/Quilha'>QUILHAS</Link>
+                            <Link to='/produtos/Surf/Standup'>STAND UP</Link>
                         </div>
                         <img 
                             className='header-image'
@@ -53,11 +55,119 @@ function Header() {
                     </Fragment>
                 )
             case 2:
-                return <HeaderContent masc={masc} />
+                return (
+                    <Fragment>
+                        <div className='wrapper-header'>
+                            <div className='header-title'>
+                                <a href='/produtos/Masculino/Vestuario'>VESTUÁRIO</a>
+                            </div>
+                            <div className='header-subtitle-vest'>
+                                <a href='/produtos/Masculino/Vestuario/Camiseta'>CAMISETAS</a>
+                                <a href='/produtos/Masculino/Vestuario/Camisa'>CAMISAS</a>
+                                <a href='/produtos/Masculino/Vestuario/Bermuda'>BERMUDAS</a>
+                                <a href='/produtos/Masculino/Vestuario/Calça'>CALÇAS</a>
+                                <a href='/produtos/Masculino/Vestuario/Jaqueta'>JAQUETA</a>
+                                <a href='/produtos/Masculino/Vestuario/Moletom'>MOLETOM</a>
+                            </div>
+                        </div>
+
+                        <div className='wrapper-header'>
+                            <div className='header-title'>
+                                <a href='/produtos/Masculino/Acessorios'>ACESSÓRIOS</a>
+                            </div>
+                            <div className='header-subtitle-vest'>
+                                <a href='/produtos/Masculino/Acessorios/Bone'>BONÉS</a>
+                                <a href='/produtos/Masculino/Acessorios/Gorro'>GORROS</a>
+                                <a href='/produtos/Masculino/Acessorios/Mochila'>MOCHILAS</a>
+                                <a href='/produtos/Masculino/Acessorios/Carteira'>CARTEIRAS</a>
+                                <a href='/produtos/Masculino/Acessorios/Cinto'>CINTOS</a>
+                            </div>
+                        </div>
+
+                        <img 
+                            className='header-img'
+                            src={masc} 
+                            alt='header-img'
+                            href='/produtos'
+                        />
+                    </Fragment>
+                )
             case 3:
-                return <HeaderContent masc={fem} />
+                return (
+                    <Fragment>
+                        <div className='wrapper-header'>
+                            <div className='header-title'>
+                                <a href='/produtos/Feminino/Vestuario'>VESTUÁRIO</a>
+                            </div>
+                            <div className='header-subtitle-vest'>
+                                <a href='/produtos/Feminino/Vestuario/Camiseta'>CAMISETAS</a>
+                                <a href='/produtos/Feminino/Vestuario/Camisa'>CAMISAS</a>
+                                <a href='/produtos/Feminino/Vestuario/Bermuda'>BERMUDAS</a>
+                                <a href='/produtos/Feminino/Vestuario/Calça'>CALÇAS</a>
+                                <a href='/produtos/Feminino/Vestuario/Jaqueta'>JAQUETA</a>
+                                <a href='/produtos/Feminino/Vestuario/Moletom'>MOLETOM</a>
+                            </div>
+                        </div>
+
+                        <div className='wrapper-header'>
+                            <div className='header-title'>
+                                <a href='/produtos/Feminino/Acessorio'>ACESSÓRIOS</a>
+                            </div>
+                            <div className='header-subtitle-vest'>
+                                <a href='/produtos/Feminino/Acessorio/Bone'>BONÉS</a>
+                                <a href='/produtos/Feminino/Acessorio/Gorro'>GORROS</a>
+                                <a href='/produtos/Feminino/Acessorio/Mochila'>MOCHILAS</a>
+                                <a href='/produtos/Feminino/Acessorio/Carteira'>CARTEIRAS</a>
+                                <a href='/produtos/Feminino/Acessorio/Cinto'>CINTOS</a>
+                            </div>
+                        </div>
+
+                        <img 
+                            className='header-img'
+                            src={fem} 
+                            alt='header-img'
+                            href='/produtos'
+                        />
+                    </Fragment>
+                )
             case 4:
-                return <HeaderContent masc={kid} />
+                return (
+                    <Fragment>
+                        <div className='wrapper-header'>
+                            <div className='header-title'>
+                                <a href='/produtos/Juvenil/Vestuario'>VESTUÁRIO</a>
+                            </div>
+                            <div className='header-subtitle-vest'>
+                                <a href='/produtos/Juvenil/Vestuario/Camiseta'>CAMISETAS</a>
+                                <a href='/produtos/Juvenil/Vestuario/Camisa'>CAMISAS</a>
+                                <a href='/produtos/Juvenil/Vestuario/Bermuda'>BERMUDAS</a>
+                                <a href='/produtos/Juvenil/Vestuario/Calça'>CALÇAS</a>
+                                <a href='/produtos/Juvenil/Vestuario/Jaqueta'>JAQUETA</a>
+                                <a href='/produtos/Juvenil/Vestuario/Moletom'>MOLETOM</a>
+                            </div>
+                        </div>
+
+                        <div className='wrapper-header'>
+                            <div className='header-title'>
+                                <a href='/produtos/Juvenil/Acessorio'>ACESSÓRIOS</a>
+                            </div>
+                            <div className='header-subtitle-vest'>
+                            <a href='/produtos/Juvenil/Acessorio/Bone'>BONÉS</a>
+                                <a href='/produtos/Juvenil/Acessorio/Gorro'>GORROS</a>
+                                <a href='/produtos/Juvenil/Acessorio/Mochila'>MOCHILAS</a>
+                                <a href='/produtos/Juvenil/Acessorio/Carteira'>CARTEIRAS</a>
+                                <a href='/produtos/Juvenil/Acessorio/Cinto'>CINTOS</a>
+                            </div>
+                        </div>
+
+                        <img 
+                            className='header-img'
+                            src={kid} 
+                            alt='header-img'
+                            href='/produtos'
+                        />
+                    </Fragment>
+                )
             case 5:
                 return (
                     <div className='wrapper-header-image-calcado'>
@@ -66,7 +176,7 @@ function Header() {
                                 src="https://images.tcdn.com.br/img/img_prod/812998/1612288585_wetsuits-01-min.jpg" 
                                 alt='header-img'
                             />
-                            <Link to='/products' className='masc-calc'>MASCULINO</Link>
+                            <Link to='/produtos' className='masc-calc'>MASCULINO</Link>
                         </div>
                         
                         <div className='header-image-calcado-2'>
@@ -74,7 +184,7 @@ function Header() {
                                 src="https://images.tcdn.com.br/img/img_prod/812998/1612288585_wetsuits-01-min.jpg" 
                                 alt='header-img'
                             />
-                            <Link to='/products' className='fem-calc'>FEMININO</Link>
+                            <Link to='/produtos' className='fem-calc'>FEMININO</Link>
                         </div>
                     </div>
                 )
@@ -127,51 +237,70 @@ function Header() {
                             <p className='nav-item-legenda'>{authorized ? userName : 'Entre ou cadastre-se'}</p>
                         </Link>
                     </div>
+
                     <Link 
-                        to='/products' 
+                        to='/produtos/Surf' 
                         className={showFilter === 1 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(1)} 
-                    >Surf</Link>
+                        >Surf
+                    </Link>
+
                     <Link
-                        to='/products' 
+                        to='/produtos/Masculino' 
                         className={showFilter === 2 ? 'menu-item menu-item-active' : 'menu-item'}  
                         onMouseEnter={() => setShowFilter(2)} 
-                    >Masculino</Link>
+                        >Masculino
+                    </Link>
+
                     <Link
-                        to='/products' 
+                        to='/produtos/Feminino' 
                         className={showFilter === 3 ? 'menu-item menu-item-active' : 'menu-item'}  
                         onMouseEnter={() => setShowFilter(3)} 
-                    >Feminino</Link>
+                        >Feminino
+                    </Link>
+
                     <Link 
-                        to='/products' 
+                        to='/produtos/Juvenil' 
                         className={showFilter === 4 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(4)} 
-                    >Juvenil</Link>
+                        >Juvenil
+                    </Link>
+
                     <Link 
-                        to='/products' 
+                        to='/produtos/Calçados' 
                         className={showFilter === 5 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(5)} 
-                    >Calçados</Link>
+                        >Calçados
+                    </Link>
+
                     <Link 
-                        to='/products' 
+                        to='/produtos/Acessorios' 
                         className={showFilter === 6 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(0)} 
-                    >Acessórios</Link>
+                        >Acessórios
+                    </Link>
+
                     <Link 
-                        to='/products' 
+                        to='/produtos/Oculos' 
                         className={showFilter === 7 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(0)} 
-                    >Óculos</Link>
+                        >Óculos
+                    </Link>
+
                     <Link 
-                        to='/products' 
+                        to='/produtos/Relogio' 
                         className={showFilter === 8 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(0)} 
-                    >Relógio</Link>
+                        >Relógio
+                    </Link>
+
                     <Link 
-                        to='/products' 
+                        to='/produtos/' 
                         className={showFilter === 9 ? 'menu-item menu-item-active' : 'menu-item'} 
                         onMouseEnter={() => setShowFilter(0)} 
-                    >Outlet</Link>
+                        >Outlet
+                    </Link>
+
                 </nav>
                 <div className={showFilter === 0 ? 'menu-filter-container filter-hide' : 'menu-filter-container'}>
                     {switchFilter()}
@@ -181,4 +310,4 @@ function Header() {
     )
 }
 
-export default Header;
+export default Header

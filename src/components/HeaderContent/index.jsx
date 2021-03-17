@@ -7,37 +7,37 @@ const HeaderContent = ({masc}) => {
         <>
             <div className='wrapper-header'>
                 <div className='header-title'>
-                    <a href='/products'>VESTUÁRIO</a>
+                    <a href='/produtos'>VESTUÁRIO</a>
                 </div>
                 <div className='header-subtitle-vest'>
-                    <a href='/products'>CAMISETAS</a>
-                    <a href='/products'>CAMISAS</a>
-                    <a href='/products'>BERMUDAS</a>
-                    <a href='/products'>CALÇAS</a>
-                    <a href='/products'>JAQUETA</a>
-                    <a href='/products'>MOLETOM</a>
+                    <a href='/produtos'>CAMISETAS</a>
+                    <a href='/produtos'>CAMISAS</a>
+                    <a href='/produtos'>BERMUDAS</a>
+                    <a href='/produtos'>CALÇAS</a>
+                    <a href='/produtos'>JAQUETA</a>
+                    <a href='/produtos'>MOLETOM</a>
                 </div>
             </div>
 
             <div className='wrapper-header'>
                 <div className='header-title'>
-                    <a href='/products'>ACESSÓRIOS</a>
+                    <a href='/produtos'>ACESSÓRIOS</a>
                 </div>
                 <div className='header-subtitle-vest'>
-                    <a href='/products'>BONÉS</a>
-                    <a href='/products'>GORROS</a>
-                    <a href='/products'>MOCHILAS</a>
-                    <a href='/products'>CARTEIRAS</a>
-                    <a href='/products'>CINTOS</a>
+                    <a href='/produtos'>BONÉS</a>
+                    <a href='/produtos'>GORROS</a>
+                    <a href='/produtos'>MOCHILAS</a>
+                    <a href='/produtos'>CARTEIRAS</a>
+                    <a href='/produtos'>CINTOS</a>
                 </div>
             </div>
 
-                <img 
-                    className='header-img'
-                    src={masc} 
-                    alt='header-img'
-                    href='/products'
-                />
+            <img 
+                className='header-img'
+                src={masc} 
+                alt='header-img'
+                href='/produtos'
+            />
         </>
         
     )

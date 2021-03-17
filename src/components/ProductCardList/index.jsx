@@ -1,5 +1,9 @@
 import React, { Fragment, useEffect, useMemo, useState } from 'react'
 import FadeLoader from "react-spinners/FadeLoader"
+import { useParams } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
+
+
 import './product.css'
 import Product from '../Products/ProductCard'
 import Filter from '../Filter'
@@ -7,11 +11,14 @@ import api from '../../services/api'
 import ReactPaginate from 'react-paginate'
 
 import { getAllProducts } from '../../selectors/products'
-import { useDispatch, useSelector } from 'react-redux'
-import { getProducts } from '../../actions/products'
+import { getProducts, clearProducts } from '../../actions/products'
  
 const ProductCardList = () => {
     const dispatch = useDispatch()
+
+    const categoria = useParams().categoria
+    const subcategoria = useParams().subcategoria
+    const tipo = useParams().tipo
 
     const products = useSelector(getAllProducts)   
 
@@ -27,15 +34,23 @@ const ProductCardList = () => {
         const fetchProducts = async () => {
             products.length > 0 ? setLoading(false) : setLoading(true)
 
-            const res = await api.get('/produtos/categoria?tamanho=M')
-            const prod = (res.data).map(el => el.produto)
-            console.log(prod)
-            
-            dispatch(getProducts(prod)) 
+            if(subcategoria !== undefined && tipo !== undefined) {
+                const res = await api.get(`/produtos/categoria?categoria=${categoria}&subcategoria=${subcategoria}&tipo=${tipo}`)
+                const prod = (res.data).map(el => el.produto)
+                dispatch(getProducts(prod))
+            } else if(subcategoria !== undefined && tipo == undefined) {
+                const res = await api.get(`/produtos/categoria?categoria=${categoria}&subcategoria=${subcategoria}`)
+                const prod = (res.data).map(el => el.produto)
+                dispatch(getProducts(prod))
+            } else {
+                const res = await api.get(`/produtos/categoria?categoria=${categoria}`)
+                const prod = (res.data).map(el => el.produto)
+                dispatch(getProducts(prod))
+            }  
         }
 
         fetchProducts()
-    }, [dispatch, products.length])
+    }, [dispatch, products.length, categoria, subcategoria, tipo])
 
     
     const changePage = ({selected}) => {

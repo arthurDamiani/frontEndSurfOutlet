@@ -23,6 +23,10 @@ export const incrementFromCart = (codigo) => ({
   codigo
 })
 
+export const clearProducts = () => ({
+  type: 'CLEAR_PRODUCTS'
+})
+
 export const clearCart = () => ({
   type: 'CLEAR_CART'
 })

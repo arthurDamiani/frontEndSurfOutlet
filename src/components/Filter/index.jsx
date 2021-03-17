@@ -1,6 +1,7 @@
-import React, {useEffect, useMemo, useState} from 'react'
+import React, {useCallback, useLayoutEffect, useMemo, useState} from 'react'
 import './filter.css'
 
+import { useParams, useHistory, useLocation, useRouteMatch } from 'react-router'
 import chroma from 'chroma-js'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
@@ -8,31 +9,37 @@ import makeAnimated from 'react-select/animated'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllProducts, getAllProductBrands } from '../../selectors/products'
 import api from '../../services/api'
-import { getProducts } from '../../actions/products'
+import { getProducts, clearProducts } from '../../actions/products'
 
 
 function Filter() {
     const dispatch = useDispatch()
+    const categoria = useParams().categoria
+
 
     const products = useSelector(getAllProducts) 
     const [loading, setLoading] = useState(false)
 
-    const [selectedOption, setSelectedOption] = useState([])
+    const [selectedSize, setSelectedSize] = useState([])
+    const [selectedColor, setSelectedColor] = useState([])
 
-    const filtersApi = selectedOption.map(el => el.value)
-    console.log(filtersApi)
+    const filtersSize = selectedSize.map(el => el.value)
+    const filtersColor = selectedColor.map(el => el.value)
 
-    const addFilterApi = async () => {
+   
+    const url_filters = `/produtos/categoria?categoria=${categoria}&tamanho=${filtersSize}`
+
+   
+    const addFilterApi = useCallback( async () => {
         products.length > 0 ? setLoading(false) : setLoading(true)
 
-        const prodFilter = await api.get('/produtos/categoria?tamanho=M' )
-            .then(res => res.data)
-            .then(res => res.map(el => el.produto))
-            .then(res => console.log(res))
-            
-        dispatch(getProducts(prodFilter)) 
+        const res = await api.get(url_filters)
+        const prod = (res.data).map(el => el.produto)
+        console.log(prod)
 
-    }
+        dispatch(getProducts(prod)) 
+            
+    }, [dispatch, products.length, url_filters])
 
     const animatedComponents = makeAnimated()
 
@@ -140,7 +147,7 @@ function Filter() {
                     isMulti={true}
                     options={size}
                     classNamePrefix="select"
-                    onChange={setSelectedOption}
+                    onChange={setSelectedSize}
                 />
             </div>
 
@@ -155,7 +162,7 @@ function Filter() {
                     styles={colourStyles}
                     options={colors}
                     classNamePrefix="select"
-                    onChange={setSelectedOption}
+                    onChange={setSelectedColor}
                 />
             </div>
 
@@ -169,7 +176,7 @@ function Filter() {
                     isMulti={true}
                     options={brands.map(el =>  ({ label: el, value: el })  )}
                     classNamePrefix="select"
-                    onChange={setSelectedOption}
+                    // onChange={setSelectedOption}
                 />
             </div>
 
@@ -183,7 +190,7 @@ function Filter() {
                     isMulti={false}
                     options={price}
                     classNamePrefix="select"
-                    onChange={setSelectedOption}
+                    // onChange={setSelectedOption}
                 />
             </div>
 
