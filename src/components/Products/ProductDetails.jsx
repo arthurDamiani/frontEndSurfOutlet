@@ -98,9 +98,7 @@ const ProductDetails = ({ product }) => {
                     </div>
                     <div className='info-product'>
                         <h3>Descrição</h3>
-                        <p>Blusa de moletom, com felpa, bolso frente canguru sobreposto, 
-                        forro no capuz em malha colorida, cordão como regulagem,
-                        estampa frente e costas e etiquetas personalizadas.</p>
+                        <p>{product.descricaoCurta}</p>
                     </div>
                 </div>
             </div>

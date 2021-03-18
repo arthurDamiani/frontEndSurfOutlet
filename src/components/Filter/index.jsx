@@ -25,9 +25,11 @@ function Filter() {
 
     const [selectedSize, setSelectedSize] = useState([])
     const [selectedColor, setSelectedColor] = useState([])
+    const [selectedBrand, setSelectedBrand] = useState([])
 
     const filtersSize = selectedSize.map(el => el.value)
     const filtersColor = selectedColor.map(el => el.value)
+    const filtersBrand = selectedColor.map(el => el.value)
    
     const addFilterApi = useCallback( async () => {
         products.length > 0 ? setLoading(false) : setLoading(true)
