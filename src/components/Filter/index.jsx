@@ -14,10 +14,13 @@ import { getProducts, clearProducts } from '../../actions/products'
 
 function Filter() {
     const dispatch = useDispatch()
-    const categoria = useParams().categoria
 
+    const categoria = useParams().categoria
+    const subcategoria = useParams().subcategoria
+    const tipo = useParams().tipo
 
     const products = useSelector(getAllProducts) 
+
     const [loading, setLoading] = useState(false)
 
     const [selectedSize, setSelectedSize] = useState([])
@@ -25,21 +28,29 @@ function Filter() {
 
     const filtersSize = selectedSize.map(el => el.value)
     const filtersColor = selectedColor.map(el => el.value)
-
-   
-    const url_filters = `/produtos/categoria?categoria=${categoria}&tamanho=${filtersSize}`
-
    
     const addFilterApi = useCallback( async () => {
         products.length > 0 ? setLoading(false) : setLoading(true)
 
-        const res = await api.get(url_filters)
-        const prod = (res.data).map(el => el.produto)
-        console.log(prod)
-
-        dispatch(getProducts(prod)) 
+        if(subcategoria !== undefined && tipo !== undefined) {
+            const res = await api.get(`/produtos/categoria?categoria=${categoria}&subcategoria=${subcategoria}&tipo=${tipo}&tamanho=${filtersSize}&cor=${filtersColor}`)
+            const prod = (res.data).map(el => el.produto)
+            dispatch(getProducts(prod))
+        } else if(subcategoria !== undefined && tipo === undefined) {
+            const res = await api.get(`/produtos/categoria?categoria=${categoria}&subcategoria=${subcategoria}&tamanho=${filtersSize}&cor=${filtersColor}`)
+            const prod = (res.data).map(el => el.produto)
+            dispatch(getProducts(prod))
+        } else if(subcategoria === undefined && tipo === undefined && categoria !== undefined) {
+            const res = await api.get(`/produtos/categoria?categoria=${categoria}&tamanho=${filtersSize}&cor=${filtersColor}`)
+            const prod = (res.data).map(el => el.produto)
+            dispatch(getProducts(prod))
+        } else { //CONDIÇÃO APENAS PARA TESTES
+            const res = await api.get(`/produtos/tamanho=${filtersSize}&cor=${filtersColor}`)
+            const prod = (res.data).map(el => el.produto)
+            dispatch(getProducts(prod)) 
+        }  
             
-    }, [dispatch, products.length, url_filters])
+    }, [dispatch, filtersColor, filtersSize, products.length, categoria, subcategoria, tipo])
 
     const animatedComponents = makeAnimated()
 

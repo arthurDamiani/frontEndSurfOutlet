@@ -20,6 +20,8 @@ const ProductCardList = () => {
     const subcategoria = useParams().subcategoria
     const tipo = useParams().tipo
 
+    console.log(categoria)
+
     const products = useSelector(getAllProducts)   
 
     const [sort, setSort] = useState('')
@@ -38,19 +40,23 @@ const ProductCardList = () => {
                 const res = await api.get(`/produtos/categoria?categoria=${categoria}&subcategoria=${subcategoria}&tipo=${tipo}`)
                 const prod = (res.data).map(el => el.produto)
                 dispatch(getProducts(prod))
-            } else if(subcategoria !== undefined && tipo == undefined) {
+            } else if(subcategoria !== undefined && tipo === undefined) {
                 const res = await api.get(`/produtos/categoria?categoria=${categoria}&subcategoria=${subcategoria}`)
                 const prod = (res.data).map(el => el.produto)
                 dispatch(getProducts(prod))
-            } else {
+            } else if(subcategoria === undefined && tipo === undefined && categoria !== undefined) {
                 const res = await api.get(`/produtos/categoria?categoria=${categoria}`)
                 const prod = (res.data).map(el => el.produto)
                 dispatch(getProducts(prod))
-            }  
+            } else { //CONDIÇÃO APENAS PARA TESTES
+                const res = await api.get('/produtos')
+                const prod = (res.data.retorno.produtos).map(el => el.produto)
+                dispatch(getProducts(prod))
+            }
         }
 
         fetchProducts()
-    }, [dispatch, products.length, categoria, subcategoria, tipo])
+    }, [dispatch, categoria, subcategoria, tipo])
 
     
     const changePage = ({selected}) => {

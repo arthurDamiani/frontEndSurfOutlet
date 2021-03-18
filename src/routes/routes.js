@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import ScrollToTop from './ScrollToTop'
 import Landing from '../pages/Landing'
 import ProductsCard from '../pages/ProductsCard'
@@ -19,12 +19,11 @@ function Routes() {
 			<ScrollToTop />
 			<Switch>
 				<Route path="/" exact component={Landing} />
+
+				<Route path="/produtos" exact component={ProductsCard} />
 				<Route path="/produtos/:categoria/" exact component={ProductsCard} />
 				<Route path="/produtos/:categoria/:subcategoria" exact component={ProductsCard} />
-
 				<Route path="/produtos/:categoria/:subcategoria/:tipo" exact component={ProductsCard} />
-
-
 
 				<Route path="/detailsProducts/:codigo" exact component={DetailsProduct} />
 				<Route path="/payment" exact component={Payment} />
@@ -38,4 +37,4 @@ function Routes() {
 	)
 }
 
-export default Routes;
+export default Routes
