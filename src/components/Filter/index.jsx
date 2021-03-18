@@ -29,30 +29,30 @@ function Filter() {
 
     const filtersSize = selectedSize.map(el => el.value)
     const filtersColor = selectedColor.map(el => el.value)
-    const filtersBrand = selectedColor.map(el => el.value)
+    const filtersBrand = selectedBrand.map(el => el.value)
    
     const addFilterApi = useCallback( async () => {
         products.length > 0 ? setLoading(false) : setLoading(true)
 
         if(subcategoria !== undefined && tipo !== undefined) {
-            const res = await api.get(`/produtos/categoria?categoria=${categoria}&subcategoria=${subcategoria}&tipo=${tipo}&tamanho=${filtersSize}&cor=${filtersColor}`)
+            const res = await api.get(`/produtos/categoria?categoria=${categoria}&subcategoria=${subcategoria}&tipo=${tipo}&tamanho=${filtersSize}&cor=${filtersColor}&marca=${filtersBrand}`)
             const prod = (res.data).map(el => el.produto)
             dispatch(getProducts(prod))
         } else if(subcategoria !== undefined && tipo === undefined) {
-            const res = await api.get(`/produtos/categoria?categoria=${categoria}&subcategoria=${subcategoria}&tamanho=${filtersSize}&cor=${filtersColor}`)
+            const res = await api.get(`/produtos/categoria?categoria=${categoria}&subcategoria=${subcategoria}&tamanho=${filtersSize}&cor=${filtersColor}&marca=${filtersBrand}`)
             const prod = (res.data).map(el => el.produto)
             dispatch(getProducts(prod))
         } else if(subcategoria === undefined && tipo === undefined && categoria !== undefined) {
-            const res = await api.get(`/produtos/categoria?categoria=${categoria}&tamanho=${filtersSize}&cor=${filtersColor}`)
+            const res = await api.get(`/produtos/categoria?categoria=${categoria}&tamanho=${filtersSize}&cor=${filtersColor}&marca=${filtersBrand}`)
             const prod = (res.data).map(el => el.produto)
             dispatch(getProducts(prod))
         } else { //CONDIÇÃO APENAS PARA TESTES
-            const res = await api.get(`/produtos/tamanho=${filtersSize}&cor=${filtersColor}`)
+            const res = await api.get(`/produtos/tamanho=${filtersSize}&cor=${filtersColor}&marca=${filtersBrand}`)
             const prod = (res.data).map(el => el.produto)
             dispatch(getProducts(prod)) 
         }  
             
-    }, [dispatch, filtersColor, filtersSize, products.length, categoria, subcategoria, tipo])
+    }, [dispatch, filtersColor, filtersSize, filtersBrand, products.length, categoria, subcategoria, tipo])
 
     const animatedComponents = makeAnimated()
 
@@ -189,7 +189,7 @@ function Filter() {
                     isMulti={true}
                     options={brands.map(el =>  ({ label: el, value: el })  )}
                     classNamePrefix="select"
-                    // onChange={setSelectedOption}
+                    onChange={setSelectedBrand}
                 />
             </div>
 
