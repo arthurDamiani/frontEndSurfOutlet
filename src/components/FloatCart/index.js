@@ -15,6 +15,8 @@ function FloatCart() {
 
   const total = useSelector(getCartTotal)
 
+  const authorized = sessionStorage.getItem('authorized')
+
   const itemQuantity = productsCart
     .map((item) => item.quantity)
     .reduce((item, total) => item + total, 0)
@@ -23,81 +25,96 @@ function FloatCart() {
 
   const closeFloatCart = () => setIsOpen(false)
 
-    let cart = productsCart.map(p => <CartProduct products={p} key={p.id} /> )
+  const noAuthorized = () => {
+    closeFloatCart()
+    alert('Faça login ou cadastre-se antes de finalizar no carrinho')
+  }
 
-    let classes = ['float-cart']
+  const cart = productsCart.map(p => <CartProduct product={p} key={p.id} /> )
 
-    if (!!isOpen) {
-      classes.push('float-cart--open')
-    }
+  const classes = ['float-cart']
+
+  if (!!isOpen) {
+     classes.push('float-cart--open')
+  }
+
+  console.log(productsCart.map((item) => item))
 
     return (
       <Fragment>
-        <div className={classes.join(' ')}>
-          {/* If cart open, show close (x) button */}
-          {isOpen && (
-            <div
-              onClick={() => closeFloatCart()}
-              className="float-cart__close-btn"
-            >
-              X
-            </div>
-          )}
+          <div className={classes.join(' ')}>
+            {/* If cart open, show close (x) button */}
+            {isOpen && (
+              <div
+                onClick={() => closeFloatCart()}
+                className="float-cart__close-btn"
+              >
+                X
+              </div>
+            )}
 
-          {/* If cart is closed, show bag with quantity of product and open cart action */}
-          {!isOpen && (
-            <span
-              onClick={() => openFloatCart()}
-              className="bag bag--float-cart-closed"
-            >
-              <Cart height='40' width='40' color='#0080A8' />
-              <span className="bag__quantity">{itemQuantity}</span>
-            </span>
-          )}
-
-          <div className="float-cart__content">
-            <div className="float-cart__header">
-              <span className="bag">
+            {/* If cart is closed, show bag with quantity of product and open cart action */}
+            {!isOpen && (
+              <span
+                onClick={() => openFloatCart()}
+                className="bag bag--float-cart-closed"
+              >
                 <Cart height='40' width='40' color='#0080A8' />
                 <span className="bag__quantity">{itemQuantity}</span>
               </span>
-              <span className="header-title">CARRINHO</span>
-            </div>
+            )}
 
-            <div className="float-cart__shelf-container">
-              {cart} 
-              
-              {productsCart.length === 0 && (
-                <p className="shelf-empty">
-                  Adicione algum produto no carrinho
-                </p>
-              )}
-            </div>
-
-            <div className="float-cart__footer">
-              <div className="sub">TOTAL</div>
-              <div className="sub-price">
-
-                <p className="sub-price__val">
-                  {`R$ ${total}`}
-                </p>
-
-                <small className="sub-price__installment">
-                  {!productsCart.installments && (
-                    <span>
-                      {`OU EM 10 x R$ ${(total / 10)}`}
-                    </span>
-                  )}
-                </small>
+            <div className="float-cart__content">
+              <div className="float-cart__header">
+                <span className="bag">
+                  <Cart height='40' width='40' color='#0080A8' />
+                  <span className="bag__quantity">{itemQuantity}</span>
+                </span>
+                <span className="header-title">CARRINHO</span>
               </div>
-              <Link to='/payment'>
-                <div className="buy-btn">
-                  Finalizar
+
+              <div className="float-cart__shelf-container">
+                {cart} 
+                
+                {productsCart.length === 0 && (
+                  <p className="shelf-empty">
+                    Adicione algum produto no carrinho
+                  </p>
+                )}
+              </div>
+
+              <div className="float-cart__footer">
+                <div className="sub">TOTAL</div>
+                <div className="sub-price">
+
+                  <p className="sub-price__val">
+                    {`R$ ${total.toFixed(2).replace('.' , ',')}`}
+                  </p>
+
+                  <small className="sub-price__installment">
+                    {!productsCart.installments && (
+                      <span>
+                        {`OU EM 10 x R$ ${(total / 10).toFixed(2).replace('.' , ',')}`}
+                      </span>
+                    )}
+                  </small>
                 </div>
-              </Link>
+                  <div className="buy-btn" >
+                      { 
+                        authorized === 'true' ? 
+                        <Link to='/payment' className='logado' onClick={closeFloatCart}>
+                            FINALIZAR
+                        </Link>
+                        :
+                        <Link to='/login' className='Nlogado' onClick={noAuthorized}>
+                            FINALIZAR
+                        </Link>
+                      }
+                    
+                  </div>
+              </div>
             </div>
           </div>
-        </div>
       </Fragment>
     )
   }

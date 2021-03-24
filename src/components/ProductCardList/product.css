@@ -11,18 +11,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 15px 0;
-}
-
-.filter-sort p {
-    margin-left: 10rem;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 85%;
+    margin: 1rem 15%;
 }
 
 .filter-sort select {
-    padding: 5px;
+    padding: 0.2rem;
     outline: none;
-    border: 1px solid #0080A8;
+    border: 1px solid #FF8B00;
     border-radius: 4px;
 }
 
@@ -40,8 +36,23 @@
 
 .products-wrapper .filter {
     display: flex;
+    flex-direction: column;
     position: absolute;
+    margin-top: 35px;
     left: 0;
+}
+
+.filter .path-prod-wrapper {
+    position: absolute;
+    margin-top: -1rem;
+    border-bottom: rgba(255, 139, 0, 0.5) 1px solid;
+}
+
+.filter .path-prod {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #0080A8;
+    font-family: Inter, sans-serif;
 }
 
 .paginationsBttn {

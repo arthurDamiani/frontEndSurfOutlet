@@ -1,16 +1,15 @@
 import React, {useState, Fragment} from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../../actions/products'
 import { ReactComponent as Cart } from '../../assets/shopping-cart-solid.svg'
 
 import './productDetails.css'
-import products  from '../../data/products'
 import NumberFormat from 'react-number-format'
 
 import Select from 'react-select'
 
 const ProductDetails = ({ product }) => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch() 
 
     const [selectedSize, setSelectedSize] = useState('')
     const [selectedColor, setSelectedColor] = useState('')
@@ -18,29 +17,32 @@ const ProductDetails = ({ product }) => {
     const onSelectedSizeChange = value => setSelectedSize(...value.label)
     const onSelectedColorChange = value => setSelectedColor(...value.label)
 
-
-    function addSizeAndColorToCart() {
-        localStorage.setItem('@surfoutlet/color', selectedColor)
-        localStorage.setItem('@surfoutlet/size', selectedSize)
-    }
-
-    const addToCartFn = () => selectedSize === '' || selectedColor === '' ? window.alert('Selecione um tamanho e uma cor antes de adicionar ao carrinho') : (dispatch(addToCart({...product})) && addSizeAndColorToCart())
+    const addToCartFn = () => selectedSize === '' || selectedColor === '' ? window.alert('Selecione um tamanho e uma cor antes de adicionar ao carrinho') : (dispatch(addToCart({...product, size: selectedSize, color: selectedColor})))
 
     // COLORS
-    const cores = (product.variacoes).map(el => el.variacao).map(el => el.nome).map(el => el.substr(4)).map(el => el.split(';')).map(el => el.slice(0, 1))
+    const cores = (product.variacoes)
+        .map(el => el.variacao)
+        .map(el => el.nome)
+        .map(el => el.substr(4))
+        .map(el => el.split(';'))
+        .map(el => el.slice(0, 1))
     
     let colors = cores.map((el, i) => {
         return {label: el}
     })
 
     // SIZES
-    const tamanhos = (product.variacoes).map(el => el.variacao).map(el => el.nome).map(el => el.split(';')).map(el => el.slice(1, 2))
-
+    const tamanhos = (product.variacoes)
+        .map(el => el.variacao)
+        .map(el => el.codigo)
+        .map(el => el.split('-'))
+        .map(el => el.slice(1, 2))
+        
     let sizes = tamanhos.map((el, i) => {
         return {label: el}
     })
   
-    const imgThumb = [products[0].imageThumbnail, products[1].imageThumbnail, products[2].imageThumbnail, products[3].imageThumbnail]
+    const imgThumb = [product.imageThumbnail, product.imageThumbnail, product.imageThumbnail, product.imageThumbnail]
     const [images, setImages] = useState(product.imageThumbnail)
 
     return (

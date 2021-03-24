@@ -1,14 +1,19 @@
 .payment-container {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    padding: 2rem 10rem;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2rem 5rem;
 }
 
 .payment-top-container {
     display: flex;
     justify-content: space-between;
     font-size: 1.3rem;
+}
+
+.dados-pessoais {
+    padding: 0 2rem;
 }
 
 .payment-box-data {

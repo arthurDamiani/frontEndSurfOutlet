@@ -5,7 +5,7 @@ import './footer.css'
 
 function Footer() {
     return (
-        <footer id='footer'>
+        <footer id='footer' className='footer'>
             <ul className="social-media">
                 <li className="social-media-item"><a href='#'><Facebook fontSize="large" /></a></li>
                 <li className="social-media-item middle-item"><a href='#'><Instagram fontSize="large" /></a></li>

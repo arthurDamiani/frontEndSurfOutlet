@@ -1,14 +1,11 @@
 import React from 'react'
 import './productCard.css'
-import { useDispatch } from 'react-redux'
 
 import {Link}  from 'react-router-dom'
 import NumberFormat from 'react-number-format'
  
 function Product({product}) {
   
-    const dispatch = useDispatch()
-
     product.quantity = 1
 
     let productInstallment

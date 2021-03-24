@@ -1,5 +1,9 @@
 export const getCartState = state => state.productsReducer.cart
 
+export const getColorState = state => state.productsReducer.color
+
+export const getSizeState= state => state.productsReducer.size
+
 export const getCartTotal = state => state.productsReducer.total
 
 export const getAllProducts = state => state.productsReducer.products
@@ -8,30 +12,32 @@ export const getAllProductBrands = state => state.productsReducer.products
     .map((product) => product.marca)
     .reduce((unique, brand) => unique.includes(brand) ? unique : [...unique, brand], [])
 
-export const getAllProductCategory = state => state.productsReducer.products
-    .map((product) => product.preco)
-    .reduce((unique, category) => unique.includes(category) ? unique : [...unique, category], [])
+export const getEstoque = state => state.productsReducer.products
+    .map((product) => product)
 
-export const getAllProductGenre = state => state.productsReducer.products
-    .map((product) => product.genre)
-    .reduce((unique, genre) => unique.includes(genre) ? unique : [...unique, genre], [])
+    
 
 export const getAllProductSize = state => state.productsReducer.products
-    .map((product) => product.size)
-    .reduce((unique, size) => unique.includes(size) ? unique : [...unique, size], [])
-
-export const getAllProductPrice = state => state.productsReducer.products
-    .map((product) => product.price)
-    .reduce((unique, price) => unique.includes(price) ? unique : [...unique, price], [])
-
+    .map((product) => product)
+    .map(el => el.variacoes)
+    .map(el => el[0])
+    .map(el => el.variacao)
+    .map(el => el.nome)
+    .map(el => el.split(':'))
+    .map(el => el.slice(2, 3))
+    .map(el => el[0])
+    
 export const getAllProductColor = state => state.productsReducer.products
-    .map((product) => product.color)
-    .reduce((unique, color) => unique.includes(color) ? unique : [...unique, color], [])
-
-export const getAllProductDepartment = state => state.productsReducer.products
-    .map((product) => product.department)
-    .reduce((unique, department) => unique.includes(department) ? unique : [...unique, department], [])
-
+    .map((product) => product)
+    .map(el => el.variacoes)
+    .map(el => el[0])
+    .map(el => el.variacao)
+    .map(el => el.nome)
+    .map(el => el.substr(4))
+    .map(el => el.split(';'))
+    .map(el => el.slice(0, 1))
+    .map(el => el[0])
+        
 
 // export const getFilteredProducts = state => {
 //     const { productsReducer: { products }, filters } = state

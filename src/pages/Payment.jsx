@@ -70,8 +70,8 @@ function Payment() {
     return (
         <div className='payment-container'>
             <div className='payment-top-container'>
-                <div>
-                    <NumeratedTitled number='1' title='Dados Pessoais' />
+                <div className='dados-pessoais'> 
+                    <NumeratedTitled title='Dados Pessoais' />
                     <PaymentBox type={3}>
                         <div className='payment-box-data'>
                             <p>{personalData.nomeCompleto}</p>
@@ -82,15 +82,15 @@ function Payment() {
                     </PaymentBox>
                 </div>
                 <div>
-                    <NumeratedTitled number='2' title='Entrega' />
+                    <NumeratedTitled title='Endereço de entrega' />
                     <PaymentBox type={1} onClick={handleEditAddress}>
-                        <form className='payment-box-data'>
+                        <form >
                             <TextField 
                                 value={street}
                                 onChange={(e) => setStreet(e.target.value)}
                                 id='street'
                                 label='Rua'
-                                variant='outlined'
+                                variant='filled'
                                 margin='normal'
                                 className='white-background'
                                 size="small"
@@ -106,7 +106,7 @@ function Payment() {
                                         onChange={(e) => setNumber(e.target.value)}
                                         id='number'
                                         label='Número'
-                                        variant='outlined'
+                                        variant='filled'
                                         margin='normal'
                                         className='white-background'
                                         size="small"
@@ -120,7 +120,7 @@ function Payment() {
                                     onChange={(e) => setComplement(e.target.value)}
                                     id='complement'
                                     label='Complemento'
-                                    variant='outlined'
+                                    variant='filled'
                                     margin='normal'
                                     className='white-background'
                                     size="small"
@@ -135,7 +135,7 @@ function Payment() {
                                 onChange={(e) => setCep(e.target.value)}
                                 id='cep'
                                 label='CEP'
-                                variant='outlined'
+                                variant='filled'
                                 margin='normal'
                                 className='white-background'
                                 size="small"
@@ -151,7 +151,7 @@ function Payment() {
                                         onChange={(e) => setState(e.target.value)}
                                         id='state'
                                         label='Estado'
-                                        variant='outlined'
+                                        variant='filled'
                                         margin='normal'
                                         className='white-background'
                                         size="small"
@@ -165,7 +165,7 @@ function Payment() {
                                     onChange={(e) => setCity(e.target.value)}
                                     id='city'
                                     label='Cidade'
-                                    variant='outlined'
+                                    variant='filled'
                                     margin='normal'
                                     className='white-background'
                                     size="small"
@@ -180,7 +180,7 @@ function Payment() {
                                 onChange={(e) => setNeighborhood(e.target.value)}
                                 id='neighborhood'
                                 label='Bairro'
-                                variant='outlined'
+                                variant='filled'
                                 margin='normal'
                                 className='white-background'
                                 size="small"
@@ -189,13 +189,12 @@ function Payment() {
                                 }}
                                 fullWidth
                             />
-                            <p>R$ 20,00</p>
                         </form>
                     </PaymentBox>
                 </div>
             </div>
             <div className='payment-bottom-container'>
-                <NumeratedTitled number='3' title='Pagamento' />
+                <NumeratedTitled title='Pagamento' />
                 <div className='payment-data'>
                     <PaypalButton />        
                 </div>

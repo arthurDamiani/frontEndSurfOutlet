@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useMemo, useState } from 'react'
 import FadeLoader from "react-spinners/FadeLoader"
 import { useParams } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { Breadcrumb } from 'antd'
 
 import './product.css'
 import Product from '../Products/ProductCard'
@@ -10,8 +10,8 @@ import Filter from '../Filter'
 import api from '../../services/api'
 import ReactPaginate from 'react-paginate'
 
-import { getAllProducts } from '../../selectors/products'
-import { getProducts, clearProducts } from '../../actions/products'
+import { getAllProducts, getEstoque } from '../../selectors/products'
+import { getProducts } from '../../actions/products'
  
 const ProductCardList = () => {
     const dispatch = useDispatch()
@@ -20,9 +20,10 @@ const ProductCardList = () => {
     const subcategoria = useParams().subcategoria
     const tipo = useParams().tipo
 
-    console.log(categoria)
+    const products = useSelector(getAllProducts)  
 
-    const products = useSelector(getAllProducts)   
+    const estoque = useSelector(getEstoque)  
+    console.log(estoque)
 
     const [sort, setSort] = useState('')
 
@@ -32,7 +33,7 @@ const ProductCardList = () => {
 
     const totalPages = (4745 / 100)
 
-    useMemo(() => {
+    useEffect(() => {
         const fetchProducts = async () => {
             products.length > 0 ? setLoading(false) : setLoading(true)
 
@@ -49,8 +50,8 @@ const ProductCardList = () => {
                 const prod = (res.data).map(el => el.produto)
                 dispatch(getProducts(prod))
             } else { //CONDIÇÃO APENAS PARA TESTES
-                const res = await api.get('/produtos')
-                const prod = (res.data.retorno.produtos).map(el => el.produto)
+                const res = await api.get('/produtos/categoria?')
+                const prod = (res.data).map(el => el.produto)
                 dispatch(getProducts(prod))
             }
         }
@@ -58,10 +59,8 @@ const ProductCardList = () => {
         fetchProducts()
     }, [dispatch, categoria, subcategoria, tipo])
 
-    
-    const changePage = ({selected}) => {
-        setCurrentPage(selected + 1) 
-    }
+
+    const changePage = ({selected}) => setCurrentPage(selected + 1) 
 
     useEffect(() => {
         setTimeout(() => {
@@ -81,17 +80,22 @@ const ProductCardList = () => {
        return products 
     }
 
+    const removeIdDuplicate = (id) => id + String(Math.random())
+      
     return ( 
         <Fragment>
             <div className='products-wrapper'>
+
                 <div className='filter-sort'>
-                    <p>{products.length} produtos encontrados</p>
+
+                    <p>{products.length} Produtos Encontrados</p>
                         <select value={sort} onChange={handleChangeSort}>
                             <option value=''>Ordenar por preço</option>
                             <option value='menor'>Menor para maior</option>
                             <option value='maior'>Maior para menor</option>
                         </select>
                 </div>
+
 
                     {
                         loading === true ? 
@@ -100,7 +104,7 @@ const ProductCardList = () => {
                         </div>
                          :
                          <div className="products">
-                            { products.map(product => <Product product={product} key={product.id} />) }
+                            { products.map(product => <Product product={product} key={removeIdDuplicate(product.id)} />) }
 
                             <ReactPaginate
                                 previousLabel={'<'}
@@ -118,6 +122,23 @@ const ProductCardList = () => {
                     }
                     
                 <div className="filter">
+                    
+                            {   
+                                tipo !== undefined ?
+                                <Breadcrumb className='path-prod-wrapper'>
+
+                                        <Breadcrumb.Item className='path-prod'> {categoria} </Breadcrumb.Item>
+                                        <Breadcrumb.Item className='path-prod'> {subcategoria === 'Acessorio' ? (subcategoria.replace('o', 'ó') + 's') : subcategoria.replace('a', 'á')} </Breadcrumb.Item>
+                                        <Breadcrumb.Item className='path-prod'> {tipo + 's'} </Breadcrumb.Item>
+                                </Breadcrumb>
+                                :
+                                <Breadcrumb className='path-prod-wrapper'>
+
+                                        <Breadcrumb.Item className='path-prod'> {categoria} </Breadcrumb.Item>
+                                        <Breadcrumb.Item className='path-prod'> {subcategoria} </Breadcrumb.Item>
+                                </Breadcrumb>
+                            }
+
                         <Filter />
                 </div>
 

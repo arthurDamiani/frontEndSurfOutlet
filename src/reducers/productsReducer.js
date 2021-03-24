@@ -26,6 +26,9 @@ const productsReducer = (state = productsDefaultState, action) => {
 
       } else {
         addedProduct.quantity = 1
+        addedProduct.size = action.payload.size
+        addedProduct.color = action.payload.color
+        
         const newTotal = state.total + parseFloat(addedProduct.preco)
 
         return {
@@ -65,7 +68,6 @@ const productsReducer = (state = productsDefaultState, action) => {
 
     case 'INCREMENT':
       const productsIncrement = state.cart.find((product) => action.codigo === product.codigo)
-
 
       productsIncrement.quantity += 1
       const newTotalIncrement = state.total + parseFloat(productsIncrement.preco)

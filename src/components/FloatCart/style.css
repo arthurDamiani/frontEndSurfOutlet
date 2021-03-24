@@ -218,17 +218,25 @@
   font-size: 22px;
 }
 .float-cart__footer .buy-btn {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-weight: 600;
-  color: #ececec;
-  text-transform: uppercase;
   background-color: #0c0b10;
   text-align: center;
-  padding: 15px 0;
+  padding: 0.8rem 0;
   margin-top: 40px;
-  cursor: pointer;
   transition: background-color 0.2s;
 }
+.float-cart__footer .buy-btn .logado {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ececec;
+    transition: background-color 0.2s;
+}
+.float-cart__footer .buy-btn .Nlogado {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ececec;
+    transition: background-color 0.2s;
+}
+
 .float-cart__footer .buy-btn:hover {
   background-color: #000;
 }

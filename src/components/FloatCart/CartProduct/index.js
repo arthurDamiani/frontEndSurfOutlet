@@ -1,13 +1,15 @@
 import React, { Fragment, useState } from 'react'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Thumb from './../../Thumb'
 
 import { removeFromCart, incrementFromCart, decrementFromCart } from '../../../actions/products'
+import { getColorState, getSizeState } from '../../../selectors/products'
 
-function CartProduct({products}) {
+function CartProduct({product}) {
 
+  console.log(product)
   const [isMouseOver, setIsMouseOver] = useState(false)
  
   const handleMouseOver = () => setIsMouseOver(true)
@@ -29,37 +31,37 @@ function CartProduct({products}) {
               className="shelf-item__del"
               onMouseOver={() => handleMouseOver()}
               onMouseOut={() => handleMouseOut()}
-              onClick={() => dispatch(removeFromCart(products.codigo))}
+              onClick={() => dispatch(removeFromCart(product.codigo))}
             />
 
             <Thumb
-              src={products.imageThumbnail}
-              alt={products.descricao}
+              src={product.imageThumbnail}
+              alt={product.descricao}
             />
 
             <div className="shelf-item__details">
-              <p className="title-cart">{products.descricao}</p>
+              <p className="title-cart">{product.descricao}</p>
 
               <div className="desc">
-                <p> Tamanho: {localStorage.getItem('@surfoutlet/size')} </p>
-                <p> Cor: {localStorage.getItem('@surfoutlet/color')} </p>
-                <p> Quantidade: {products.quantity} </p>
+                <p> Tamanho: {product.size} </p>
+                <p> Cor: {product.color} </p>
+                <p> Quantidade: {product.quantity} </p>
               </div>
             </div>
 
             <div className="shelf-item__price">
-              <p>{parseFloat(products.preco)}</p> 
+              <p>{parseFloat(product.preco).toFixed(2).replace('.' , ',')}</p> 
                 <div>
                   <button 
                     className="change-product-button" 
-                    onClick={() => dispatch(decrementFromCart(products.codigo))} 
-                    disabled={products.quantity === 1 ? true : false} >
+                    onClick={() => dispatch(decrementFromCart(product.codigo))} 
+                    disabled={product.quantity === 1 ? true : false} >
                       -
                   </button>
 
                   <button 
                     className="change-product-button" 
-                    onClick={() => dispatch(incrementFromCart(products.codigo))} >
+                    onClick={() => dispatch(incrementFromCart(product.codigo))} >
                       +
                   </button>
                 </div>
